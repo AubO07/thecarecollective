@@ -3,9 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <title>The Care Collective</title>
+
+  <!-- quick, self-contained styling -->
+  <style>
+    :root{
+      --brand:#ca2b6b;
+      --ink:#222;
+      --bg:linear-gradient(160deg,#fff 0%,#f7f7ff 40%,#f0f4ff 100%);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Helvetica,Arial,sans-serif;}
+    body{background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;color:var(--ink);}
+    main{max-width:720px;background:#fff;border-radius:16px;padding:3rem 2.5rem;box-shadow:0 12px 28px rgba(0,0,0,.08);}
+    h1{font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:var(--brand);}
+    p{line-height:1.6;margin-bottom:1rem;font-size:1.1rem;}
+    footer{margin-top:2rem;font-size:.9rem;color:#666;text-align:center;}
+    a{color:var(--brand);text-decoration:none;border-bottom:1px solid transparent;}
+    a:hover{border-color:var(--brand);}
+  </style>
 </head>
+
 <body>
-  <h1>Welcome to The Care Collective</h1>
-  <p>This site is live — more coming soon.</p>
+  <main>
+    <h1>The Care Collective</h1>
+
+    <p><strong>Dear Rt Hon Peter Kyle MP,</strong></p>
+
+    <p>
+      Britain’s unpaid carers prop up our health &amp; social-care system
+      every single day – yet they remain invisible in policymaking and in
+      tech innovation. <em>The Care Collective</em> is our answer:
+      a secure Digital Care ID plus an AI-supported platform that
+      connects carers to services, unlocks creative contribution, and
+      saves the Treasury billions through smarter welfare spend.
+    </p>
+
+    <p>
+      You’ve said you want social care fixed, creativity championed and
+      AI harnessed for public good. We couldn’t agree more.
+      Let’s prototype this together – starting with the people who
+      already “get the job done” for free.
+    </p>
+
+    <p>With gratitude &amp; urgency,<br>Aubrey Ghose<br>Founder, The Care Collective</p>
+
+    <footer>
+      Public progress log on&nbsp;<a href="https://github.com/Aub007/thecarecollective" target="_blank">GitHub</a> •
+      First prototype live June 2025
+    </footer>
+  </main>
 </body>
 </html>
