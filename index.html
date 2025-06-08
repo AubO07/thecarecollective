@@ -6,50 +6,74 @@
 
   <!-- quick, self-contained styling -->
   <style>
-    :root{
+    :root {
       --brand:#ca2b6b;
       --ink:#222;
       --bg:linear-gradient(160deg,#fff 0%,#f7f7ff 40%,#f0f4ff 100%);
     }
+
     *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Helvetica,Arial,sans-serif;}
-    body{background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;color:var(--ink);}
-    main{max-width:720px;background:#fff;border-radius:16px;padding:3rem 2.5rem;box-shadow:0 12px 28px rgba(0,0,0,.08);}
-    h1{font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:var(--brand);}
-    p{line-height:1.6;margin-bottom:1rem;font-size:1.1rem;}
-    footer{margin-top:2rem;font-size:.9rem;color:#666;text-align:center;}
-    a{color:var(--brand);text-decoration:none;border-bottom:1px solid transparent;}
+
+    body{background:var(--bg);min-height:100vh;display:flex;flex-direction:column;}
+
+    /* Hero
+    ---------------------------------------------------------------- */
+    header{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:4rem 1rem 3rem;
+    }
+    header h1{
+      font-size:clamp(2rem,5vw,3.5rem);
+      font-weight:800;
+      margin-bottom:1.5rem;
+      color:var(--brand);
+      line-height:1.15;
+    }
+    header p{
+      max-width:680px;
+      margin-inline:auto;
+      font-size:1.1rem;
+      line-height:1.55;
+    }
+
+    /* Decorative underline for links */
+    a{color:var(--brand);text-decoration:none;border-bottom:2px solid transparent;}
     a:hover{border-color:var(--brand);}
+
+    /* Footer
+    ---------------------------------------------------------------- */
+    footer{
+      padding:1.5rem 1rem;
+      font-size:.9rem;
+      color:#666;
+      text-align:center;
+    }
   </style>
 </head>
 
 <body>
-  <main>
-    <h1>The Care Collective</h1>
+  <!-- HERO -->
+  <header>
+    <main>
+      <h1>Open Letter to Peter Kyle MP</h1>
+      <p>
+        Britain’s unpaid carers save the Treasury &gt;£162 billion every year yet are overlooked by
+        policy and tech innovation. <br><br>
+        <strong>The Care Collective</strong> is our answer: a secure Digital ID &amp; support
+        platform that connects carers, unlocks contribution and, ultimately, transforms lives.
+        <br><br>
+        Let’s build it together.  <a href="mailto:hello@thecarecollective.uk">Join the conversation →</a>
+      </p>
+    </main>
+  </header>
 
-    <p><strong>Dear Rt Hon Peter Kyle MP,</strong></p>
-
-    <p>
-      Britain’s unpaid carers prop up our health &amp; social-care system
-      every single day – yet they remain invisible in policymaking and in
-      tech innovation. <em>The Care Collective</em> is our answer:
-      a secure Digital Care ID plus an AI-supported platform that
-      connects carers to services, unlocks creative contribution, and
-      saves the Treasury billions through smarter welfare spend.
-    </p>
-
-    <p>
-      You’ve said you want social care fixed, creativity championed and
-      AI harnessed for public good. We couldn’t agree more.
-      Let’s prototype this together – starting with the people who
-      already “get the job done” for free.
-    </p>
-
-    <p>With gratitude &amp; urgency,<br>Aubrey Ghose<br>Founder, The Care Collective</p>
-
-    <footer>
-      Public progress log on&nbsp;<a href="https://github.com/Aub007/thecarecollective" target="_blank">GitHub</a> •
-      First prototype live June 2025
-    </footer>
-  </main>
+  <footer>
+    First prototype live June 2025 — public changelog on&nbsp;
+    <a href="https://github.com/Aub007/thecarecollective">GitHub</a>
+  </footer>
 </body>
 </html>
