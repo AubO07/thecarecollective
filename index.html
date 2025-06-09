@@ -1,104 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>The Care Collective</title>
+<meta charset="UTF-8" />
+<title>The Care Collective</title>
 
-  <!-- OpenAI-inspired minimal styling -->
-  <style>
-    :root{
-      --brand:#10a37f;          /* OpenAI accent green  */
-      --ink:#111;               /* body text            */
-      --bg:#ffffff;             /* page background      */
-    }
+<!-- quick, self-contained styling -->
+<style>
+:root{
+  --brand:#10a37f;           /* OpenAI accent green  */
+  --ink:#111;                /* body text            */
+  --bg:#ffffff;              /* page background      */
+}
 
-    *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Helvetica,Arial,sans-serif}
+/* page shimmer (soft, opposite phase of tilde-pulse) */
+@keyframes bgShift{
+  0%,100%{background-position:50% 0%}
+  50%    {background-position:50% 100%}
+}
+body{
+  background:var(--bg);
+  background-image:radial-gradient(circle at center,
+                  rgba(16,163,127,.05) 0%,
+                  rgba(16,163,127,.0) 60%);
+  background-size:400% 400%;
+  animation:bgShift 14s ease-in-out infinite;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  color:var(--ink);
+  font-family:system-ui,Helvetica,Arial,sans-serif;
+}
 
-    body{
-      background:var(--bg);
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      color:var(--ink);
-    }
+/* Hero ------------------------------------------------------------------ */
+header{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:4rem 1rem 3rem;
+  max-width:720px;
+  margin-inline:auto;
+}
+header h1{
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:800;
+  margin-bottom:1.5rem;
+  line-height:1.15;
+}
+header p{font-size:1.1rem;line-height:1.55}
 
-    /* Hero -------------------------------------------------------------- */
-    header{
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:4rem 1rem 3rem;
-      max-width:720px;
-      margin-inline:auto;
-    }
-    header h1{
-      font-size:clamp(2rem,5vw,3.5rem);
-      font-weight:800;
-      margin-bottom:1.5rem;
-      line-height:1.15;
-    }
-    header h1 .tilde{
-      color:var(--brand);
-      animation:pulse 3s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{opacity:.55}
-      50%   {opacity:1}
-    }
-    header p{font-size:1.1rem;line-height:1.55;margin-bottom:1.5rem}
-    a{color:var(--brand);text-decoration:none;border-bottom:2px solid transparent}
-    a:hover{border-color:var(--brand)}
+/* tilde pulse */
+@keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1}}
+.tilde{
+  display:inline-block;
+  animation:pulse 2.8s ease-in-out infinite;
+  color:var(--brand);
+}
 
-    /* Footer ------------------------------------------------------------ */
-    footer{padding:1.5rem 1rem;font-size:.85rem;line-height:1.4;text-align:center}
-    /* --- icon tweaks --- */
-    footer a img{
-      width:20px;              /* keep them small      */
-      margin:0 .25rem;         /* tighter spacing      */
-      opacity:.80;
-      transition:.2s ease;
-    }
-    footer a:hover img{
-      opacity:1;
-      transform:translateY(-1px);
-    }
-  </style>
+/* link style */
+a{color:var(--brand);text-decoration:none;border-bottom:2px solid transparent}
+a:hover{border-color:var(--brand)}
+
+/* Letter --------------------------------------------------------------- */
+article{
+  max-width:700px;
+  margin:0 auto 4rem;
+  padding:0 1rem;
+  font-size:1rem;
+  line-height:1.6;
+}
+
+/* Footer --------------------------------------------------------------- */
+footer{
+  padding:1.5rem 1rem;
+  font-size:.85rem;
+  line-height:1.4;
+  text-align:center;
+}
+footer a img{              /* keep icons small + tight */
+  width:20px;
+  margin:0 .25rem;
+  opacity:.80;
+  transition:.2s ease;
+}
+footer a:hover img{
+  opacity:1;
+  transform:translateY(-1px);
+}
+</style>
 </head>
 
 <body>
-  <!-- HERO -->
-  <header>
-    <main>
-      <h1>Open Letter <span class="tilde">~</span> Peter Kyle MP</h1>
-      <p>
-        Britain’s unpaid carers save the Treasury &gt;£162 billion every year yet remain overlooked
-        by policy and tech innovation.<br><br>
-        <strong>The Care Collective</strong> is our answer: a secure Digital ID &amp; support platform
-        that connects carers, unlocks contribution and transforms lives.<br><br>
-        <a href="mailto:hello@thecarecollective.uk">Join the conversation →</a>
-      </p>
-    </main>
-  </header>
+<!-- HERO -->
+<header>
+  <main>
+    <h1>Open&nbsp;Letter <span class="tilde">~</span> Peter&nbsp;Kyle&nbsp;MP</h1>
+    <p>
+      Britain’s unpaid carers save the Treasury over £162 billion every year yet remain overlooked
+      by policy and tech innovation.<br><br>
+      <strong>The Care Collective</strong> is our answer: a secure Digital ID &amp; support
+      platform that connects carers, unlocks contribution and transforms lives.
+    </p>
+    <p><a href="#letter">Read the letter ↓</a></p>
+  </main>
+</header>
 
-  <!-- FOOTER -->
-  <footer>
-    First prototype live June 2025 — public changelog on&nbsp;
-    <a href="https://github.com/Aub007/thecarecollective" target="_blank">GitHub</a><br><br>
+<!-- LETTER -->
+<article id="letter">
+  <h2>Dear Peter,</h2>
+  <p>
+    <!-- your open-letter text goes here; placeholder below -->
+    We write on behalf of Britain’s 12 million unpaid carers&hellip;
+  </p>
+  <!-- … continue the letter … -->
+</article>
 
-    <a href="https://openai.com" target="_blank">
-      <img src="https://cdn.simpleicons.org/openai" alt="OpenAI">
-    </a>
-    <a href="https://github.com" target="_blank">
-      <img src="https://cdn.simpleicons.org/github" alt="GitHub">
-    </a>
-    <a href="https://vercel.com" target="_blank">
-      <img src="https://cdn.simpleicons.org/vercel" alt="Vercel">
-    </a>
-    <a href="https://apple.com" target="_blank">
-      <img src="https://cdn.simpleicons.org/apple" alt="Apple">
-    </a>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <a href="https://openai.com" target="_blank" aria-label="OpenAI">
+    <img src="https://cdn.simpleicons.org/openai/000" alt="OpenAI">
+  </a>
+  <a href="https://github.com" target="_blank" aria-label="GitHub">
+    <img src="https://cdn.simpleicons.org/github/000" alt="GitHub">
+  </a>
+  <a href="https://vercel.com" target="_blank" aria-label="Vercel">
+    <img src="https://cdn.simpleicons.org/vercel/000" alt="Vercel">
+  </a>
+  <a href="https://apple.com" target="_blank" aria-label="Apple">
+    <img src="https://cdn.simpleicons.org/apple/000" alt="Apple">
+  </a>
+  <br>
+  First prototype live June 2025 — public changelog on
+  <a href="https://github.com/Aub007/thecarecollective" target="_blank">GitHub</a>
+</footer>
 </body>
 </html>
