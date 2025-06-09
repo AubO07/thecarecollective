@@ -1,138 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>The Care Collective</title>
-
-<!-- quick, self-contained styling -->
-<style>
-:root{
-  --brand:#10a37f;           /* OpenAI accent green  */
-  --ink:#111;                /* body text            */
-  --bg:#ffffff;              /* page background      */
-}
-
-/* page shimmer (soft, opposite phase of tilde-pulse) */
-@keyframes bgShift{
-  0%,100%{background-position:50% 0%}
-  50%    {background-position:50% 100%}
-}
-body{
-  background:var(--bg);
-  background-image:radial-gradient(circle at center,
-                  rgba(16,163,127,.05) 0%,
-                  rgba(16,163,127,.0) 60%);
-  background-size:400% 400%;
-  animation:bgShift 14s ease-in-out infinite;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  color:var(--ink);
-  font-family:system-ui,Helvetica,Arial,sans-serif;
-}
-
-/* Hero ------------------------------------------------------------------ */
-header{
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:4rem 1rem 3rem;
-  max-width:720px;
-  margin-inline:auto;
-}
-header h1{
-  font-size:clamp(2rem,5vw,3.5rem);
-  font-weight:800;
-  margin-bottom:1.5rem;
-  line-height:1.15;
-}
-header p{font-size:1.1rem;line-height:1.55}
-
-/* tilde pulse */
-@keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1}}
-.tilde{
-  display:inline-block;
-  animation:pulse 2.8s ease-in-out infinite;
-  color:var(--brand);
-}
-
-/* link style */
-a{color:var(--brand);text-decoration:none;border-bottom:2px solid transparent}
-a:hover{border-color:var(--brand)}
-
-/* Letter --------------------------------------------------------------- */
-article{
-  max-width:700px;
-  margin:0 auto 4rem;
-  padding:0 1rem;
-  font-size:1rem;
-  line-height:1.6;
-}
-
-/* Footer --------------------------------------------------------------- */
-footer{
-  padding:1.5rem 1rem;
-  font-size:.85rem;
-  line-height:1.4;
-  text-align:center;
-}
-footer a img{              /* keep icons small + tight */
-  width:20px;
-  margin:0 .25rem;
-  opacity:.80;
-  transition:.2s ease;
-}
-footer a:hover img{
-  opacity:1;
-  transform:translateY(-1px);
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Britain's unpaid carers save the Treasury over £162 billion every year. Read our open letter and discover how a secure Digital ID platform can unlock their contribution and transform lives.">
+  <title>Open Letter – Peter Kyle MP | The Care Collective</title>
+  <style>
+    :root {
+      --sage: #4d6750;
+      --ink: #111;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: #fafafa;
+      line-height: 1.55;
+    }
+    header {
+      text-align: center;
+      padding: 10vh 1rem 4rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; /* heavier weight for crispness */
+      color: var(--sage);
+      letter-spacing: -0.02em;
+      text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.07); /* subtle contrast boost */
+      margin: 0 0 1.25rem;
+    }
+    p.lead {
+      max-width: 44rem;
+      margin: 0 auto 1.75rem;
+      font-size: 1.1rem;
+    }
+    a.cta {
+      display: inline-block;
+      font-weight: 600;
+      color: var(--sage);
+      text-decoration: none; /* remove underline */
+      border-bottom: 1px solid var(--sage); /* keeps cue without full underline */
+      padding-bottom: 0.15em;
+      transition: color .15s ease, border-color .15s ease;
+    }
+    a.cta:hover { color: var(--ink); border-color: var(--ink); }
+    /* Letter section */
+    main { padding: 4rem 1.25rem 6rem; max-width: 48rem; margin: 0 auto; }
+    main h2 { font-size: 1.75rem; margin-top: 0; color: var(--sage); }
+  </style>
 </head>
-
 <body>
-<!-- HERO -->
-<header>
-  <main>
-    <h1>Open&nbsp;Letter <span class="tilde">~</span> Peter&nbsp;Kyle&nbsp;MP</h1>
-    <p>
-      Britain’s unpaid carers save the Treasury over £162 billion every year yet remain overlooked
-      by policy and tech innovation.<br><br>
-      <strong>The Care Collective</strong> is our answer: a secure Digital ID &amp; support
-      platform that connects carers, unlocks contribution and transforms lives.
-    </p>
-    <p><a href="#letter">Read the letter ↓</a></p>
+  <header>
+    <h1>Open Letter ~ Peter Kyle MP</h1>
+    <p class="lead">Britain’s unpaid carers save the Treasury over <strong>£162 billion</strong> every year yet remain overlooked by policy and tech innovation.<br><br>
+      <em>The Care Collective</em> is our answer: a secure Digital ID &amp; support platform that connects carers, unlocks contribution and transforms lives.</p>
+    <a href="#letter" class="cta">Read the letter ↓</a>
+  </header>
+
+  <main id="letter">
+    <h2>Dear Peter,</h2>
+    <p>We write on behalf of Britain’s 12 million unpaid carers. Every day they provide vital, uncompensated support to family and friends, saving the public purse more than the annual NHS wage bill, yet they remain largely invisible to policy-makers and digital-service designers.</p>
+
+    <p>The Care Collective proposes a single, secure Carer ID—built on open standards and NHS-level privacy—that lets carers prove their role once and unlock tailored benefits, flexible work arrangements and micro-payments wherever they live.  Our prototype will be live in June 2025 and the full public changelog sits on <a href="https://github.com/thecarecollective" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+
+    <p>By partnering with your department, we can: <br>
+      1. Pilot Carer ID in three Integrated Care Systems. <br>
+      2. Integrate with the NHS App to surface personalised respite services. <br>
+      3. Export the template to Commonwealth partners, scaling British tech leadership and soft-power.</p>
+
+    <p>We would welcome the opportunity to brief you and Treasury colleagues ahead of the NHS-AI allocation.</p>
+
+    <p>Yours sincerely,<br>
+    <strong>The Care Collective team</strong></p>
   </main>
-</header>
 
-<!-- LETTER -->
-<article id="letter">
-  <h2>Dear Peter,</h2>
-  <p>
-    <!-- your open-letter text goes here; placeholder below -->
-    We write on behalf of Britain’s 12 million unpaid carers&hellip;
-  </p>
-  <!-- … continue the letter … -->
-</article>
-
-<!-- FOOTER -->
-<footer>
-  <a href="https://openai.com" target="_blank" aria-label="OpenAI">
-    <img src="https://cdn.simpleicons.org/openai/000" alt="OpenAI">
-  </a>
-  <a href="https://github.com" target="_blank" aria-label="GitHub">
-    <img src="https://cdn.simpleicons.org/github/000" alt="GitHub">
-  </a>
-  <a href="https://vercel.com" target="_blank" aria-label="Vercel">
-    <img src="https://cdn.simpleicons.org/vercel/000" alt="Vercel">
-  </a>
-  <a href="https://apple.com" target="_blank" aria-label="Apple">
-    <img src="https://cdn.simpleicons.org/apple/000" alt="Apple">
-  </a>
-  <br>
-  First prototype live June 2025 — public changelog on
-  <a href="https://github.com/Aub007/thecarecollective" target="_blank">GitHub</a>
-</footer>
+  <footer style="text-align:center; padding: 2rem 1rem; font-size: .85rem; color:#555">
+    First prototype live June 2025 — public changelog on <a href="https://github.com/thecarecollective" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </footer>
 </body>
 </html>
