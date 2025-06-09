@@ -19,14 +19,13 @@ Build a **secure Digital ID & support platform** that
 * £162 bn+ annual savings already delivered by carers  
 * Tech + policy gap we can close quickly
 
-## 🤝 Alliance Partners
 | Partner | What they bring |
 |---------|-----------------|
-| **OpenAI / ChatGPT** | AI copilots & knowledge at carers’ fingertips |
-| **GitHub** | Open collaboration & public changelog |
-| **Vercel** | Instant, secure web delivery |
-| **Apple** | Accessibility & privacy-first devices |
-| _…and growing_ |
+| <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/openai.svg" width="20"> **OpenAI / ChatGPT** | AI copilots & knowledge at carers’ fingertips |
+| <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg" width="20"> **GitHub** | Open collaboration & public changelog |
+| <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/vercel.svg" width="20"> **Vercel** | Instant, secure web delivery |
+| <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/apple.svg" width="20"> **Apple** | Accessibility- & privacy-first devices |
+| …and growing | |
 
 ## 🗺️  Roadmap
 1. **MVP** – Digital ID, carer verifier & resource hub (2025 prototype)  
