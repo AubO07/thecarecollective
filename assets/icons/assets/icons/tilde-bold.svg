@@ -1,0 +1,8 @@
+<!-- tilde-bold.svg — bold tilde that inherits text colour -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M4 12c4 0 4 6 8 6s4-6 8-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-linecap="round" />
+</svg>
