@@ -1,1 +1,34 @@
+import React from "react";
 
+export default function ManifestoInteractive() {
+  return (
+    <section className="p-4 md:p-8 space-y-8">
+      <header className="text-center space-y-3">
+        <h2 className="text-3xl font-bold">Our Care Manifesto</h2>
+        <p className="text-muted-foreground max-w-xl mx-auto">
+          We’re re-imagining support for carers. Tap a pledge below for the
+          details.
+        </p>
+      </header>
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {[
+          { title: "Fast Aid", body: "Same-day respite booking in emergencies." },
+          { title: "Flexible Funding", body: "Budgets that follow the carer, not paperwork."},
+          { title: "Whole-life Learning", body: "Accredited micro-courses you can finish on the bus."},
+          { title: "Community Credits", body: "Earn rewards for peer-support hours."},
+          { title: "Open Data", body: "All metrics public so we stay honest."},
+          { title: "Carbon-kind", body: "Net-zero supply chain by 2030."},
+        ].map(({ title, body }) => (
+          <article
+            key={title}
+            className="rounded-2xl border p-6 shadow-sm transition hover:shadow-md"
+          >
+            <h3 className="font-semibold text-lg mb-2">{title}</h3>
+            <p className="text-sm text-muted-foreground">{body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
