@@ -1,38 +1,317 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The Care Collective</title>
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="description" content="Connecting the Dots is a co-produced Care Collective proposal to connect health, social care and opportunity. A proposed Richmond and Wandsworth demonstrator: pilot first, platform second, evidence before scale.">
+  <meta property="og:title" content="Connecting the Dots | The Care Collective">
+  <meta property="og:description" content="Two national services. One connected life. A practical proposition to connect care, restore independence and open routes into learning, training and work.">
+  <meta property="og:type" content="website">
+  <title>Connecting the Dots | The Care Collective</title>
+  <style>
+    :root{--nhs:#005EB8;--ncs:#C9FF7A;--ink:#172019;--grey:#56615C;--line:#DDE4E0;--wash:#F6F8F5;--white:#FFFFFF;--focus:#005EB8;}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.55 "Graphik","Graphic",Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-underline-offset:.22em}a:focus-visible{outline:3px solid var(--focus);outline-offset:5px;border-radius:3px}
+    .wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}
+    .skip{position:absolute;left:-100vw;top:0;background:var(--ncs);padding:8px 12px;z-index:5}.skip:focus{left:8px}
+    header{border-bottom:1px solid var(--line);background:var(--white)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:82px}
+    .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none}
+    .brandname{font-size:.92rem;line-height:1.18;font-weight:800;letter-spacing:.032em}
+    .navlinks{display:flex;align-items:center;gap:27px;font-size:.86rem;font-weight:650}
+    .navlinks a{text-decoration:none}.navlinks a:hover{text-decoration:underline}
+    .navlinks .navcta{background:var(--ncs);padding:11px 17px;border-radius:100px}
+    .hero{padding:88px 0 52px;text-align:left}
+    .eyebrow{margin:0 0 15px;font-size:.74rem;letter-spacing:.17em;font-weight:800;text-transform:uppercase}
+    h1,h2,h3,p{margin-top:0}
+    h1{max-width:1040px;margin:0 0 22px;letter-spacing:-.068em;line-height:1.0;font-size:clamp(3.6rem,9vw,8rem);font-weight:790}
+    .hero-summary{max-width:770px;margin:0 0 15px;font-size:clamp(1.13rem,2.4vw,1.56rem);line-height:1.4;letter-spacing:-.025em}
+    .hero-description{max-width:700px;margin:0 0 26px;color:var(--grey);font-size:1rem}
+    .actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:flex-start}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;border-radius:100px;padding:14px 23px;font-weight:750;font-size:.94rem;text-decoration:none;white-space:nowrap;border:1px solid var(--ink)}
+    .btn-primary{background:var(--ncs);border-color:var(--ncs)}.btn-primary:hover{background:#B9F26A}
+    .btn-outline:hover{background:var(--wash)}
+    .visual{padding:0 0 66px}
+    .visual-card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:white;padding:24px 30px 17px}
+    .visual-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .visual-title{font-size:1.03rem;font-weight:730;margin:0}
+    .visual-sublabel{font-size:.72rem;color:var(--grey);letter-spacing:.09em;text-transform:uppercase}
+    .diagram{width:100%;height:auto;display:block;margin:5px 0 0}
+    .chart-note{font-size:.75rem;color:var(--grey);margin:0;text-align:left}
+    .section{padding:88px 0;border-top:1px solid var(--line)}
+    .section-eyebrow{font-size:.77rem;font-weight:760;text-transform:uppercase;letter-spacing:.14em;color:var(--grey);margin:0 0 15px}
+    h2{font-size:clamp(2.2rem,5.2vw,4.65rem);line-height:1.08;font-weight:750;letter-spacing:-.057em;max-width:950px;margin-bottom:23px}
+    .lede{max-width:810px;font-size:1.18rem;line-height:1.62;color:var(--grey);margin:0}
+    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+    .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+    .service{border:1px solid var(--line);border-radius:20px;padding:27px 25px 29px;background:#fff}
+    .service.green{background:var(--ncs);border-color:var(--ncs)}
+    .service-head{display:flex;align-items:center;gap:13px;margin-bottom:21px}
+    .mark{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;color:#fff;background:var(--nhs);font-size:.87rem;font-weight:900}
+    .mark.ncs{background:#142116;color:#fff}
+    .service h3{font-size:clamp(1.35rem,2.7vw,2rem);letter-spacing:-.04em;line-height:1.13;margin:0}
+    .service p{font-size:.93rem;margin:0}
+    .minor{color:var(--grey);font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;margin-bottom:7px}
+    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px}
+    .pillar{padding:28px 25px;border:1px solid var(--line);border-radius:18px;min-height:200px}
+    .number{font-size:.85rem;font-weight:900;color:var(--nhs);margin-bottom:37px}
+    .pillar h3{font-size:1.5rem;line-height:1.15;letter-spacing:-.04em;margin-bottom:10px}
+    .pillar p{color:var(--grey);font-size:.95rem;margin:0}
+    .outcome{background:var(--ncs);border-top:0}
+    .outcome h2{max-width:1030px}
+    .outcome p{max-width:800px;font-size:1.2rem;line-height:1.6}
+    .outcome-words{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+    .outcome-words span{border:1px solid var(--ink);border-radius:100px;padding:10px 16px;font-size:.87rem;font-weight:700}
+    .pilot-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+    .pilot-copy p{color:var(--grey);font-size:1.06rem}
+    .pilot-card{border:1px solid var(--line);border-radius:20px;background:var(--wash);padding:34px}
+    .pilot-line{padding:19px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}
+    .pilot-line:first-child{padding-top:0}.pilot-line:last-child{border-bottom:0;padding-bottom:0}
+    .pilot-line strong{font-size:1rem}.pilot-line span{font-size:.93rem;color:var(--grey);text-align:right}
+    .evidence{background:var(--wash)}
+    .small{color:var(--grey);font-size:.83rem}
+    .download{border:1px solid var(--line);border-radius:19px;padding:25px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:34px;background:white}
+    .download p{margin-bottom:0;color:var(--grey);font-size:.91rem}
+    .download strong{font-size:1.22rem}
+    footer{padding:40px 0 55px;border-top:1px solid var(--line)}
+    .footer-row{display:flex;justify-content:space-between;gap:25px;align-items:flex-start;flex-wrap:wrap}
+    .footer-row p{font-size:.81rem;color:var(--grey);margin:7px 0 0;max-width:460px}
+    @media(max-width:760px){
+      .wrap{width:min(100% - 32px,1160px)}.nav{min-height:72px}.brandname{font-size:.71rem}.navlinks{gap:14px;font-size:.72rem}.navlinks .about-link{display:none}.navlinks .navcta{padding:9px 12px}
+      .hero{padding:62px 0 34px}h1{font-size:clamp(3.38rem,13vw,6rem);letter-spacing:-.066em}
+      .hero-summary{font-size:1.14rem}.hero-description{font-size:.95rem}.visual{padding-bottom:48px}.visual-card{padding:14px 9px 14px;border-radius:18px}.visual-title{font-size:.81rem;margin-left:7px}.visual-sublabel{font-size:.59rem;margin-right:7px}.diagram{margin:12px 0 4px}.chart-note{padding:0 12px;line-height:1.45}
+      .section{padding:63px 0}.twocol,.pilot-grid{grid-template-columns:1fr;gap:28px}.service-grid{margin-top:18px}.service{padding:20px 16px}.service-head{gap:9px}.service h3{font-size:1.25rem}.mark{width:32px;height:32px}.service p{font-size:.83rem}
+      .pillars{grid-template-columns:1fr;margin-top:28px;gap:10px}.pillar{min-height:0;padding:23px}.number{margin-bottom:16px}
+      .pilot-card{padding:24px}.download{flex-direction:column;align-items:flex-start;padding:23px}
+    }
+    @media(max-width:400px){.navlinks .proposal-link{display:none}.hero{padding-top:55px}.service-grid{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-    <style>
-      :root { --mint: #54B689; }
+    /* V3: plain type-only identity; mint dots belong to the chart, not to the logo */
+    .interaction-grid,.feedback{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start;margin-top:42px}
+    .interaction-copy h3,.feedback h3{font-size:clamp(2.4rem,5vw,4.4rem);line-height:1.06;letter-spacing:-.055em;margin:0 0 24px}
+    .interaction-copy p:not(.section-eyebrow),.feedback p:not(.section-eyebrow){max-width:530px;line-height:1.57;color:var(--grey)}
+    .interaction-grid{border-top:2px solid var(--ink);padding-top:38px}
+    .feedback{border-top:1px solid var(--line);margin-top:70px;padding-top:55px}
+    .privacy-note{font-size:.85rem}
+    .form-shell{background:white;border:1px solid var(--line);padding:30px;border-radius:16px}
+    .form-shell h4{font-size:1.36rem;line-height:1.2;letter-spacing:-.035em;margin:0 0 21px}
+    .form-container{min-height:240px}
+    .form-preview-label{font-size:.66rem;font-weight:800;letter-spacing:.1em;color:var(--grey);margin-bottom:22px}
+    .field-label{display:block;font-size:.88rem;font-weight:650;margin-bottom:15px}
+    .field-label input,.field-label textarea{display:block;width:100%;margin-top:7px;padding:13px 14px;border:1px solid #CBD3CE;border-radius:6px;background:#fff;color:var(--ink);font:inherit;font-size:.96rem}
+    .field-label input:disabled,.field-label textarea:disabled{background:#FBFCFA;color:var(--grey);opacity:1}
+    .field-label input::placeholder,.field-label textarea::placeholder{color:#909992;opacity:1}
+    .optional{font-weight:400;color:var(--grey)}
+    .inactive{opacity:.57;cursor:not-allowed;font:inherit}
+    .preview-notice{margin:15px 0 0;font-size:.79rem;color:var(--grey)}
+    .form-container iframe{width:100%;min-height:430px;border:0;background:transparent}
+    #feedback-form-container iframe{min-height:530px}
+    @media(max-width:760px){.interaction-grid,.feedback{grid-template-columns:1fr;gap:22px}.interaction-grid{margin-top:28px;padding-top:25px}.feedback{margin-top:53px;padding-top:36px}.form-shell{padding:22px 17px}.interaction-copy h3,.feedback h3{font-size:2.7rem}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a href="#top" class="brand" aria-label="The Care Collective, top of page"><span class="brandname">THE CARE<br>COLLECTIVE</span></a>
+      <div class="navlinks">
+        <a href="#approach" class="about-link">Our approach</a>
+        <a href="#pilot">The pilot</a>
+        <a href="#feedback" class="proposal-link">Feedback</a>
+        <a href="#download" class="navcta">Read the pitch ↗</a>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <p class="eyebrow">The Care Collective presents</p>
+      <h1>Connecting<br>the Dots</h1>
+      <p class="hero-summary">Two national services. One connected life.</p>
+      <p class="hero-description">A co-produced proposal to connect health and care around the people who use them — restoring independence and opening routes back into learning, training, development and work.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#pilot">Explore the pilot <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-outline" href="#download">Read the full proposal <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
 
-      body {
-        font-family: Helvetica, Arial, sans-serif;
-        line-height: 1.6;
-        color: #222;
-        margin: 3rem auto;
-        max-width: 42rem;
-        text-align: center;
-      }
+    <section class="visual wrap" aria-labelledby="chartheading">
+      <div class="visual-card">
+        <div class="visual-top"><p class="visual-title" id="chartheading">From disconnected services to connected outcomes</p><p class="visual-sublabel">Illustrative model</p></div>
+        <svg class="diagram" viewBox="0 0 1040 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="chartTitle chartDesc">
+          <title id="chartTitle">Connecting the Dots: NHS blue line and NCS green pathway</title>
+          <desc id="chartDesc">A horizontal NHS blue line extends through time. Below it, separated mint-green dots rise and fall gently like a loose wave. At a clearly marked straight vertical intervention line labelled Connecting the Dots, the dots join a green line that curves upward and then continues horizontally just underneath the blue line, illustrating a proposed, not measured, improvement in service coordination.</desc>
+          <g font-family="Graphik,Graphic,Arial,sans-serif">
+            <!-- Co-production intervention: precise vertical boundary where connected care begins -->
+            <path d="M457 112 V382" stroke="#8C9690" stroke-width="2.2" fill="none"/>
+            <!-- NHS reference line -->
+            <path d="M72 146 H959" stroke="#005EB8" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <rect x="900" y="108" width="80" height="58" rx="9" fill="#005EB8"/>
+            <text x="940" y="145" text-anchor="middle" fill="white" font-size="23" font-weight="750">NHS</text>
+            <!-- Disconnected care dots: all NCS green, no keylines -->
+            <g fill="#C9FF7A">
+              <circle cx="100" cy="328" r="9"/><circle cx="139" cy="312" r="9"/><circle cx="178" cy="335" r="9"/>
+              <circle cx="217" cy="316" r="9"/><circle cx="256" cy="340" r="9"/><circle cx="295" cy="316" r="9"/>
+              <circle cx="334" cy="335" r="9"/><circle cx="373" cy="309" r="9"/><circle cx="412" cy="326" r="9"/>
+            </g>
+            <!-- Smooth hockey-stick climb, equal weight to NHS line, resting beneath -->
+            <path d="M457 321 C508 320 529 296 553 259 C579 218 596 184 641 172 C674 164 706 168 755 168 H958" stroke="#C9FF7A" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <circle cx="457" cy="321" r="9" fill="#C9FF7A"/>
+            <rect x="901" y="174" width="79" height="57" rx="9" fill="#C9FF7A"/>
+            <text x="940" y="210" text-anchor="middle" fill="#172019" font-size="23" font-weight="750">NCS</text>
+            <!-- Label above the lines, typographic not another colour -->
+            <text x="474" y="68" text-anchor="start" fill="#172019" font-weight="800" font-size="18" letter-spacing="2">CO-PRODUCTION</text>
+            <text x="474" y="95" text-anchor="start" fill="#56615C" font-weight="550" font-size="20">Connecting the Dots</text>
+            <!-- Purely descriptive time axis -->
+            <path d="M73 382 H964" stroke="#ADB8B0" stroke-width="1.7"/>
+            <path d="M964 382 l-9 -6 v12 z" fill="#ADB8B0"/>
+            <text x="73" y="408" fill="#56615C" font-size="17">Fragmented today</text>
+            <text x="961" y="408" fill="#56615C" text-anchor="end" font-size="17">Time →</text>
+          </g>
+        </svg>
+        <p class="chart-note">Conceptual illustration of the ambition — not NHS performance data, measured pilot results or a forecast.</p>
+        <p class="chart-note" style="margin-top:9px"><a href="assets/connecting-the-dots-chart.svg" target="_blank" rel="noopener">Open the chart at full size ↗</a></p>
+      </div>
+    </section>
 
-      h1 { color: var(--mint); font-size: 2.4rem; font-weight: 800; }
+    <section class="section" id="approach">
+      <div class="wrap">
+        <p class="section-eyebrow">The proposition</p>
+        <h2>Connect the decisions.<br>Improve the outcomes.</h2>
+        <p class="lede">Health, social care, housing, benefits and community organisations make decisions about the same lives — often without a shared plan. Connecting the Dots proposes a simpler way to work together: consent, clear ownership, joined-up actions and measurable outcomes.</p>
+        <div class="service-grid">
+          <article class="service">
+            <div class="service-head"><div class="mark">NHS</div><div><div class="minor">Established national service</div><h3>Health. Connected.</h3></div></div>
+            <p>The National Health Service provides the existing national health-service reference point, shown in blue.</p>
+          </article>
+          <article class="service green">
+            <div class="service-head"><div class="mark ncs">NCS</div><div><div class="minor" style="color:#263529">Proposed national service</div><h3>Care. Connected.</h3></div></div>
+            <p>A future National Care Service is a policy ambition, not yet an operating service in England. Connecting the Dots proposes a practical bridge worth testing.</p>
+          </article>
+        </div>
+        <div class="pillars" aria-label="Three principles">
+          <article class="pillar"><div class="number">01 / SEE</div><h3>One shared picture.</h3><p>Listen to both the carer and the person receiving support; bring relevant, permissioned information together without merging their identities.</p></article>
+          <article class="pillar"><div class="number">02 / ACT</div><h3>One coordinated plan.</h3><p>Named owners, clear decisions and visible next steps across existing organisations, each retaining its own responsibilities.</p></article>
+          <article class="pillar"><div class="number">03 / MEASURE</div><h3>One test of value.</h3><p>Check whether less repetition and better coordination genuinely release time, improve independence and expand opportunity.</p></article>
+        </div>
+      </div>
+    </section>
 
-      /* simple pulse on hover/focus */
-      .pulse {
-        animation: pulse 3.2s ease-in-out infinite;
-        height: 38px;
-      }
+    <section class="section outcome" id="outcomes">
+      <div class="wrap">
+        <p class="section-eyebrow" style="color:#233128">The outcome that matters</p>
+        <h2>From caring and being cared for, to living, learning and contributing.</h2>
+        <p>Our ambition is to help carers and people receiving care regain the freedom to learn, train, develop and work — where that is what they want and where the right support makes it possible. A more connected system should give time and possibility back to people.</p>
+        <div class="outcome-words" aria-label="Desired outcomes"><span>Learning</span><span>Training</span><span>Development</span><span>Work</span><span>Independence</span></div>
+      </div>
+    </section>
 
-      @keyframes pulse {
-        0%, 100%   { opacity: 0.7; transform: scale(1); }
-        50%        { opacity: 1;   transform: scale(1.12); }
-      }
-    </style>
-  </head>
+    <section class="section" id="pilot">
+      <div class="wrap pilot-grid">
+        <div class="pilot-copy">
+          <p class="section-eyebrow">Start locally. Learn publicly.</p>
+          <h2>The proposed demonstrator.</h2>
+          <p>Begin in Richmond and Wandsworth. Bring together existing partners around consenting carers and people receiving care. Test how decisions can be connected without waiting for a whole new platform or bureaucracy.</p>
+          <p>The aim is a six-month, independently reviewed demonstration: agree the baseline, test the model and publish what actually changed.</p>
+          <a class="btn btn-primary" href="#proposal">See the evidence approach <span aria-hidden="true">↗</span></a>
+        </div>
+        <aside class="pilot-card" aria-label="Proposed pilot specifications">
+          <div class="pilot-line"><strong>Location</strong><span>Richmond &amp; Wandsworth</span></div>
+          <div class="pilot-line"><strong>Duration</strong><span>Six months, proposed</span></div>
+          <div class="pilot-line"><strong>Partners</strong><span>20-partnership test, proposed</span></div>
+          <div class="pilot-line"><strong>Method</strong><span>Co-produced, consent-based</span></div>
+          <div class="pilot-line"><strong>Measure</strong><span>Time, independence, participation, work and cost</span></div>
+          <div class="pilot-line"><strong>Principle</strong><span>Pilot first. Platform second.</span></div>
+        </aside>
+      </div>
+    </section>
 
-  <body>
-    <h1 class="pulse">🚧 The Care Collective site is coming soon 🚧</h1>
-  </body>
+    <section class="section evidence" id="proposal">
+      <div class="wrap">
+        <p class="section-eyebrow">The evidence and the invitation</p>
+        <h2>Don't take our word for it.<br>Help us test it.</h2>
+        <p class="lede">Connecting the Dots is a proposal, not a claim of proven results. We are seeking partners to help test whether connected care can release capacity, restore opportunity and use public resources more effectively.</p>
+        <div class="interaction-grid" id="download">
+          <div class="interaction-copy">
+            <p class="section-eyebrow">Access the document</p>
+            <h3>Read the full<br>proposal.</h3>
+            <p>26 pages. The proposed model, its evidence, the six-month demonstrator and the invitation to participate.</p>
+            <p class="privacy-note">Enter your details to receive the PDF link. Name and email required; telephone optional. We'll use these details to record requests and respond about the proposal, not for unsolicited marketing.</p>
+          </div>
+          <div class="form-shell" id="pdf-form-shell" aria-labelledby="download-form-title">
+            <h4 id="download-form-title">Request the PDF</h4>
+            <div id="pdf-form-container" class="form-container">
+              <p class="form-preview-label">FORM LAYOUT PREVIEW · NOT YET CONNECTED</p>
+              <label class="field-label">Name <span aria-hidden="true">*</span><input type="text" placeholder="Your name" disabled></label>
+              <label class="field-label">Email address <span aria-hidden="true">*</span><input type="email" placeholder="you@example.org" disabled></label>
+              <label class="field-label">Phone number <span class="optional">(optional)</span><input type="tel" placeholder="Optional" disabled></label>
+              <button class="btn btn-primary inactive" type="button" disabled>Receive the PDF link ↗</button>
+              <p class="preview-notice">Preview only. Submissions will be enabled once the free form is connected.</p>
+            </div>
+          </div>
+        </div>
+        <div class="feedback" id="feedback">
+          <div>
+            <p class="section-eyebrow">Co-produce the next version</p>
+            <h3>Tell us what<br>you think.</h3>
+            <p>What is missing? What would make the proposition stronger? Could your organisation help test it? We want your evidence, experience and constructive criticism.</p>
+          </div>
+          <div class="form-shell" id="feedback-form-shell" aria-labelledby="feedback-form-title">
+            <h4 id="feedback-form-title">Comment on the proposal</h4>
+            <div id="feedback-form-container" class="form-container">
+              <p class="form-preview-label">FORM LAYOUT PREVIEW · NOT YET CONNECTED</p>
+              <label class="field-label">Name <span class="optional">(optional)</span><input type="text" placeholder="Your name" disabled></label>
+              <label class="field-label">Email <span class="optional">(optional)</span><input type="email" placeholder="So we can reply" disabled></label>
+              <label class="field-label">Your feedback <span aria-hidden="true">*</span><textarea placeholder="Your thoughts, evidence or suggestions" rows="5" disabled></textarea></label>
+              <button class="btn btn-primary inactive" type="button" disabled>Send feedback ↗</button>
+              <p class="preview-notice">Preview only. Submissions will be enabled once the free form is connected.</p>
+            </div>
+          </div>
+        </div>
+        <p class="small" style="margin:17px 0 0">The National Care Service described here is proposed, not an existing operational national service. The chart illustrates a hypothesis; pilot outcomes must be independently measured.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-row"><div><div class="brandname">THE CARE<br>COLLECTIVE</div><p>Connecting the Dots · A co-produced proposition for connected care.</p></div><div><p>© 2026 The Care Collective.</p><p>Pilot first. Platform second. Evidence before scale.</p></div></div>
+  </footer>
+
+  <script>
+    /* Tally integration: paste the two published Tally share links below.
+       In the Tally PDF-request form, put a link to the PDF on its Thank You page:
+       https://thecarecollective.vercel.app/assets/Connecting_the_Dots_Proposal.pdf
+       This provides simple form-first access, not DRM: anyone with the PDF link can share it.
+       Form submission records are handled by Tally, optionally copied to Google Sheets.
+    */
+    const formLinks = {
+      pdf: "",
+      feedback: ""
+    };
+    function validTallyLink(raw) {
+      try {
+        const url = new URL(raw);
+        if (url.protocol !== 'https:' || url.hostname !== 'tally.so') return null;
+        const match = url.pathname.match(/^\/r\/([A-Za-z0-9]+)\/?$/);
+        return match ? match[1] : null;
+      } catch (err) { return null; }
+    }
+    function activateForm(type, hostId) {
+      const id = validTallyLink(formLinks[type]);
+      if (!id) return;
+      const host = document.getElementById(hostId);
+      if (!host) return;
+      const iframe = document.createElement('iframe');
+      iframe.title = type === 'pdf' ? 'Request the Connecting the Dots PDF' : 'Feedback on Connecting the Dots';
+      iframe.src = 'https://tally.so/embed/' + id + '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
+      iframe.setAttribute('loading', 'lazy');
+      iframe.setAttribute('allow', 'clipboard-write');
+      host.replaceChildren(iframe);
+    }
+    activateForm('pdf','pdf-form-container');
+    activateForm('feedback','feedback-form-container');
+  </script>
+</body>
 </html>

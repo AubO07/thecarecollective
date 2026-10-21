@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <svg width="1040" height="440" viewBox="0 0 1040 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="chartTitle chartDesc">
+          <title id="chartTitle">Connecting the Dots: NHS blue line and NCS green pathway</title>
+          <desc id="chartDesc">A horizontal NHS blue line extends through time. Below it, separated mint-green dots rise and fall gently like a loose wave. At a clearly marked straight vertical intervention line labelled Connecting the Dots, the dots join a green line that curves upward and then continues horizontally just underneath the blue line, illustrating a proposed, not measured, improvement in service coordination.</desc>
+          <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+            <!-- Co-production intervention: precise vertical boundary where connected care begins -->
+            <path d="M457 112 V382" stroke="#8C9690" stroke-width="2.2" fill="none"/>
+            <!-- NHS reference line -->
+            <path d="M72 146 H959" stroke="#005EB8" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <rect x="900" y="108" width="80" height="58" rx="9" fill="#005EB8"/>
+            <text x="940" y="145" text-anchor="middle" fill="white" font-size="23" font-weight="750">NHS</text>
+            <!-- Disconnected care dots: all NCS green, no keylines -->
+            <g fill="#C9FF7A">
+              <circle cx="100" cy="328" r="9"/><circle cx="139" cy="312" r="9"/><circle cx="178" cy="335" r="9"/>
+              <circle cx="217" cy="316" r="9"/><circle cx="256" cy="340" r="9"/><circle cx="295" cy="316" r="9"/>
+              <circle cx="334" cy="335" r="9"/><circle cx="373" cy="309" r="9"/><circle cx="412" cy="326" r="9"/>
+            </g>
+            <!-- Smooth hockey-stick climb, equal weight to NHS line, resting beneath -->
+            <path d="M457 321 C508 320 529 296 553 259 C579 218 596 184 641 172 C674 164 706 168 755 168 H958" stroke="#C9FF7A" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <circle cx="457" cy="321" r="9" fill="#C9FF7A"/>
+            <rect x="901" y="174" width="79" height="57" rx="9" fill="#C9FF7A"/>
+            <text x="940" y="210" text-anchor="middle" fill="#172019" font-size="23" font-weight="750">NCS</text>
+            <!-- Label above the lines, typographic not another colour -->
+            <text x="474" y="68" text-anchor="start" fill="#172019" font-weight="800" font-size="18" letter-spacing="2">CO-PRODUCTION</text>
+            <text x="474" y="95" text-anchor="start" fill="#56615C" font-weight="550" font-size="20">Connecting the Dots</text>
+            <!-- Purely descriptive time axis -->
+            <path d="M73 382 H964" stroke="#ADB8B0" stroke-width="1.7"/>
+            <path d="M964 382 l-9 -6 v12 z" fill="#ADB8B0"/>
+            <text x="73" y="408" fill="#56615C" font-size="17">Fragmented today</text>
+            <text x="961" y="408" fill="#56615C" text-anchor="end" font-size="17">Time →</text>
+          </g>
+        </svg>
