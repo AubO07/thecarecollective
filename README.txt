@@ -1,23 +1,15 @@
-THE CARE COLLECTIVE — CONNECTING THE DOTS — VERSION 3
+CONNECTING THE DOTS - WEBSITE UPDATE
 
-What changed
-- Removed the little green-dot brand symbol and decorative hero dot. The chart retains its meaningful connected/disconnected mint green dots.
-- Retained left-aligned layout, corrected intervention marker, NHS blue #005EB8 and NCS mint green #C9FF7A.
-- CSS asks for Graphik/Graphic first, with an Arial fallback. The commercial webfont is not bundled: confirm correct family name and an appropriate webfont licence before deploying a font file.
-- Added an embedded PDF-request form section and a feedback section. Both are clearly labelled PREVIEW ONLY until free Tally form share links are supplied.
-- All links previously going straight to the PDF from the webpage now go to the form section.
+Files in this bundle
+- index.html: the presentation-style website page
+- Connecting_the_Dots_Proposal.pdf: the current 22-page proposal
 
-ACTIVATE THE FREE FORMS (NO CARD NECESSARY)
-1. On https://tally.so make a PDF request form: required Name, required Email, optional Phone. Provide a short privacy notice about recording requests, plus separate optional marketing consent if ever desired.
-2. Make its custom Thank You page include a link to https://thecarecollective.vercel.app/assets/Connecting_the_Dots_Proposal.pdf after the website is published there. Or choose the free Redirect on Completion to the same URL.
-3. Make a second feedback form: name and email optional, feedback required, optionally role/organisation and willingness to collaborate.
-4. In index.html near the bottom, paste the two Tally share links (https://tally.so/r/XXXXXX) into formLinks.pdf and formLinks.feedback, respectively. Once links are present, live embeds replace the disabled visual previews. Tally forms can sync free to Google Sheets.
-5. Publish the whole assets folder along with the homepage. Connect this to the existing Next.js repo using its deployment conventions — this zip is a self-contained static website preview, not a ready-to-drop-in Next.js page.
+Simple GitHub update
+1. Open the existing thecarecollective repository on GitHub.
+2. Check the repository's current homepage setup before replacing anything. If it uses a root index.html, open that file and choose Edit, then replace its contents with this bundle's index.html and commit the change.
+3. Upload this bundle's Connecting_the_Dots_Proposal.pdf to the same folder as index.html, replacing the older file with that exact name.
+4. Wait for Vercel to finish its automatic deployment, then open the live site and check that the embedded proposal and Download PDF button show the new 22-page version.
 
-PRIVACY
-- Set out who controls the personal data, why it is collected, and retention/deletion information on the website before going live.
-- Don't require marketing opt-in for PDF access.
-- Tally free plan currently displays Tally branding; removing it is paid.
-- The PDF link is unprotected if forwarded; a form gate is suitable for a record of ordinary readers, not confidential-document access control.
+Do not upload this ZIP as a single file to the website. Extract it first and replace the matching source files in the existing repository. If the repository homepage is built from app/, pages/, or another framework folder rather than root index.html, do not overwrite the repository; the HTML needs to be placed in its actual homepage source instead.
 
-Source document: original 26-page proposal, unchanged.
+The visible letter/comment areas in this draft need a real submission destination to receive visitor submissions. They are not a live inbox or permanent upload store yet.
