@@ -53,12 +53,19 @@
     .panel .fine{font-size:12px;color:#7a8492}
     .panel hr{border:0;border-top:1px solid var(--line);margin:21px 0}
     .info-strip{font-size:12px;color:#697889;background:#f5f7fa;border-radius:10px;padding:12px 14px}
+    .reference-item{padding:19px 18px 20px;background:#f6f9fc;border:1px solid var(--line);border-radius:14px;margin:18px 0 15px}
+    .reference-label{display:block;font-size:10px;letter-spacing:.08em;font-weight:760;color:#376c92}
+    .reference-item h3{font-size:18px;line-height:1.2;margin:8px 0 3px}
+    .panel .reference-role{font-size:12px;color:#52627a;margin:0}
+    .panel .reference-summary{font-size:13px;margin:13px 0 6px}
     .fallback{max-width:920px;margin:16px auto;padding:14px 20px;border:1px solid var(--line);background:#fff;display:none}
     @media(max-width:740px){
       .topbar-inner{padding:9px 11px;min-height:58px;gap:4px}
       .identity{gap:5px}.mark{width:33px;height:23px}.mark i{width:21px;height:21px;border-width:2px}.mark i+i{margin-left:-9px}
       .identity-title{font-size:12px}.identity-sub{font-size:9px}
-      .tools{gap:0}.navbtn{padding:8px 6px;font-size:11px}
+      .topbar-inner{flex-wrap:wrap;justify-content:center;row-gap:0}
+      .identity{width:100%;justify-content:center;padding:2px 0 0}
+      .tools{width:100%;justify-content:center;gap:10px}.navbtn{padding:5px 6px;font-size:11px}
       .navbtn.download{display:none}
       .reader{padding:10px 7px 46px}
       .reader-meta{padding:0 6px;font-size:11px;margin-bottom:10px}
@@ -79,7 +86,7 @@
       </a>
       <nav class="tools" aria-label="Website navigation">
         <a class="navbtn" href="#top">Proposal</a>
-        <button class="navbtn" type="button" data-dialog="letters">Letters</button>
+        <button class="navbtn" type="button" data-dialog="letters">Read Referrals</button>
         <button class="navbtn" type="button" data-dialog="comments">Comments</button>
         <a class="navbtn primary download" id="download" href="./Connecting_the_Dots_Proposal_-Final.pdf" download>Download PDF</a>
       </nav>
@@ -97,10 +104,16 @@
   <footer>The Care Collective · Connecting the Dots · 2026</footer>
 
   <dialog id="letters" aria-labelledby="lettersTitle">
-    <div class="panel"><div class="panel-head"><h2 id="lettersTitle">Letters of support</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
-      <p>This space is reserved for signed letters of support, beginning with the first approved letter.</p>
-      <div class="info-strip">The letters are not yet attached to this version of the website. No endorsement is represented as published without its approved document.</div>
-      <hr><p class="fine">When the signed letters are added to the repository, they can be made available here without changing any proposal pages.</p>
+    <div class="panel"><div class="panel-head"><h2 id="lettersTitle">Referrals</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
+      <p>Supporting letters and signed references for Connecting the Dots.</p>
+      <article class="reference-item" aria-labelledby="bruno-name">
+        <span class="reference-label">SIGNED REFERENCE · 28 OCTOBER 2026</span>
+        <h3 id="bruno-name">Bruno Meekings</h3>
+        <p class="reference-role">Community Involvement Manager, Richmond CVS</p>
+        <p class="reference-summary">A personal reference supporting Aubrey Ghose’s application to the NHS Patient Entrepreneur Programme, including the skills and experience behind Connecting the Dots.</p>
+        <a class="link" href="./Bruno_Meekings_Signed_Reference.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read Bruno Meekings’ signed NHS PEP reference as a PDF">Read signed reference ↗</a>
+      </article>
+      <p class="fine">This reference supports an individual programme application; it should not be read as formal organisational endorsement of the proposed pilot.</p>
     </div>
   </dialog>
   <dialog id="comments" aria-labelledby="commentsTitle">
