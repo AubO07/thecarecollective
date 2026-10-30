@@ -232,4 +232,32 @@
   })();
   </script>
 </body>
+  <script>
+(function () {
+  const panel = document.querySelector('#comments .panel');
+  if (!panel) return;
+
+  panel.querySelector('p.fine')?.remove();
+  panel.querySelector('a.link')?.remove();
+
+  const form = document.createElement('form');
+  form.action = 'https://formsubmit.co/Aubrey.ghose@iCloud.com';
+  form.method = 'POST';
+  form.style.cssText = 'display:grid;gap:14px';
+
+  form.innerHTML = [
+    '<p>Share your ideas, experiences or letters of support. No GitHub account required.</p>',
+    '<input type="hidden" name="_subject" value="Connecting the Dots - New contribution">',
+    '<input type="text" name="_honey" style="display:none">',
+    '<label>Your name<input name="name" required style="display:block;width:100%;padding:12px"></label>',
+    '<label>Your email<input type="email" name="email" required style="display:block;width:100%;padding:12px"></label>',
+    '<label>Your contribution<textarea name="message" rows="6" required style="display:block;width:100%;padding:12px"></textarea></label>',
+    '<label><input type="checkbox" name="permission_to_publish" value="Yes"> I give permission for my contribution to be published after review.</label>',
+    '<button type="submit" style="padding:14px;background:#1673b8;color:white;border:0;border-radius:6px">Send contribution</button>',
+    '<small>Sent privately for review. Nothing is published automatically.</small>'
+  ].join('');
+
+  panel.appendChild(form);
+})();
+</script>
 </html>
