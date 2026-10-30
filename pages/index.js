@@ -1,41 +1,105 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div style={{ fontFamily: 'system-ui, sans-serif', color: '#212529', margin: 0, padding: 0 }}>
       <Head>
-        <title>The Care Collective</title>
-        <meta name="description" content="A system for connecting. A future built on unity." />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Connecting the Dots | National Care Service</title>
+        <meta name="description" content="Connecting the Dots — Paving the way towards our National Care Service" />
       </Head>
 
-      <main className={styles.main}>
-        <div className={styles.tilde}>~</div>
-        <h1 className={styles.title}>The Care Collective</h1>
-        <p className={styles.tagline}>
-          A system for connecting.<br/>A future built on unity.
-        </p>
-        <a className={styles.cta} href="#">Join the Movement</a>
+      <header style={{ background: 'linear-gradient(135deg, #005EB8, #005A36)', color: 'white', padding: '3rem 1.5rem', textAlign: 'center' }}>
+        <h1 style={{ margin: '0 0 0.5rem 0', fontSize: '2.5rem' }}>Connecting the Dots</h1>
+        <p style={{ fontSize: '1.25rem', marginBottom: '1rem', opacity: 0.9 }}>Paving the way towards our National Care Service</p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          <span style={{ background: 'rgba(255, 255, 255, 0.2)', padding: '4px 12px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 600 }}>NHS Patient Entrepreneur Programme Cohort 4</span>
+          <span style={{ background: 'rgba(255, 255, 255, 0.2)', padding: '4px 12px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 600 }}>The Casey Commission Review</span>
+        </div>
+      </header>
 
-        <section className={styles.partners}>
-          <h2>Our Partners</h2>
-          <div className={styles.partnerRow}>
-            <img src="/logo1.svg" alt="Partner 1"/>
-            <img src="/logo2.svg" alt="Partner 2"/>
-            <img src="/logo3.svg" alt="Partner 3"/>
+      <main style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+        <section style={{ marginBottom: '2rem' }}>
+          <h2 style={{ color: '#005A36' }}>Two National Services. One Connected Life.</h2>
+          <p>Government has committed to establishing a National Care Service (NCS). Connecting the Dots offers a practical pilot model testing whether connected health and care support helps unpaid carers and care recipients return to work, improves outcomes, and builds cost evidence for national implementation.</p>
+        </section>
+
+        <hr style={{ border: 0, borderTop: '1px solid #E9ECEF', margin: '2rem 0' }} />
+
+        <section style={{ marginBottom: '2rem' }}>
+          <h2 style={{ color: '#005A36' }}>The Problem We Are Solving</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1rem' }}>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <div style={{ fontSize: '2.2rem', fontWeight: 'bold', color: '#005EB8' }}>49%</div>
+              <p>Of 14+ day delayed hospital discharges linked to social care capacity, transfer delays, or recovery access.</p>
+            </div>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <div style={{ fontSize: '2.2rem', fontWeight: 'bold', color: '#005EB8' }}>26.8%</div>
+              <p>Of surveyed unpaid carers found it difficult to find information or advice about support and benefits.</p>
+            </div>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <div style={{ fontSize: '2.2rem', fontWeight: 'bold', color: '#005EB8' }}>20.9%</div>
+              <p>Of unpaid carers reported having no encouragement or support in their caring role.</p>
+            </div>
+          </div>
+        </section>
+
+        <section style={{ marginBottom: '2rem' }}>
+          <h2 style={{ color: '#005A36' }}>Six Core Co-Production Findings</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1rem' }}>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <h3 style={{ marginTop: 0, color: '#005A36' }}>1. Joined-Up Services</h3>
+              <p>Make hand-offs and ownership visible across organizational boundaries.</p>
+            </div>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <h3 style={{ marginTop: 0, color: '#005A36' }}>2. Accurate Records</h3>
+              <p>Create one reliable route to information so carers don't constantly repeat their stories.</p>
+            </div>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <h3 style={{ marginTop: 0, color: '#005A36' }}>3. Early Carer Support</h3>
+              <p>Identify carers early to plan assessments, respite, and contingency options.</p>
+            </div>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <h3 style={{ marginTop: 0, color: '#005A36' }}>4. Crisis Prevention</h3>
+              <p>Maintain connected support through hospital discharge and housing transitions.</p>
+            </div>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <h3 style={{ marginTop: 0, color: '#005A36' }}>5. Accessible Comms</h3>
+              <p>Provide clear digital information backed by reliable human support routes.</p>
+            </div>
+            <div style={{ border: '1px solid #E9ECEF', borderRadius: '8px', padding: '1.5rem', background: '#F8F9FA' }}>
+              <h3 style={{ marginTop: 0, color: '#005A36' }}>6. Loop-Closing Co-Production</h3>
+              <p>Demonstrate real changes from participant contributions with clear owners and dates.</p>
+            </div>
+          </div>
+        </section>
+
+        <section style={{ marginBottom: '2rem' }}>
+          <h2 style={{ color: '#005A36' }}>The Pilot Scale & Locations</h2>
+          <p>A 100-family feasibility and outcomes pilot tested across 5 locations (20 families per site):</p>
+          <ul>
+            <li><strong>Newcastle</strong> — 20 families</li>
+            <li><strong>Manchester</strong> — 20 families</li>
+            <li><strong>Birmingham</strong> — 20 families</li>
+            <li><strong>Bristol</strong> — 20 families</li>
+            <li><strong>Richmond & Wandsworth</strong> — 20 families</li>
+          </ul>
+        </section>
+
+        <section style={{ marginBottom: '2rem' }}>
+          <h2 style={{ color: '#005A36' }}>The Ask of the Casey Commission</h2>
+          <div style={{ background: '#EBF3FA', border: '1px solid #005EB8', borderRadius: '8px', padding: '1.5rem' }}>
+            <ul>
+              <li><strong>Convene Partners:</strong> Help convene the multi-agency partnership for the 6-month test.</li>
+              <li><strong>Protect Rights:</strong> Safeguard consent, confidentiality, and individual rights.</li>
+              <li><strong>Review Results:</strong> Support independent evaluation and transparent publication of results.</li>
+            </ul>
           </div>
         </section>
       </main>
 
-      <footer className={styles.footer}>
-        <div className={styles.footerTilde}><strong>~</strong></div>
-        <div className={styles.socials}>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://wa.me/YOURNUMBER" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        </div>
-        <p>©️ 2025 The Care Collective. We’re still listening.</p>
+      <footer style={{ textAlign: 'center', padding: '2rem', background: '#F8F9FA', borderTop: '1px solid #E9ECEF', color: '#6C757D', fontSize: '0.9rem' }}>
+        <p>Prepared by Aubrey Ghose | The Care Collective / Connecting the Dots</p>
+        <p>Pilot First. Platform Second. Evidence Before Scale.</p>
       </footer>
     </div>
   );
