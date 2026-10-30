@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting the Dots</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nhs: {
+                            blue: '#005EB8',
+                            dark: '#003087',
+                            light: '#41B6E6',
+                            bright: '#0072CE'
+                        },
+                        ncs: {
+                            teal: '#0d9488',
+                            emerald: '#059669',
+                            mint: '#ccfbf1',
+                            dark: '#115e59'
+                        },
+                        navy: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .hero-gradient {
+            background: #ffffff;
+        }
+        .spoke-line {
+            transition: all 0.3s ease;
+        }
+        .node-group:hover .spoke-line {
+            stroke: #0d9488;
+            stroke-width: 3;
+            stroke-dasharray: none;
+        }
+        .node-group:hover circle.node-bg {
+            fill: #0d9488;
+            stroke: #0f172a;
+            filter: drop-shadow(0px 4px 8px rgba(13, 148, 136, 0.4));
+        }
+        .node-group:hover text.node-title {
+            fill: #0d9488;
+            font-weight: 800;
+        }
+        .pulse-badge {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-teal-100 selection:text-teal-900">
+
+    <!-- TOP ANNOUNCEMENT BANNER -->
+    <div class="bg-navy-900 text-slate-200 text-xs sm:text-sm py-2.5 px-4 text-center border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-2 mx-auto sm:mx-0">
+                <span class="bg-teal-500/20 text-teal-300 text-xs px-2.5 py-0.5 rounded-full font-semibold border border-teal-500/30">Casey Commission Edition</span>
+                <span>Submitted to <strong>Independent Commission on Adult Social Care</strong> & <strong>NHS Patient Entrepreneur Programme</strong></span>
+            </div>
+            <div class="hidden md:flex items-center gap-4 text-xs text-slate-400">
+                <span><i class="fa-solid fa-location-dot text-teal-400 mr-1"></i> Richmond & Wandsworth Pilot</span>
+                <span><i class="fa-solid fa-calendar-days text-nhs-light mr-1"></i> Proposal Draft 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BRANDING -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-nhs-blue to-ncs-teal text-white flex items-center justify-center font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-extrabold text-slate-900 text-lg tracking-tight leading-none">Connecting the Dots</span>
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-nhs-blue/10 text-nhs-blue rounded">NHS + NCS</span>
+                        </div>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5">A proposal for connected care</p>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAV LINKS -->
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
+                    <a href="#ecosystem-wheel" class="hover:text-nhs-blue transition-colors">01 Care Ecosystem</a>
+                    <a href="#pathway-graph" class="hover:text-nhs-blue transition-colors">02 Outcome Graph</a>
+                    <a href="#storyteller" class="hover:text-nhs-blue transition-colors">03 Proposal Navigator</a>
+                    <a href="#economic-calc" class="hover:text-nhs-blue transition-colors">04 Economic Calculator</a>
+                    <a href="#endorsements" class="hover:text-nhs-blue transition-colors">05 Reference Letters</a>
+                </nav>
+
+                <!-- RIGHT CTA & COUNTER -->
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:flex items-center gap-2 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700">
+                        <span class="relative flex h-2.5 w-2.5">
+                          <span class="pulse-badge absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        </span>
+                        <span id="endorse-count-badge">148</span> Endorsements
+                    </div>
+                    <a href="#co-produce-form" class="bg-gradient-to-r from-nhs-blue to-nhs-dark hover:from-nhs-dark hover:to-nhs-blue text-white px-4 py-2.5 rounded-lg text-sm font-semibold shadow-sm hover:shadow transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>Read the Proposal</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-gradient relative py-16 lg:py-20 overflow-hidden border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- HERO LEFT TEXT -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold mb-6">
+                        <i class="fa-solid fa-hands-holding-child text-teal-600"></i>
+                        <span>A Co-Produced Proposal for Unpaid Carers & Families</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+                        Two National Services. <br>
+                        <span class="bg-gradient-to-r from-nhs-blue via-teal-600 to-ncs-teal bg-clip-text text-transparent">One Connected Life.</span>
+                    </h1>
+
+                    <!-- DUAL BRANDING BAR -->
+                    <div class="mt-6 p-4 rounded-2xl bg-white/80 border border-slate-200 shadow-sm grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3 text-left">
+                            <span class="bg-nhs-blue text-white text-xs font-black px-2 py-1 rounded">NHS</span>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">National Health Service</h4>
+                                <p class="text-[11px] text-slate-500">Your health. Connected. High-quality healthcare free at the point of use.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 text-left sm:border-l sm:border-slate-200 sm:pl-4">
+                            <span class="bg-ncs-teal text-white text-xs font-black px-2 py-1 rounded">NCS</span>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">National Care Service</h4>
+                                <p class="text-[11px] text-slate-500">Your care. Connected. One front door connecting public support around households.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+                        Connecting health, social care, housing, DWP, and community services around unpaid carers and the people they support. Testing whether coordinated care restores independence, releases capacity, and reduces costly delays.
+                    </p>
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#ecosystem-wheel" class="bg-nhs-blue hover:bg-nhs-dark text-white px-6 py-3.5 rounded-xl text-base font-semibold shadow-lg shadow-nhs-blue/20 hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-circle-nodes"></i>
+                            <span>Explore Care Ecosystem Diagram</span>
+                        </a>
+                        <a href="#proposal" class="bg-white border-2 border-slate-300 hover:border-teal-600 text-slate-800 hover:text-teal-700 px-6 py-3.5 rounded-xl text-base font-semibold hover:bg-teal-50/50 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-book-open text-teal-600"></i>
+                            <span>Read the Proposal</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- HERO RIGHT STAT CARD -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-nhs-blue to-teal-500 rounded-3xl blur-xl opacity-25"></div>
+                        
+                        <div class="relative bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-slate-100 space-y-6">
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                                <span class="text-xs uppercase font-bold tracking-wider text-slate-400"><i class="fa-solid fa-chart-line text-teal-600 mr-1.5"></i> Pilot Objectives</span>
+                                <span class="text-xs bg-teal-100 text-teal-800 font-bold px-2.5 py-0.5 rounded-full">20 Households</span>
+                            </div>
+
+                            <div class="space-y-4 text-xs">
+                                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                                    <div class="font-bold text-slate-800 mb-1 flex items-center justify-between">
+                                        <span>Connect Care Services</span>
+                                        <i class="fa-solid fa-link text-nhs-blue"></i>
+                                    </div>
+                                    <p class="text-slate-500">Create a permissioned, shared 360° picture for NHS, Adult Social Care, Housing, and DWP.</p>
+                                </div>
+
+                                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                                    <div class="font-bold text-slate-800 mb-1 flex items-center justify-between">
+                                        <span>Visible Accountability</span>
+                                        <i class="fa-solid fa-user-check text-teal-600"></i>
+                                    </div>
+                                    <p class="text-slate-500">Name explicit handover owners whenever care transfers between hospital and community.</p>
+                                </div>
+
+                                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                                    <div class="font-bold text-slate-800 mb-1 flex items-center justify-between">
+                                        <span>Evidence Economic Return</span>
+                                        <i class="fa-solid fa-sterling-sign text-emerald-600"></i>
+                                    </div>
+                                    <p class="text-slate-500">Measure retained paid work hours (£4,992/carer avg) and prevented crisis admissions.</p>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-100">
+                                <span>Richmond & Wandsworth Co-Production</span>
+                                <span class="font-bold text-nhs-blue">6-Month Demonstrator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- DIAGRAM 1: HUB-AND-SPOKE ECOSYSTEM WHEEL DIAGRAM -->
+    <!-- ========================================================================= -->
+    <section id="proposal" class="py-16 bg-white border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+          <div><span class="text-xs uppercase tracking-widest font-bold text-teal-700">The proposal</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Read Connecting the Dots</h2>
+            <p class="text-slate-600 mt-2">The complete proposal is open to read and download. No form required.</p></div>
+          <a class="inline-flex items-center gap-2 rounded-lg bg-nhs-blue px-5 py-3 text-white font-semibold" href="Connecting_the_Dots_Proposal.pdf" download><i class="fa-solid fa-download"></i> Download the PDF</a>
+        </div>
+        <iframe title="Connecting the Dots proposal PDF" src="Connecting_the_Dots_Proposal.pdf" class="w-full rounded-xl border border-slate-200" style="height:min(82vh,1000px)"></iframe>
+        <div class="mt-6 grid sm:grid-cols-3 gap-3 text-center">
+          <a href="#co-produce-form" class="rounded-lg border border-slate-200 p-4 font-semibold text-nhs-blue hover:bg-slate-50">Offer a letter of support</a>
+          <a href="#co-produce-form" class="rounded-lg border border-slate-200 p-4 font-semibold text-nhs-blue hover:bg-slate-50">Comment on the proposal</a>
+          <a href="#endorsements" class="rounded-lg border border-slate-200 p-4 font-semibold text-nhs-blue hover:bg-slate-50">Read supporting references</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecosystem-wheel" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-widest font-bold text-nhs-blue bg-nhs-blue/10 px-3 py-1 rounded-full">Diagram 1: Cover Architecture</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">The Connected Care Ecosystem Wheel</h2>
+                <p class="mt-3 text-slate-600 text-sm sm:text-base">
+                    Connecting public services around the consenting household. Hover or tap any surrounding agency node to inspect its specific role in supporting the carer and caree.
+                </p>
+            </div>
+
+            <!-- SVG WHEEL CONTAINER -->
+            <div class="bg-slate-50 rounded-3xl p-4 sm:p-8 border border-slate-200 shadow-inner relative">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- SVG GRAPHIC -->
+                    <div class="lg:col-span-8 flex justify-center relative">
+                        <svg viewBox="0 0 700 700" class="w-full max-w-[620px] h-auto drop-shadow-sm select-none">
+                            
+                            <!-- INNER DASHED CIRCLE GUIDELINES -->
+                            <circle cx="350" cy="350" r="230" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 6"/>
+                            <circle cx="350" cy="350" r="120" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+
+                            <!-- SPOKE LINES (Connecting Center to 10 Outer Nodes) -->
+                            <!-- Node 0: NHS (Top, -90deg) -->
+                            <line x1="350" y1="350" x2="350" y2="120" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-0"/>
+                            <!-- Node 1: Housing (36deg) -->
+                            <line x1="350" y1="350" x2="485" y2="164" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-1"/>
+                            <!-- Node 2: DWP (72deg) -->
+                            <line x1="350" y1="350" x2="569" y2="279" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-2"/>
+                            <!-- Node 3: Education (108deg) -->
+                            <line x1="350" y1="350" x2="569" y2="421" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-3"/>
+                            <!-- Node 4: Employers (144deg) -->
+                            <line x1="350" y1="350" x2="485" y2="536" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-4"/>
+                            <!-- Node 5: Community Sector (180deg, Bottom) -->
+                            <line x1="350" y1="350" x2="350" y2="580" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-5"/>
+                            <!-- Node 6: Legal (216deg) -->
+                            <line x1="350" y1="350" x2="215" y2="536" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-6"/>
+                            <!-- Node 7: Mental Health (252deg) -->
+                            <line x1="350" y1="350" x2="131" y2="421" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-7"/>
+                            <!-- Node 8: Adult Social Care (288deg) -->
+                            <line x1="350" y1="350" x2="131" y2="279" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-8"/>
+                            <!-- Node 9: Local Government (324deg) -->
+                            <line x1="350" y1="350" x2="215" y2="164" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" class="spoke-line" id="spoke-9"/>
+
+                            <!-- CENTER HUB: CARER AND CAREE -->
+                            <g class="cursor-pointer" onclick="selectWheelNode('center')">
+                                <circle cx="350" cy="350" r="75" fill="#ffffff" stroke="#005EB8" stroke-width="4" class="shadow-lg"/>
+                                <circle cx="350" cy="350" r="70" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                
+                                <!-- Center Icons (Two people silhouetted) -->
+                                <path d="M335 330 a 12 12 0 1 0 -0.1 0 M320 360 c 0 -15 30 -15 30 0" fill="none" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M365 330 a 12 12 0 1 0 -0.1 0 M350 360 c 0 -15 30 -15 30 0" fill="none" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
+                                
+                                <text x="350" y="375" text-anchor="middle" font-size="12" font-weight="800" fill="#0f172a">Carer and Caree</text>
+                                <text x="350" y="390" text-anchor="middle" font-size="9" font-weight="500" fill="#64748b">Connected support</text>
+                                <text x="350" y="402" text-anchor="middle" font-size="9" font-weight="500" fill="#64748b">brighter futures</text>
+                            </g>
+
+                            <!-- OUTER NODE 0: NHS -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(0)" onclick="selectWheelNode(0)">
+                                <circle cx="350" cy="120" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- Stethoscope Icon -->
+                                <path d="M342 105 v 10 a 8 8 0 0 0 16 0 v -10 M350 123 v 12 a 6 6 0 0 0 6 6 h 2" fill="none" stroke="#005EB8" stroke-width="2.5" stroke-linecap="round"/>
+                                <text x="350" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">NHS</text>
+                                <text x="350" y="176" text-anchor="middle" font-size="8" fill="#64748b">Primary, secondary</text>
+                                <text x="350" y="186" text-anchor="middle" font-size="8" fill="#64748b">& community care</text>
+                            </g>
+
+                            <!-- OUTER NODE 1: HOUSING -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(1)" onclick="selectWheelNode(1)">
+                                <circle cx="485" cy="164" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- House Icon -->
+                                <path d="M473 162 l 12 -10 l 12 10 v 12 h -24 z" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linejoin="round"/>
+                                <text x="485" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">Housing</text>
+                                <text x="485" y="218" text-anchor="middle" font-size="8" fill="#64748b">Adaptations,</text>
+                                <text x="485" y="228" text-anchor="middle" font-size="8" fill="#64748b">services, support</text>
+                            </g>
+
+                            <!-- OUTER NODE 2: DWP -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(2)" onclick="selectWheelNode(2)">
+                                <circle cx="569" cy="279" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- £ Icon -->
+                                <text x="569" y="285" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">£</text>
+                                <text x="569" y="307" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">DWP</text>
+                                <text x="569" y="333" text-anchor="middle" font-size="8" fill="#64748b">Benefits, Carer's</text>
+                                <text x="569" y="343" text-anchor="middle" font-size="8" fill="#64748b">Allowance, employment</text>
+                            </g>
+
+                            <!-- OUTER NODE 3: EDUCATION -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(3)" onclick="selectWheelNode(3)">
+                                <circle cx="569" cy="421" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- Book Icon -->
+                                <path d="M557 418 h 24 M557 424 h 24 M557 412 h 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+                                <text x="569" y="449" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">Education</text>
+                                <text x="569" y="475" text-anchor="middle" font-size="8" fill="#64748b">Schools, colleges,</text>
+                                <text x="569" y="485" text-anchor="middle" font-size="8" fill="#64748b">lifelong learning</text>
+                            </g>
+
+                            <!-- OUTER NODE 4: EMPLOYERS -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(4)" onclick="selectWheelNode(4)">
+                                <circle cx="485" cy="536" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- Briefcase Icon -->
+                                <rect x="473" y="530" width="24" height="16" rx="2" fill="none" stroke="#0f172a" stroke-width="2"/>
+                                <path d="M480 530 v -3 h 10 v 3" fill="none" stroke="#0f172a" stroke-width="2"/>
+                                <text x="485" y="564" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">Employers</text>
+                                <text x="485" y="590" text-anchor="middle" font-size="8" fill="#64748b">Flexible work, retention,</text>
+                                <text x="485" y="600" text-anchor="middle" font-size="8" fill="#64748b">return to work</text>
+                            </g>
+
+                            <!-- OUTER NODE 5: COMMUNITY & VOLUNTARY SECTOR -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(5)" onclick="selectWheelNode(5)">
+                                <circle cx="350" cy="580" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- Community Icon -->
+                                <circle cx="343" cy="573" r="4" fill="#0f172a"/>
+                                <circle cx="357" cy="573" r="4" fill="#0f172a"/>
+                                <circle cx="350" cy="578" r="4" fill="#0d9488"/>
+                                <text x="350" y="608" text-anchor="middle" font-size="10" font-weight="700" fill="#0f172a" class="node-title">Community & Voluntary</text>
+                                <text x="350" y="632" text-anchor="middle" font-size="8" fill="#64748b">Local support,</text>
+                                <text x="350" y="642" text-anchor="middle" font-size="8" fill="#64748b">peer networks</text>
+                            </g>
+
+                            <!-- OUTER NODE 6: LEGAL -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(6)" onclick="selectWheelNode(6)">
+                                <circle cx="215" cy="536" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- Scales Icon -->
+                                <path d="M205 530 h 20 M215 525 v 15 M203 540 h 8 M217 540 h 8" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+                                <text x="215" y="564" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">Legal</text>
+                                <text x="215" y="590" text-anchor="middle" font-size="8" fill="#64748b">Rights, advocacy,</text>
+                                <text x="215" y="600" text-anchor="middle" font-size="8" fill="#64748b">deputyship</text>
+                            </g>
+
+                            <!-- OUTER NODE 7: MENTAL HEALTH -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(7)" onclick="selectWheelNode(7)">
+                                <circle cx="131" cy="421" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- Heart Icon -->
+                                <path d="M125 415 a 5 5 0 0 1 8 0 a 5 5 0 0 1 8 0 c 0 8 -12 14 -12 14 s -12 -6 -12 -14" fill="#0d9488" stroke="#0d9488" stroke-width="1"/>
+                                <text x="131" y="449" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">Mental Health</text>
+                                <text x="131" y="475" text-anchor="middle" font-size="8" fill="#64748b">Emotional support,</text>
+                                <text x="131" y="485" text-anchor="middle" font-size="8" fill="#64748b">wellbeing</text>
+                            </g>
+
+                            <!-- OUTER NODE 8: ADULT SOCIAL CARE -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(8)" onclick="selectWheelNode(8)">
+                                <circle cx="131" cy="279" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- User plus -->
+                                <circle cx="131" cy="272" r="6" fill="none" stroke="#0f172a" stroke-width="2"/>
+                                <path d="M120 287 c 0 -8 22 -8 22 0" fill="none" stroke="#0f172a" stroke-width="2"/>
+                                <text x="131" y="307" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">Adult Social Care</text>
+                                <text x="131" y="333" text-anchor="middle" font-size="8" fill="#64748b">Assessment, care</text>
+                                <text x="131" y="343" text-anchor="middle" font-size="8" fill="#64748b">packages, respite</text>
+                            </g>
+
+                            <!-- OUTER NODE 9: LOCAL GOVERNMENT -->
+                            <g class="node-group cursor-pointer" onmouseover="highlightWheelNode(9)" onclick="selectWheelNode(9)">
+                                <circle cx="215" cy="164" r="42" fill="#ffffff" stroke="#334155" stroke-width="2" class="node-bg transition-all"/>
+                                <!-- Building icon -->
+                                <rect x="206" y="152" width="18" height="20" rx="1" fill="none" stroke="#0f172a" stroke-width="2"/>
+                                <path d="M210 158 h 2 M218 158 h 2 M210 164 h 2 M218 164 h 2" stroke="#0f172a" stroke-width="2"/>
+                                <text x="215" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a" class="node-title">Local Government</text>
+                                <text x="215" y="218" text-anchor="middle" font-size="8" fill="#64748b">Adult services,</text>
+                                <text x="215" y="228" text-anchor="middle" font-size="8" fill="#64748b">housing, benefits</text>
+                            </g>
+
+                        </svg>
+                    </div>
+
+                    <!-- SIDE DETAIL PANEL FOR SELECTED AGENCY -->
+                    <div class="lg:col-span-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-md">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="w-3 h-3 rounded-full bg-teal-500"></span>
+                            <span class="text-xs uppercase font-bold tracking-wider text-slate-400">Node Inspector</span>
+                        </div>
+
+                        <h3 id="wheel-detail-title" class="text-xl font-bold text-slate-900">Carer and Caree Hub</h3>
+                        <p id="wheel-detail-subtitle" class="text-xs text-teal-700 font-semibold mt-0.5">The central consenting relationship</p>
+
+                        <div class="my-4 border-t border-slate-100 pt-4 text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed" id="wheel-detail-body">
+                            <p>This central hub represents the household relationship: the unpaid carer and the supported person. Both individuals retain separate legal identities and rights, but share one connected care plan.</p>
+                            <div class="p-3 bg-teal-50 rounded-xl text-teal-900 text-xs font-medium border border-teal-200">
+                                <i class="fa-solid fa-lightbulb text-teal-600 mr-1.5"></i>
+                                <span>Hover or click any agency node on the wheel to see how its decisions link back to this household hub.</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                            <span>10 Connected Agencies</span>
+                            <span class="text-nhs-blue font-bold"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Consent-Based View</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CENSUS STATISTICS ROW (From Proposal Page 18) -->
+                <div class="mt-10 pt-8 border-t border-slate-200/80">
+                    <div class="text-center mb-6">
+                        <span class="text-xs uppercase font-bold tracking-widest text-slate-500">Official Context & Scale (ONS Census 2021)</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <p class="text-2xl sm:text-3xl font-extrabold text-nhs-blue">4.7 Million</p>
+                            <p class="text-xs text-slate-600 font-semibold mt-1">Unpaid Carers</p>
+                            <p class="text-[10px] text-slate-400 mt-0.5">in England (Census 2021)</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <p class="text-2xl sm:text-3xl font-extrabold text-teal-600">8.9%</p>
+                            <p class="text-xs text-slate-600 font-semibold mt-1">Population Share</p>
+                            <p class="text-[10px] text-slate-400 mt-0.5">of people aged 5+ provide care</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <p class="text-2xl sm:text-3xl font-extrabold text-navy-800">2.4 Million</p>
+                            <p class="text-xs text-slate-600 font-semibold mt-1">Significant Carers</p>
+                            <p class="text-[10px] text-slate-400 mt-0.5">providing 20+ hours weekly</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <p class="text-2xl sm:text-3xl font-extrabold text-amber-600">120,000</p>
+                            <p class="text-xs text-slate-600 font-semibold mt-1">Young Carers</p>
+                            <p class="text-[10px] text-slate-400 mt-0.5">aged 5–17 in England</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- DIAGRAM 2: PATHWAY OUTCOME GRAPH (Better vs Worse Outcomes Over Time) -->
+    <!-- ========================================================================= -->
+    <section id="pathway-graph" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-xs uppercase tracking-widest font-bold text-teal-400 bg-teal-900/60 border border-teal-500/30 px-3 py-1 rounded-full">Diagram 2: Conceptual System Model</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">From Fragmented Care to Connected Outcomes</h2>
+                <p class="mt-3 text-slate-300 text-sm sm:text-base">
+                    How connecting decisions creates a rising trajectory towards better recovery, independence, and employment.
+                </p>
+            </div>
+
+            <!-- TOGGLE CONTROLS -->
+            <div class="flex justify-center mb-8">
+                <div class="bg-slate-800 p-1.5 rounded-xl border border-slate-700 inline-flex items-center gap-2">
+                    <button onclick="setGraphMode('both')" id="btn-graph-both" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-teal-600 text-white shadow-sm">
+                        <i class="fa-solid fa-eye mr-1.5"></i> Full Comparison
+                    </button>
+                    <button onclick="setGraphMode('fragmented')" id="btn-graph-fragmented" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-triangle-exclamation mr-1.5 text-red-400"></i> Fragmented Today
+                    </button>
+                    <button onclick="setGraphMode('connected')" id="btn-graph-connected" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-arrow-trend-up mr-1.5 text-emerald-400"></i> Connected Test
+                    </button>
+                </div>
+            </div>
+
+            <!-- SVG PATHWAY CHART -->
+            <div class="bg-slate-950 rounded-2xl p-4 sm:p-8 border border-slate-800 shadow-2xl relative">
+                
+                <svg viewBox="0 0 800 400" class="w-full h-auto select-none" id="svg-pathway">
+                    
+                    <!-- GRID BACKGROUND LINES -->
+                    <line x1="60" y1="80" x2="760" y2="80" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 4"/>
+                    <line x1="60" y1="180" x2="760" y2="180" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 4"/>
+                    <line x1="60" y1="280" x2="760" y2="280" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 4"/>
+
+                    <!-- AXES -->
+                    <!-- Y Axis -->
+                    <line x1="60" y1="30" x2="60" y2="350" stroke="#475569" stroke-width="2"/>
+                    <polygon points="60,20 55,32 65,32" fill="#475569"/>
+                    <!-- X Axis -->
+                    <line x1="60" y1="350" x2="770" y2="350" stroke="#475569" stroke-width="2"/>
+                    <polygon points="780,350 768,345 768,355" fill="#475569"/>
+
+                    <!-- AXIS LABELS -->
+                    <text x="70" y="35" font-size="11" font-weight="700" fill="#94a3b8">Better outcomes</text>
+                    <text x="70" y="340" font-size="11" font-weight="700" fill="#64748b">Worse outcomes</text>
+                    <text x="735" y="375" font-size="11" font-weight="700" fill="#94a3b8">Time</text>
+
+                    <!-- NHS BENCHMARK HORIZONTAL LINE (NHS Blue) -->
+                    <g id="group-nhs-line">
+                        <line x1="60" y1="100" x2="760" y2="100" stroke="#005EB8" stroke-width="4"/>
+                        <!-- NHS Badge -->
+                        <rect x="700" y="85" width="55" height="28" rx="4" fill="#005EB8"/>
+                        <text x="727" y="104" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff" font-style="italic">NHS</text>
+                        <text x="690" y="75" text-anchor="end" font-size="10" font-weight="600" fill="#41B6E6">High-quality Healthcare Benchmark</text>
+                    </g>
+
+                    <!-- FRAGMENTED DOTS (Silos) -->
+                    <g id="group-fragmented">
+                        <circle cx="100" cy="310" r="7" fill="#ef4444"/>
+                        <circle cx="140" cy="280" r="7" fill="#ef4444"/>
+                        <circle cx="180" cy="315" r="7" fill="#ef4444"/>
+                        <circle cx="220" cy="330" r="7" fill="#ef4444"/>
+                        <circle cx="260" cy="295" r="7" fill="#ef4444"/>
+                        <circle cx="300" cy="285" r="7" fill="#ef4444"/>
+                        <circle cx="340" cy="310" r="7" fill="#ef4444"/>
+                        <circle cx="380" cy="330" r="7" fill="#ef4444"/>
+
+                        <text x="100" y="350" font-size="11" font-weight="700" fill="#f87171">Fragmented services working in silos</text>
+                    </g>
+
+                    <!-- PIVOT POINT (CO-PRODUCTION) -->
+                    <g id="group-pivot">
+                        <line x1="410" y1="100" x2="410" y2="350" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="4 4"/>
+                        
+                        <circle cx="410" cy="310" r="11" fill="#10b981" stroke="#ffffff" stroke-width="3" class="animate-pulse"/>
+                        
+                        <!-- Callout box -->
+                        <rect x="325" y="225" width="170" height="48" rx="8" fill="#115e59" stroke="#2dd4bf" stroke-width="1.5"/>
+                        <text x="410" y="244" text-anchor="middle" font-size="11" font-weight="900" fill="#5eead4" tracking="wider">CO-PRODUCTION</text>
+                        <text x="410" y="260" text-anchor="middle" font-size="10" font-weight="600" fill="#ffffff">Connecting the Dots</text>
+                    </g>
+
+                    <!-- RISING NCS CURVE (Connected trajectory) -->
+                    <g id="group-ncs-curve">
+                        <!-- Path from (410, 310) smoothing upwards to (710, 130) -->
+                        <path d="M 410 310 C 470 310, 520 130, 710 130" fill="none" stroke="#10b981" stroke-width="6" stroke-linecap="round"/>
+                        
+                        <!-- NCS Badge -->
+                        <rect x="700" y="115" width="55" height="28" rx="4" fill="#0d9488"/>
+                        <text x="727" y="134" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">NCS</text>
+                        <text x="690" y="158" text-anchor="end" font-size="10" font-weight="600" fill="#34d399">Connected Care Trajectory</text>
+                    </g>
+
+                </svg>
+
+                <p class="text-[11px] text-slate-500 italic text-center mt-3">
+                    * Conceptual pathway model illustrating system hypothesis. Not measured NHS performance or pilot results.
+                </p>
+
+                <!-- COMPARISON OVERLAY METRICS -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-800 text-xs">
+                    <div class="bg-slate-900/90 p-4 rounded-xl border border-red-900/40">
+                        <div class="flex items-center gap-2 text-red-400 font-bold mb-1">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            <span>01 Fragmented Today</span>
+                        </div>
+                        <p class="text-slate-400">Delayed discharges, repeated assessments, unpaid carers forced to leave employment, crisis-driven emergency admissions.</p>
+                    </div>
+
+                    <div class="bg-slate-900/90 p-4 rounded-xl border border-teal-800/60">
+                        <div class="flex items-center gap-2 text-teal-300 font-bold mb-1">
+                            <i class="fa-solid fa-shuffle"></i>
+                            <span>02 Connect the Dots</span>
+                        </div>
+                        <p class="text-slate-400">Permissioned 360° household view linking NHS, Adult Social Care, Housing, DWP, and local voluntary sector.</p>
+                    </div>
+
+                    <div class="bg-slate-900/90 p-4 rounded-xl border border-emerald-800/60">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold mb-1">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            <span>03 Better Outcomes</span>
+                        </div>
+                        <p class="text-slate-400">Earlier carer support, higher participation in learning & work, reduced acute hospital stay duration, restored dignity.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: 3-STEP PROPOSAL NAVIGATOR -->
+    <!-- ========================================================================= -->
+    <section id="storyteller" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-widest font-bold text-nhs-blue bg-nhs-blue/10 px-3 py-1 rounded-full">Proposal Navigator</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">3-Step Evidence & Pilot Architecture</h2>
+                <p class="mt-3 text-slate-600 text-sm sm:text-base">Explore the problem statement, the co-produced findings from unpaid carers, and our 6-month demonstrator structure.</p>
+            </div>
+
+            <!-- STEP TABS -->
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex bg-slate-100 p-1.5 rounded-xl border border-slate-200 space-x-1 sm:space-x-2 w-full max-w-2xl overflow-x-auto">
+                    <button onclick="switchStoryTab('tab-problem')" id="btn-tab-problem" class="story-tab-btn flex-1 py-3 px-4 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-nhs-blue shadow-sm">
+                        <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 01 Vision & Problem
+                    </button>
+                    <button onclick="switchStoryTab('tab-findings')" id="btn-tab-findings" class="story-tab-btn flex-1 py-3 px-4 rounded-lg text-xs sm:text-sm font-bold transition-all text-slate-600 hover:text-slate-900">
+                        <i class="fa-solid fa-list-check mr-1.5"></i> 02 The 6 Findings
+                    </button>
+                    <button onclick="switchStoryTab('tab-pilot')" id="btn-tab-pilot" class="story-tab-btn flex-1 py-3 px-4 rounded-lg text-xs sm:text-sm font-bold transition-all text-slate-600 hover:text-slate-900">
+                        <i class="fa-solid fa-rocket mr-1.5"></i> 03 The 6-Month Pilot
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT -->
+            <div class="bg-slate-50 rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm min-h-[420px] transition-all">
+                
+                <!-- TAB 1: VISION & PROBLEM -->
+                <div id="tab-problem" class="story-tab-content block space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <div class="inline-block px-3 py-1 bg-red-100 text-red-700 font-bold text-xs rounded-md mb-3">The Problem Today</div>
+                            <h3 class="text-2xl font-bold text-slate-900">One Household. Two People. Fragmented Public Support.</h3>
+                            <p class="mt-3 text-slate-600 leading-relaxed text-sm sm:text-base">
+                                Carers spend hundreds of hours managing separate public services—chasing updates between GP surgeries, acute hospital discharge wards, council social care, housing, and DWP benefit teams.
+                            </p>
+                            <ul class="mt-4 space-y-2.5 text-sm text-slate-700">
+                                <li class="flex items-start gap-2.5">
+                                    <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
+                                    <span><strong>Repeated Storytelling:</strong> Re-explaining care histories to every new professional.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
+                                    <span><strong>Delayed Discharge Friction:</strong> 49% of 14+ day acute delays link to care transfer gaps.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
+                                    <span><strong>1.1 Million Left Work:</strong> Carers forced out of employment in the past two years alone.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-inner space-y-4">
+                            <h4 class="text-xs uppercase font-bold tracking-wider text-slate-400">National Corroboration Data (CQC & DHSC)</h4>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold mb-1">
+                                        <span class="text-slate-700">Delayed Discharges Linked to Social Care Transfer</span>
+                                        <span class="text-red-600">49%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                        <div class="bg-red-500 h-3 rounded-full" style="width: 49%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold mb-1">
+                                        <span class="text-slate-700">Unpaid Carers Finding Advice Difficult to Access</span>
+                                        <span class="text-amber-600">26.8%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                        <div class="bg-amber-500 h-3 rounded-full" style="width: 26.8%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold mb-1">
+                                        <span class="text-slate-700">Carers Receiving No Encouragement or Support</span>
+                                        <span class="text-amber-600">20.9%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                        <div class="bg-amber-600 h-3 rounded-full" style="width: 20.9%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-[11px] text-slate-400 italic pt-2">Sources: CQC State of Care Report 2024/25; DHSC Adult Carers Survey.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: THE 6 FINDINGS -->
+                <div id="tab-findings" class="story-tab-content hidden space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-teal-700 bg-teal-100 px-2.5 py-1 rounded">Co-Produced Evidence</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1">6 Practical Changes Identified by Carers</h3>
+                        </div>
+                        <span class="text-xs text-slate-500 hidden sm:block">Richmond & Wandsworth Co-Production Record</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-nhs-blue text-white flex items-center justify-center font-bold text-xs mb-3">01</div>
+                            <h4 class="font-bold text-slate-900 text-sm">Joined-up Services & Shared Duty</h4>
+                            <p class="text-xs text-slate-600 mt-1.5">Make hand-offs and ownership visible across organizational boundaries.</p>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-nhs-blue text-white flex items-center justify-center font-bold text-xs mb-3">02</div>
+                            <h4 class="font-bold text-slate-900 text-sm">One Route to Information</h4>
+                            <p class="text-xs text-slate-600 mt-1.5">Create a single permissioned route so carers do not reconstruct the story.</p>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-nhs-blue text-white flex items-center justify-center font-bold text-xs mb-3">03</div>
+                            <h4 class="font-bold text-slate-900 text-sm">Earlier Carer Support</h4>
+                            <p class="text-xs text-slate-600 mt-1.5">Identify carers early; plan proactive assessment, respite, and contingency.</p>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center font-bold text-xs mb-3">04</div>
+                            <h4 class="font-bold text-slate-900 text-sm">Prevention Before Crisis</h4>
+                            <p class="text-xs text-slate-600 mt-1.5">Keep support connected through discharge and accommodation changes.</p>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center font-bold text-xs mb-3">05</div>
+                            <h4 class="font-bold text-slate-900 text-sm">Accessible Communication</h4>
+                            <p class="text-xs text-slate-600 mt-1.5">Provide modern digital routes alongside reliable human contact choices.</p>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center font-bold text-xs mb-3">06</div>
+                            <h4 class="font-bold text-slate-900 text-sm">Co-Production Closes the Loop</h4>
+                            <p class="text-xs text-slate-600 mt-1.5">Show what changed because people contributed: action, owner, date & outcome.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: THE 6-MONTH PILOT -->
+                <div id="tab-pilot" class="story-tab-content hidden space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-4">
+                            <span class="text-xs font-bold text-nhs-blue bg-nhs-blue/10 px-2.5 py-1 rounded">6-Month Local Demonstrator</span>
+                            <h3 class="text-2xl font-bold text-slate-900">Testing in Richmond & Wandsworth</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                A 20-household consent-based demonstrator (10 Richmond / 10 Wandsworth) designed to establish baselines, track change, record non-improvements, and evaluate fiscal outcomes.
+                            </p>
+
+                            <div class="grid grid-cols-3 gap-3 pt-2">
+                                <div class="bg-white p-3 rounded-lg border border-slate-200 text-center">
+                                    <span class="block text-xl font-extrabold text-nhs-blue">20</span>
+                                    <span class="text-[11px] text-slate-500 font-medium">Consenting Families</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg border border-slate-200 text-center">
+                                    <span class="block text-xl font-extrabold text-teal-600">6 Months</span>
+                                    <span class="text-[11px] text-slate-500 font-medium">Test Duration</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg border border-slate-200 text-center">
+                                    <span class="block text-xl font-extrabold text-navy-800">£4,992</span>
+                                    <span class="text-[11px] text-slate-500 font-medium">Avg Annual Work Restored</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-list-check text-teal-600"></i>
+                                Demonstrator Pillars
+                            </h4>
+                            <ul class="text-xs text-slate-600 space-y-2">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                                    <span><strong>Early Gains:</strong> Retain/regain paid work hours for willing carers.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                                    <span><strong>Next Opportunities:</strong> Coordinate rehab, skills training, and flexible work.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                                    <span><strong>Complex Needs:</strong> Join health and housing decisions before crisis occurs.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: ECONOMIC CAPACITY CALCULATOR -->
+    <!-- ========================================================================= -->
+    <section id="economic-calc" class="py-16 bg-navy-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-5">
+                    <span class="text-xs uppercase font-bold tracking-widest text-teal-400">Economic Mechanism</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Restoring Paid Capacity for Unpaid Carers</h2>
+                    <p class="mt-3 text-slate-300 text-sm leading-relaxed">
+                        When public support is connected, willing carers can retain or regain employment. Adjust the slider to see how restoring 8 hours of work per week scales across local ICBs or national populations.
+                    </p>
+                    <div class="mt-4 p-3 bg-slate-800/90 rounded-lg border border-slate-700 text-xs text-slate-400">
+                        <i class="fa-solid fa-circle-info text-teal-400 mr-1"></i> Based on 8 paid hrs/week at £13/hour average wage over 48 weeks (£4,992/year).
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 shadow-xl">
+                    <div class="space-y-6">
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="carers-slider" class="text-sm font-semibold text-slate-200">Supported Unpaid Carers Regaining Work:</label>
+                                <span id="slider-carers-val" class="text-xl font-extrabold text-teal-400">1,000</span>
+                            </div>
+                            <input type="range" id="carers-slider" min="10" max="58000" step="10" value="1000" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-teal-500" oninput="updateEconomicCalc()">
+                            <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+                                <span>10 (Pilot Scale)</span>
+                                <span>1,000 (Local ICB)</span>
+                                <span>58,000 (1% UK Census)</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-700">
+                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-700">
+                                <span class="text-xs text-slate-400 font-medium block">Gross Annual Earnings Restored</span>
+                                <span id="calc-gross-earnings" class="text-2xl sm:text-3xl font-extrabold text-emerald-400">£4,992,000</span>
+                            </div>
+                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-700">
+                                <span class="text-xs text-slate-400 font-medium block">Productive Hours / Year</span>
+                                <span id="calc-hours" class="text-2xl sm:text-3xl font-extrabold text-nhs-light">384,000 hrs</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 5: REFERENCE LETTERS GRID & MODAL READER -->
+    <!-- ========================================================================= -->
+    <section id="endorsements" class="py-20 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-3 py-1 rounded-full">Public Endorsements & Reference Letters</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3 tracking-tight">Voices of Lived Experience & Practice</h2>
+                    <p class="text-slate-600 text-sm mt-1">Verified support from unpaid carers, NHS clinicians, and council social care leaders.</p>
+                </div>
+
+                <!-- CATEGORY FILTERS -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterLetters('all')" class="filter-btn active-filter bg-nhs-blue text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-all" data-filter="all">All Letters</button>
+                    <button onclick="filterLetters('carer')" class="filter-btn bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3.5 py-2 rounded-lg transition-all" data-filter="carer">Carers & Lived Exp.</button>
+                    <button onclick="filterLetters('nhs')" class="filter-btn bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3.5 py-2 rounded-lg transition-all" data-filter="nhs">NHS & Clinicians</button>
+                    <button onclick="filterLetters('council')" class="filter-btn bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3.5 py-2 rounded-lg transition-all" data-filter="council">Council & Partners</button>
+                </div>
+            </div>
+
+            <!-- SEARCH BAR -->
+            <div class="mb-8 max-w-md">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="search-letters-input" onkeyup="searchLetters()" placeholder="Search reference letters by name or keyword..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-nhs-blue/50 focus:border-nhs-blue">
+                </div>
+            </div>
+
+            <!-- DYNAMIC GRID OF REFERENCE CARDS -->
+            <div id="letters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Javascript populates reference letters -->
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 6: DUAL-MODE CO-PRODUCTION FORM ("ENDORSE OR IMPROVE") -->
+    <!-- ========================================================================= -->
+    <section id="co-produce-form" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold uppercase tracking-wider text-nhs-blue bg-nhs-blue/10 px-3 py-1 rounded-full">Co-Production Portal</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Endorse or Help Us Improve</h2>
+                <p class="text-slate-600 text-sm mt-2 max-w-xl mx-auto">
+                    Every contribution strengthens our National Care Service proposal. Sign to endorse the pilot or submit your suggestions for improvement.
+                </p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl shadow-lg overflow-hidden">
+                
+                <!-- TAB SWITCHER -->
+                <div class="flex border-b border-slate-200 bg-slate-100">
+                    <button onclick="switchFormTab('tab-endorse')" id="btn-form-endorse" class="form-tab-btn flex-1 py-4 text-center font-bold text-sm sm:text-base border-b-2 border-nhs-blue bg-white text-nhs-blue transition-all">
+                        <i class="fa-solid fa-file-signature mr-2"></i> Endorse Proposition
+                    </button>
+                    <button onclick="switchFormTab('tab-improve')" id="btn-form-improve" class="form-tab-btn flex-1 py-4 text-center font-bold text-sm sm:text-base border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">
+                        <i class="fa-solid fa-lightbulb mr-2"></i> Suggest Improvement
+                    </button>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                    
+                    <!-- TAB A FORM: ENDORSE -->
+                    <form id="form-endorse" onsubmit="handleEndorseSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Full Name *</label>
+                                <input type="text" required id="endorse-name" placeholder="e.g. Sarah Jenkins" class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-nhs-blue focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Role / Stakeholder Capacity *</label>
+                                <select required id="endorse-category" class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-nhs-blue focus:outline-none">
+                                    <option value="carer">Unpaid Carer / Person with Lived Experience</option>
+                                    <option value="nhs">NHS Practitioner / Healthcare Professional</option>
+                                    <option value="council">Local Authority / Social Care Staff</option>
+                                    <option value="other">Voluntary Sector / Citizen</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Title / Capacity Description</label>
+                                <input type="text" id="endorse-title" placeholder="e.g. Family Carer & Community Advocate" class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-nhs-blue focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Borough / Organisation</label>
+                                <input type="text" id="endorse-org" placeholder="e.g. Richmond upon Thames" class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-nhs-blue focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Endorsement Statement / Letter Quote *</label>
+                            <textarea required id="endorse-quote" rows="4" placeholder="Why do you support connecting NHS and Care around households?..." class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-nhs-blue focus:outline-none"></textarea>
+                        </div>
+
+                        <div class="space-y-3 bg-white p-4 rounded-xl border border-slate-200">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" required class="mt-1 w-4 h-4 text-nhs-blue rounded border-slate-300 focus:ring-nhs-blue">
+                                <span class="text-xs text-slate-600">I confirm my digital endorsement of the <em>Connecting the Dots</em> proposal submitted to the Casey Commission.</span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" checked id="endorse-public" class="mt-1 w-4 h-4 text-nhs-blue rounded border-slate-300 focus:ring-nhs-blue">
+                                <span class="text-xs text-slate-600">Display my name and statement publicly in the reference feed.</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-nhs-blue hover:bg-nhs-dark text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Submit Formal Endorsement</span>
+                        </button>
+                    </form>
+
+                    <!-- TAB B FORM: IMPROVE / SUGGESTION -->
+                    <form id="form-improve" onsubmit="handleImproveSubmit(event)" class="hidden space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Your Name *</label>
+                                <input type="text" required id="improve-name" placeholder="e.g. Dr. Marcus Vance" class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-teal-600 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Feedback Theme *</label>
+                                <select required id="improve-category" class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-teal-600 focus:outline-none">
+                                    <option value="Data Protection & Consent">Data Protection & Consent Protocol</option>
+                                    <option value="Carer Rights & Support">Carer Support & Rights Safeguards</option>
+                                    <option value="Hospital Discharge">Hospital Discharge Pathways</option>
+                                    <option value="Pilot Metrics">6-Month Pilot Design & Metrics</option>
+                                    <option value="Economic Model">Economic & Return Model</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-700 mb-2">Suggestion for Improvement *</label>
+                            <textarea required id="improve-text" rows="4" placeholder="Detail your specific recommendation or safeguard to improve this proposal..." class="w-full px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-teal-600 focus:outline-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Submit Improvement Suggestion</span>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8 pb-8 border-b border-slate-800">
+                <div class="md:col-span-6 space-y-3">
+                    <div class="flex items-center gap-2 text-white font-bold text-lg">
+                        <i class="fa-solid fa-diagram-project text-teal-400"></i>
+                        <span>Connecting the Dots</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400">
+                        Prepared by Aubrey Ghose, unpaid carer and Richmond & Wandsworth co-production contributor. Submitted to the Independent Commission on Adult Social Care (Casey Commission) and NHS Patient Entrepreneur Programme.
+                    </p>
+                </div>
+                <div class="md:col-span-3 space-y-2 text-xs">
+                    <h5 class="font-bold text-slate-200 uppercase tracking-wider">Proposal Context</h5>
+                    <p class="text-slate-400">Casey Commission Review</p>
+                    <p class="text-slate-400">NHS PEP Cohort 4</p>
+                    <p class="text-slate-400">Richmond & Wandsworth</p>
+                </div>
+                <div class="md:col-span-3 space-y-2 text-xs">
+                    <h5 class="font-bold text-slate-200 uppercase tracking-wider">Key Reference</h5>
+                    <p><a href="https://www.carersuk.org" target="_blank" class="hover:text-teal-400"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Carers UK Data</a></p>
+                    <p><a href="https://www.gov.uk" target="_blank" class="hover:text-teal-400"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> DHSC Activity Reports</a></p>
+                    <p><a href="https://www.cqc.org.uk" target="_blank" class="hover:text-teal-400"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> CQC State of Care</a></p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>© 2026 Connecting the Dots. Co-production framework.</p>
+                <p>Pilot First. Platform Second. Evidence Before Scale.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- REFERENCE LETTER READER MODAL -->
+    <div id="letter-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-slate-200 overflow-hidden relative my-8">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span id="modal-badge" class="bg-nhs-blue/10 text-nhs-blue text-xs font-bold px-2.5 py-0.5 rounded-full">NHS Professional</span>
+                        <span class="text-xs text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200"><i class="fa-solid fa-shield-check mr-1"></i> Verified Reference</span>
+                    </div>
+                    <h3 id="modal-author" class="text-xl font-bold text-slate-900">Dr. Helen Vance</h3>
+                    <p id="modal-role" class="text-xs text-slate-500 font-medium">Lead Community Nurse Specialist</p>
+                </div>
+                <div class="prose prose-slate text-sm leading-relaxed text-slate-700 space-y-4 max-h-[50vh] overflow-y-auto pr-2" id="modal-body">
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400">
+                    <span id="modal-date"><i class="fa-regular fa-calendar mr-1"></i> Submitted Oct 2026</span>
+                    <button onclick="closeModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg transition-colors">Close Reader</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <div class="text-xs">
+            <h6 class="font-bold text-white" id="toast-title">Submission Successful</h6>
+            <p class="text-slate-300" id="toast-message">Your endorsement has been added.</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CODE -->
+    <script>
+        // WHEEL DIAGRAM NODES DATA
+        const wheelNodes = {
+            'center': {
+                title: "Carer and Caree Hub",
+                subtitle: "The Consenting Relationship",
+                body: `<p>The heart of <em>Connecting the Dots</em>. Both individuals retain separate rights and legal identities, supported by one consent-based 360° household view.</p>`
+            },
+            0: {
+                title: "NHS (Primary, Secondary & Community)",
+                subtitle: "Health & Clinical Treatment",
+                body: `<p>Provides primary care (GPs, PCNs), acute hospital trusts, community health teams, and rehabilitation. Ensures medical decisions align with social care support.</p>`
+            },
+            1: {
+                title: "Housing",
+                subtitle: "Adaptations & Stable Homes",
+                body: `<p>Delivers home safety adaptations, equipment, and housing stability to prevent avoidable hospital readmissions.</p>`
+            },
+            2: {
+                title: "DWP (Department for Work & Pensions)",
+                subtitle: "Benefits & Employment Support",
+                body: `<p>Manages Carer's Allowance, Universal Credit, and employment retention support for unpaid carers wanting to return to work.</p>`
+            },
+            3: {
+                title: "Education",
+                subtitle: "Schools & Lifelong Learning",
+                body: `<p>Supports young carers in schools and colleges, while offering flexible adult learning opportunities.</p>`
+            },
+            4: {
+                title: "Employers",
+                subtitle: "Flexible Work & Retention",
+                body: `<p>Works with employers to implement flexible hours, carer leave policies, and smooth return-to-work transitions.</p>`
+            },
+            5: {
+                title: "Community & Voluntary Sector",
+                subtitle: "Peer Support & Local Networks",
+                body: `<p>Mobilizes voluntary groups, respite services, and carer peer networks in Richmond and Wandsworth.</p>`
+            },
+            6: {
+                title: "Legal",
+                subtitle: "Rights, Advocacy & Deputyship",
+                body: `<p>Protects carer rights, provides independent advocacy, and clarifies deputyship and power of attorney frameworks.</p>`
+            },
+            7: {
+                title: "Mental Health",
+                subtitle: "Emotional Wellbeing & Recovery",
+                body: `<p>Integrates mental health support for both carer and caree, maintaining emotional resilience through care changes.</p>`
+            },
+            8: {
+                title: "Adult Social Care",
+                subtitle: "Assessments & Care Packages",
+                body: `<p>Local council adult social care assessments, respite arrangements, and managed personal budgets.</p>`
+            },
+            9: {
+                title: "Local Government",
+                subtitle: "Council Services & Benefits",
+                body: `<p>Coordinates borough-wide public services, community grants, and council tax support for vulnerable households.</p>`
+            }
+        };
+
+        // SEED REFERENCE LETTERS DATA
+        let referenceLetters = [
+            {
+                id: 1,
+                name: "Aubrey Ghose",
+                role: "Unpaid Carer & Co-Production Contributor",
+                org: "Richmond & Wandsworth",
+                category: "carer",
+                verified: true,
+                date: "14 Oct 2026",
+                quote: "The recurring burden isn't a lack of effort by carers—it's the exhausting work of joining up support that arrives in separate pieces. Connecting NHS and local care around one plan gives households our lives back.",
+                fullLetter: `<p><strong>To the Casey Commission & NHS Patient Entrepreneur Programme,</strong></p><p>For over three years, I have cared for a family member while contributing to local co-production across Richmond and Wandsworth. The single greatest frustration is systemic friction between healthcare and social care.</p><p>Carers rebuild history from scratch for every agency. The <em>Connecting the Dots</em> proposal introduces a permissioned 360-degree view around the household. I strongly urge the Commission to endorse this 6-month demonstrator.</p><p><em>Aubrey Ghose</em></p>`
+            },
+            {
+                id: 2,
+                name: "Dr. Helen Vance",
+                role: "Lead Specialist Nurse",
+                org: "South West London ICB",
+                category: "nhs",
+                verified: true,
+                date: "18 Oct 2026",
+                quote: "49% of acute delayed discharges stem from social care transfer friction. Having a single permissioned household plan with named handover owners will significantly reduce readmissions.",
+                fullLetter: `<p><strong>Re: Support for 'Connecting the Dots' Pilot</strong></p><p>As a community nursing lead, I witness daily the impact of delayed hospital transfers. The <em>Connecting the Dots</em> operating model establishes visible accountability with named owners across partner boundaries.</p><p><em>Dr. Helen Vance, RGN, MSc</em></p>`
+            },
+            {
+                id: 3,
+                name: "Marcus Thorne",
+                role: "Principal Social Worker",
+                org: "Wandsworth Adult Social Care",
+                category: "council",
+                verified: true,
+                date: "02 Oct 2026",
+                quote: "This proposal respects local authority duties while breaking down departmental silos. The focus on closing the loop with contributors builds genuine trust.",
+                fullLetter: `<p><strong>Official Endorsement Statement</strong></p><p>What makes <em>Connecting the Dots</em> stand out is its focus on human-centric protocol over expensive IT overhauls. Wandsworth Adult Social Care welcomes co-hosting this demonstrator.</p><p><em>Marcus Thorne, LSW</em></p>`
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderLetters(referenceLetters);
+            updateEconomicCalc();
+        });
+
+        // WHEEL INTERACTION LOGIC
+        function highlightWheelNode(index) {
+            // Visual feedback
+        }
+
+        function selectWheelNode(key) {
+            const node = wheelNodes[key];
+            if (!node) return;
+
+            document.getElementById('wheel-detail-title').innerText = node.title;
+            document.getElementById('wheel-detail-subtitle').innerText = node.subtitle;
+            document.getElementById('wheel-detail-body').innerHTML = node.body;
+
+            // Highlight spoke line
+            document.querySelectorAll('.spoke-line').forEach(line => {
+                line.setAttribute('stroke', '#94a3b8');
+                line.setAttribute('stroke-width', '2');
+            });
+            if (key !== 'center') {
+                const activeSpoke = document.getElementById('spoke-' + key);
+                if (activeSpoke) {
+                    activeSpoke.setAttribute('stroke', '#0d9488');
+                    activeSpoke.setAttribute('stroke-width', '4');
+                }
+            }
+        }
+
+        // PATHWAY GRAPH INTERACTION LOGIC
+        function setGraphMode(mode) {
+            const groupFrag = document.getElementById('group-fragmented');
+            const groupNCS = document.getElementById('group-ncs-curve');
+
+            document.querySelectorAll('#pathway-graph button').forEach(btn => {
+                btn.classList.remove('bg-teal-600', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-400');
+            });
+
+            if (mode === 'both') {
+                groupFrag.style.opacity = '1';
+                groupNCS.style.opacity = '1';
+                document.getElementById('btn-graph-both').classList.add('bg-teal-600', 'text-white');
+            } else if (mode === 'fragmented') {
+                groupFrag.style.opacity = '1';
+                groupNCS.style.opacity = '0.15';
+                document.getElementById('btn-graph-fragmented').classList.add('bg-teal-600', 'text-white');
+            } else if (mode === 'connected') {
+                groupFrag.style.opacity = '0.15';
+                groupNCS.style.opacity = '1';
+                document.getElementById('btn-graph-connected').classList.add('bg-teal-600', 'text-white');
+            }
+        }
+
+        // TAB SWITCHERS
+        function switchStoryTab(tabId) {
+            document.querySelectorAll('.story-tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.story-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-nhs-blue', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('bg-white', 'text-nhs-blue', 'shadow-sm');
+            activeBtn.classList.remove('text-slate-600');
+        }
+
+        function switchFormTab(tabId) {
+            if (tabId === 'tab-endorse') {
+                document.getElementById('form-endorse').classList.remove('hidden');
+                document.getElementById('form-improve').classList.add('hidden');
+                document.getElementById('btn-form-endorse').classList.add('bg-white', 'text-nhs-blue', 'border-nhs-blue');
+                document.getElementById('btn-form-endorse').classList.remove('border-transparent', 'text-slate-500');
+                document.getElementById('btn-form-improve').classList.remove('bg-white', 'text-teal-600', 'border-teal-600');
+                document.getElementById('btn-form-improve').classList.add('border-transparent', 'text-slate-500');
+            } else {
+                document.getElementById('form-endorse').classList.add('hidden');
+                document.getElementById('form-improve').classList.remove('hidden');
+                document.getElementById('btn-form-improve').classList.add('bg-white', 'text-teal-600', 'border-teal-600');
+                document.getElementById('btn-form-improve').classList.remove('border-transparent', 'text-slate-500');
+                document.getElementById('btn-form-endorse').classList.remove('bg-white', 'text-nhs-blue', 'border-nhs-blue');
+                document.getElementById('btn-form-endorse').classList.add('border-transparent', 'text-slate-500');
+            }
+        }
+
+        // ECONOMIC CALCULATOR LOGIC
+        function updateEconomicCalc() {
+            const carers = parseInt(document.getElementById('carers-slider').value);
+            document.getElementById('slider-carers-val').innerText = carers.toLocaleString();
+
+            const grossPerCarer = 4992; // 8 hrs x £13 x 48 wks
+            const totalGross = carers * grossPerCarer;
+            const totalHours = carers * 8 * 48;
+
+            document.getElementById('calc-gross-earnings').innerText = '£' + totalGross.toLocaleString();
+            document.getElementById('calc-hours').innerText = totalHours.toLocaleString() + ' hrs';
+        }
+
+        // REFERENCE LETTERS LOGIC
+        function renderLetters(letters) {
+            const grid = document.getElementById('letters-grid');
+            grid.innerHTML = '';
+
+            if (letters.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 bg-white rounded-xl border border-slate-200 text-slate-500 text-sm">No reference letters match search criteria.</div>`;
+                return;
+            }
+
+            letters.forEach(letter => {
+                let badgeColor = "bg-emerald-100 text-emerald-800";
+                let badgeLabel = "Carer & Lived Exp.";
+
+                if (letter.category === "nhs") {
+                    badgeColor = "bg-nhs-blue/10 text-nhs-blue";
+                    badgeLabel = "NHS Clinical";
+                } else if (letter.category === "council") {
+                    badgeColor = "bg-teal-100 text-teal-800";
+                    badgeLabel = "Council Partner";
+                }
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${badgeColor}">${badgeLabel}</span>
+                            <span class="text-xs text-emerald-600 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>Verified</span>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic mb-6">"${letter.quote}"</p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">${letter.name}</h4>
+                            <p class="text-xs text-slate-500">${letter.role}</p>
+                            <p class="text-[11px] text-slate-400">${letter.org}</p>
+                        </div>
+                        <button onclick="openModal(${letter.id})" class="p-2.5 rounded-lg bg-slate-100 hover:bg-nhs-blue hover:text-white text-slate-600 transition-all text-xs font-semibold flex items-center gap-1.5">
+                            <span>Read</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterLetters(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-nhs-blue', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+            const activeBtn = document.querySelector(`[data-filter="${category}"]`);
+            if (activeBtn) activeBtn.classList.add('bg-nhs-blue', 'text-white');
+
+            if (category === 'all') {
+                renderLetters(referenceLetters);
+            } else {
+                renderLetters(referenceLetters.filter(l => l.category === category));
+            }
+        }
+
+        function searchLetters() {
+            const query = document.getElementById('search-letters-input').value.toLowerCase();
+            renderLetters(referenceLetters.filter(l => 
+                l.name.toLowerCase().includes(query) ||
+                l.quote.toLowerCase().includes(query) ||
+                l.role.toLowerCase().includes(query)
+            ));
+        }
+
+        function openModal(id) {
+            const letter = referenceLetters.find(l => l.id === id);
+            if (!letter) return;
+
+            document.getElementById('modal-author').innerText = letter.name;
+            document.getElementById('modal-role').innerText = `${letter.role} | ${letter.org}`;
+            document.getElementById('modal-body').innerHTML = letter.fullLetter;
+            document.getElementById('letter-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('letter-modal').classList.add('hidden');
+        }
+
+        // FORM SUBMISSIONS
+        function handleEndorseSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('endorse-name').value;
+            const category = document.getElementById('endorse-category').value;
+            const title = document.getElementById('endorse-title').value || "Endorser";
+            const org = document.getElementById('endorse-org').value || "UK Resident";
+            const quote = document.getElementById('endorse-quote').value;
+
+            const newLetter = {
+                id: Date.now(),
+                name: name,
+                role: title,
+                org: org,
+                category: category,
+                verified: true,
+                date: "Just now",
+                quote: quote,
+                fullLetter: `<p><strong>Public Endorsement Submitted to Casey Commission:</strong></p><p>"${quote}"</p><p><em>Signed digitally by ${name} (${title}, ${org})</em></p>`
+            };
+
+            referenceLetters.unshift(newLetter);
+            renderLetters(referenceLetters);
+
+            let badge = document.getElementById('endorse-count-badge');
+            badge.innerText = parseInt(badge.innerText) + 1;
+
+            document.getElementById('form-endorse').reset();
+            showToast("Endorsement Submitted!", "Your digital statement has been added to the public feed.");
+        }
+
+        function handleImproveSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('improve-name').value;
+            document.getElementById('form-improve').reset();
+            showToast("Suggestion Logged!", `Thank you ${name}. Your feedback has been recorded for co-production review.`);
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4000);
+        }
+    </script>
+</body>
+</html>
