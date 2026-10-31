@@ -99,6 +99,45 @@
       .secondary-tools{gap:16px;font-size:10px}
     }
     @media print{.secondary-tools{display:none}}
+  
+    .story{max-width:980px;margin:auto;padding:0 24px;color:var(--ink)}
+    .story section{padding:64px 0;border-bottom:1px solid var(--line)}
+    .story h1{font-size:clamp(38px,7vw,66px);line-height:1.06;letter-spacing:-.045em;max-width:780px;margin:14px 0 22px}
+    .story h2{font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.03em;margin:0 0 22px}
+    .story h3{font-size:20px;line-height:1.3;margin:0 0 12px}
+    .story p{font-size:17px;line-height:1.7;max-width:740px;color:#526177}
+    .story .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:750;color:#876079}
+    .story .lead{font-size:21px;max-width:700px}
+    .story .hero{padding-top:68px}
+    .story .quiet-link{color:#005eb8;text-underline-offset:4px;font-size:14px}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+    .story-card{background:white;padding:28px;border-radius:20px;border:1px solid var(--line)}
+    .story-card p{font-size:15px}.story-card blockquote{margin:20px 0;font-size:23px;line-height:1.45}
+    .story .source{font-size:12px;line-height:1.5;color:#657388}
+    .story .source a{text-underline-offset:3px}
+    .evidence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .evidence-grid .stat{display:block;font-size:34px;color:#005eb8;line-height:1.15;margin-bottom:14px;font-weight:750}
+    .evidence-grid p{font-size:15px}
+    .connection-chart{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:24px 0}
+    .connection-chart svg{display:block;width:100%;height:auto}
+    .connection-chart figcaption{font-size:12px;color:#657388;margin-top:14px;line-height:1.6}
+    .story .steps{padding-left:22px;color:#526177;font-size:16px;line-height:1.7}
+    .story .steps li{padding:6px 0}
+    .story .pilot-summary{background:#fcedf6;border-color:#f1cce2}
+    .story .story-button{display:inline-block;border:0;border-radius:999px;padding:12px 20px;background:#005eb8;color:#fff;font-weight:700;text-decoration:none;margin:10px 8px 0 0}
+    .story .story-button.green{background:#137b50}
+    .change-entry{padding:20px 0;border-top:1px solid var(--line)}
+    .change-entry time{font-size:12px;color:#876079}
+    .story .change-entry p{font-size:15px;margin-bottom:0}
+    .proposal-heading{max-width:900px;margin:40px auto 20px;padding:0 8px}
+    .proposal-heading h2{font-size:28px;margin-bottom:8px}
+    .proposal-heading p{color:#657388}
+    @media(max-width:640px){
+      .story{padding:0 20px}.story section{padding:42px 0}.story .hero{padding-top:44px}
+      .story-grid,.evidence-grid{grid-template-columns:1fr;gap:16px}
+      .story-card{padding:23px}.connection-chart{padding:12px;margin:20px 0}
+      .story p{font-size:16px}.story .lead{font-size:19px}
+    }
   </style>
 </head>
 <body>
@@ -115,13 +154,106 @@
         <button class="navbtn action-fuchsia" type="button" data-dialog="pilot">The pilot</button>
       </nav>
       <nav class="secondary-tools" aria-label="Proposal and references">
-        <a href="#top">Read the proposal</a>
+        <a href="#full-proposal">Read the proposal</a>
         <button type="button" data-dialog="letters">Referrals</button>
         <a id="download" href="./Connecting_the_Dots_Proposal_-Final.pdf" download>Download PDF</a>
       </nav>
     </div>
   </header>
-  <main class="reader" id="top">
+
+  <div class="story" id="top">
+    <section class="hero" aria-labelledby="storyTitle">
+      <p class="eyebrow">Connecting the Dots · A co-production tool</p>
+      <h1 id="storyTitle">People’s lives are connected.<br>Their support should be too.</h1>
+      <p class="lead">What if the services around a person and their carer worked together—so support arrived before progress broke down?</p>
+      <p>We’re developing a practical pilot with the people who know the gaps: those receiving care, unpaid carers and the people delivering support.</p>
+      <a class="quiet-link" href="#full-proposal">Read the full proposal ↓</a>
+    </section>
+
+    <section aria-labelledby="problemHeading">
+      <p class="eyebrow">01 · The problem we’re solving</p>
+      <h2 id="problemHeading">Families are carrying the connections.</h2>
+      <div class="story-grid">
+        <div><p>Housing, benefits, health, social care, learning and employment can each shape someone’s recovery and independence. When decisions and handovers happen separately, people and families are left to join them up.</p>
+        <p>Chasing decisions, repeating information and repairing missed handovers takes time and energy away from caring—and from both people’s own lives. A problem left unresolved in one service can become an emergency for another.</p>
+        <p class="source">This proposal grew from Aubrey Ghose’s experience as a carer and his participation in local co-production over the past few years.</p></div>
+        <article class="story-card"><div class="feedback-byline"><strong>Conor Ghose</strong><span>31 October 2026</span></div>
+        <blockquote>“We’d reached that point because, when the different services worked together, we were able to make real progress.”</blockquote>
+        <p>Conor describes regaining independence, seeing friends and attending job interviews—and how progress can unravel when coordination breaks down.</p>
+        <button class="story-button green" type="button" data-dialog="feedback">Read Conor’s story</button></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="evidenceHeading">
+      <p class="eyebrow">02 · The evidence</p><h2 id="evidenceHeading">A shared experience. A recognised problem.</h2>
+      <div class="evidence-grid">
+        <article class="story-card"><span class="stat">6–220 hours</span><h3>The hidden work</h3><p>Indirect care tasks recorded over 12 weeks by participants in a diary study of 16 carers. Poor system design created or intensified a substantial share of that work.</p><p class="source">An in-depth study, not a national estimate.<br><a href="https://www.jrf.org.uk/care/moving-in-circles-supporting-carers-navigating-the-care-system" target="_blank" rel="noopener">Joseph Rowntree Foundation ↗</a></p></article>
+        <article class="story-card"><span class="stat">51%</span><h3>Work and care already overlap</h3><p>Of adult informal carers were employed in 2023–24. The aim is to protect choices: staying in work, returning when possible, or pursuing learning and independence.</p><p class="source"><a href="https://www.gov.uk/government/publications/carers-employment-digital-discovery-and-care-choices-reports/supporting-potential-carers-to-make-informed-decisions-about-work-and-care-findings-from-the-carers-employment-digital-discovery-and-the-care-choice" target="_blank" rel="noopener">Government research, 2026 ↗</a></p></article>
+        <article class="story-card"><span class="stat">Joined-up care</span><h3>The need is acknowledged</h3><p>Government’s integration white paper recognises that people too often have to force services to work together. Carers UK identifies information sharing, integrated services and investment as ways to prevent difficulties.</p><p class="source"><a href="https://www.gov.uk/government/publications/health-and-social-care-integration-joining-up-care-for-people-places-and-populations/health-and-social-care-integration-joining-up-care-for-people-places-and-populations" target="_blank" rel="noopener">Integration white paper ↗</a> · <a href="https://www.carersuk.org/press-releases/carers-uk-response-cqc-s-annual-assessment-of-the-state-of-health-and-social-care" target="_blank" rel="noopener">Helen Walker, Carers UK, 2025 ↗</a></p></article>
+      </div>
+      <p class="source">These sources support the case for testing coordination. They do not constitute endorsement of Connecting the Dots.</p>
+    </section>
+
+    <section aria-labelledby="ideaHeading">
+      <p class="eyebrow">03 · The idea</p><h2 id="ideaHeading">Build on the NHS. Connect the support around it.</h2>
+      <p>The blue NHS line is our baseline. The question is how the wider care ecosystem can connect around it, with a shared understanding of what matters to the person and their carer.</p>
+      <div class="story-grid">
+        <figure class="connection-chart"><h3>When the dots are disconnected</h3><svg viewBox="0 0 700 330" role="img" aria-label="Separate services, with the person and carer left to bridge the gaps">
+<path d="M90 97 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/><path d="M330 87 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/><path d="M570 97 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/><path d="M90 217 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/><path d="M570 217 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/>
+<circle cx="110" cy="65" r="12" fill="#a9bab4"/><text x="110" y="97" text-anchor="middle" fill="#33415a" font-size="17">Housing</text><circle cx="350" cy="55" r="12" fill="#a9bab4"/><text x="350" y="87" text-anchor="middle" fill="#33415a" font-size="17">Benefits</text><circle cx="590" cy="65" r="12" fill="#a9bab4"/><text x="590" y="97" text-anchor="middle" fill="#33415a" font-size="17">Social care</text><circle cx="110" cy="185" r="12" fill="#a9bab4"/><text x="110" y="217" text-anchor="middle" fill="#33415a" font-size="17">Learning</text><circle cx="590" cy="185" r="12" fill="#a9bab4"/><text x="590" y="217" text-anchor="middle" fill="#33415a" font-size="17">Employment</text>
+<rect x="234" y="121" width="232" height="57" rx="28" fill="#f1f4f7" stroke="#cbd5df"/><text x="350" y="156" text-anchor="middle" fill="#14233b" font-size="18" font-weight="650">Person + carer</text>
+<line x1="40" y1="275" x2="660" y2="275" stroke="#005eb8" stroke-width="7"/><text x="350" y="312" text-anchor="middle" fill="#005eb8" font-size="18" font-weight="700">NHS — the blue baseline</text></svg><figcaption>Separate decisions and missing handovers leave families carrying the coordination.</figcaption></figure>
+        <figure class="connection-chart"><h3>When we connect the dots</h3><svg viewBox="0 0 700 330" role="img" aria-label="Services connected around the person and carer, alongside the NHS">
+<line x1="350" y1="150" x2="110" y2="65" stroke="#c02683" stroke-width="3"/><line x1="350" y1="150" x2="350" y2="55" stroke="#c02683" stroke-width="3"/><line x1="350" y1="150" x2="590" y2="65" stroke="#c02683" stroke-width="3"/><line x1="350" y1="150" x2="110" y2="185" stroke="#c02683" stroke-width="3"/><line x1="350" y1="150" x2="590" y2="185" stroke="#c02683" stroke-width="3"/><line x1="350" y1="175" x2="350" y2="275" stroke="#c02683" stroke-width="3"/>
+<circle cx="110" cy="65" r="12" fill="#13865a"/><text x="110" y="97" text-anchor="middle" fill="#33415a" font-size="17">Housing</text><circle cx="350" cy="55" r="12" fill="#13865a"/><text x="350" y="87" text-anchor="middle" fill="#33415a" font-size="17">Benefits</text><circle cx="590" cy="65" r="12" fill="#13865a"/><text x="590" y="97" text-anchor="middle" fill="#33415a" font-size="17">Social care</text><circle cx="110" cy="185" r="12" fill="#13865a"/><text x="110" y="217" text-anchor="middle" fill="#33415a" font-size="17">Learning</text><circle cx="590" cy="185" r="12" fill="#13865a"/><text x="590" y="217" text-anchor="middle" fill="#33415a" font-size="17">Employment</text>
+<rect x="234" y="121" width="232" height="57" rx="28" fill="#fcebf5" stroke="#c02683"/><text x="350" y="156" text-anchor="middle" fill="#14233b" font-size="18" font-weight="650">Person + carer</text>
+<line x1="40" y1="275" x2="660" y2="275" stroke="#005eb8" stroke-width="7"/><text x="350" y="312" text-anchor="middle" fill="#005eb8" font-size="18" font-weight="700">NHS — the blue baseline</text></svg><figcaption>Agreed information sharing, named responsibilities and timely action bring support together.</figcaption></figure>
+      </div>
+      <p>Each person retains their own voice and choices. Participating services would agree what information can lawfully be shared, for what purpose, and who is responsible for acting on it.</p>
+      <p><strong>Permission from people. Responsibility from services.</strong></p>
+    </section>
+
+    <section aria-labelledby="progressHeading">
+      <p class="eyebrow">04 · What we want to test</p><h2 id="progressHeading">Could better connections change the trajectory?</h2>
+      <p>Less time repairing the system could mean more time for recovery, relationships, learning and work. The fuchsia curve illustrates that possibility; it is not a forecast or a measured result.</p>
+      <figure class="connection-chart">
+        <svg viewBox="0 0 800 340" role="img" aria-label="Illustrative hypothesis: opportunities and independence may improve over time as support becomes coordinated. No numerical forecast.">
+          <text x="34" y="28" fill="#861457" font-size="16" font-weight="700">ILLUSTRATIVE — TO BE TESTED</text>
+          <line x1="55" y1="275" x2="755" y2="275" stroke="#005eb8" stroke-width="6"/>
+          <text x="58" y="305" fill="#005eb8" font-size="16">NHS baseline</text><text x="755" y="328" text-anchor="end" fill="#657388" font-size="15">Time →</text>
+          <path d="M65 253 C180 253 240 225 330 197 S510 140 580 100 S680 65 735 49" fill="none" stroke="#b91c7a" stroke-width="6" stroke-dasharray="10 7"/>
+          <g fill="#b91c7a"><circle cx="140" cy="246" r="7"/><circle cx="330" cy="197" r="7"/><circle cx="530" cy="127" r="7"/><circle cx="714" cy="55" r="7"/></g>
+          <g fill="#33415a" font-size="16"><text x="95" y="218">Support arrives</text><text x="250" y="169">Handovers succeed</text><text x="445" y="98">Learning or training</text><text x="610" y="33">Work, if appropriate</text></g>
+        </svg>
+        <figcaption>Possible pathways, not a required sequence. Success also includes stability, choice and independence for people for whom paid work is not appropriate.</figcaption>
+      </figure>
+      <div class="story-grid">
+        <div><h3>Two people. Distinct ambitions.</h3><p>A carer might retain four days of paid work while the person they support enters education. Both might return to part-time work. Or the gain might be safer, more independent daily life.</p></div>
+        <div><h3>Measure the costs separately</h3><p>Compare the cost of coordination and support with changes in avoidable service use and public revenue. Track household earnings and wellbeing separately. National savings remain a question for evidence, not a promise.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="testHeading">
+      <p class="eyebrow">05 · A practical first test</p><h2 id="testHeading">Five boroughs. One hundred family partnerships. Six months.</h2>
+      <div class="story-grid">
+        <div class="story-card pilot-summary"><h3>Start small. Learn together.</h3><p>The proposed pilot involves 20 family partnerships in each borough, using existing services and an agreed coordination process.</p><ol class="steps"><li>Agree each person’s goals and information-sharing choices.</li><li>Build a shared picture and name who coordinates support.</li><li>Act on delays and missed handovers before problems escalate.</li><li>Compare outcomes and costs with a suitable baseline or comparison group.</li></ol></div>
+        <div><h3>What would count as progress?</h3><p>Less time chasing services. More successful handovers. Earlier support. Sustained independence. Progress towards learning, training or work where wanted and appropriate.</p><p>AI could eventually help identify emerging patterns. First, test the basics: useful information, clear responsibility and action. Predictive claims would require separate validation.</p><p>A positive result would support a larger test. Wider use would depend on evidence across different people and places.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="shapeHeading">
+      <p class="eyebrow">06 · Co-production in action</p><h2 id="shapeHeading">Help shape what happens next.</h2>
+      <p>Where do connections break down? What would help services act together sooner? What would you change about this pilot?</p>
+      <button class="story-button" type="button" data-dialog="comments">Have your say</button>
+      <button class="story-button green" type="button" data-dialog="feedback">Read your voices</button>
+      <p class="source">Contributions are reviewed before publication and shared only with permission. This is a proposal and discussion space; submitting a story does not trigger individual care or benefits support.</p>
+      <h3 style="margin-top:32px">What we heard → What we changed</h3>
+      <div class="change-entry"><time datetime="2026-10-31">31 October 2026</time><p><strong>Make contributors visible.</strong> Names and dates now appear above each contribution, so readers know whose experience they are reading.</p></div>
+      <div class="change-entry"><time datetime="2026-10-31">31 October 2026</time><p><strong>Lead with the problem and the people.</strong> This opening now brings lived experience and evidence before the pilot detail. The full proposal remains below.</p></div>
+    </section>
+  </div>
+  <main class="reader" id="full-proposal">
+    <div class="proposal-heading"><h2>The full proposal</h2><p>Read the complete document in its original page order.</p></div>
     <div class="reader-meta"><p>The complete proposal · Scroll to read</p><p id="counter" class="count" aria-live="polite">Opening document…</p></div>
     <section id="pages" aria-label="Connecting the Dots proposal, all pages in original order">
       <div class="sheet" id="firstPage"><div class="placeholder">Opening the proposal…</div></div>
