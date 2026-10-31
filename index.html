@@ -77,6 +77,28 @@
     @media(max-width:365px){.identity-sub{display:none}.identity-title{font-size:11px}.navbtn{font-size:10px;padding:7px 5px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
     @media print{.topbar,.reader-meta,.status,.endnote,footer{display:none!important}.reader{padding:0}.sheet{break-after:page;box-shadow:none;border:0;margin:0;max-width:none}#pages{gap:0}}
+      .topbar{background:#fff}
+    .topbar-inner{flex-direction:column;gap:12px;padding:16px 16px 10px}
+    .identity{justify-content:center;width:auto}
+    .identity .mark{width:54px;height:36px;display:block}
+    .identity-title{font-size:20px}.identity-sub{font-size:12px}
+    .tools{display:flex;justify-content:center;gap:10px;width:100%;flex-wrap:nowrap}
+    .tools .navbtn{border:0;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:700;color:#fff;min-height:44px}
+    .tools .action-blue{background:#005eb8}.tools .action-green{background:#137b50}.tools .action-fuchsia{background:#b91c7a}
+    .tools .navbtn:hover{filter:brightness(.92)}
+    .secondary-tools{display:flex;justify-content:center;gap:18px;font-size:11px;color:#657388}
+    .secondary-tools a,.secondary-tools button{background:none;border:0;padding:3px 0;color:inherit;text-decoration:none}
+    .secondary-tools a:hover,.secondary-tools button:hover{text-decoration:underline}
+    .pilot-facts{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+    .pilot-facts span{background:#fcebf5;color:#861457;padding:8px 12px;border-radius:12px;font-weight:650}
+    @media(max-width:740px){
+      .topbar-inner{gap:10px;padding:12px 10px 8px}
+      .identity-title{font-size:17px}.identity-sub{font-size:11px}
+      .identity .mark{width:46px;height:31px}
+      .tools{gap:7px}.tools .navbtn{padding:10px 12px;font-size:12px;flex:1;max-width:160px}
+      .secondary-tools{gap:16px;font-size:10px}
+    }
+    @media print{.secondary-tools{display:none}}
   </style>
 </head>
 <body>
@@ -84,15 +106,18 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="identity" href="#top" aria-label="Connecting the Dots, return to the cover">
-        <span class="mark" aria-hidden="true"><i></i><i></i></span>
+        <svg class="mark" viewBox="0 0 64 42" aria-hidden="true"><defs><clipPath id="dotOverlap"><circle cx="23" cy="21" r="18"/></clipPath></defs><circle cx="23" cy="21" r="18" fill="#e8f2fb" stroke="#005eb8" stroke-width="3"/><circle cx="41" cy="21" r="18" fill="#e8f7ef" stroke="#13865a" stroke-width="3"/><circle cx="41" cy="21" r="18" fill="#c02683" clip-path="url(#dotOverlap)"/><circle cx="23" cy="21" r="18" fill="none" stroke="#005eb8" stroke-width="3"/><circle cx="41" cy="21" r="18" fill="none" stroke="#13865a" stroke-width="3"/></svg>
         <span><span class="identity-title" style="display:block">Connecting the Dots</span><span class="identity-sub" style="display:block">The Care Collective</span></span>
       </a>
       <nav class="tools" aria-label="Website navigation">
-        <a class="navbtn" href="#top">Proposal</a>
-        <button class="navbtn" type="button" data-dialog="letters">Referrals</button>
-        <button class="navbtn" type="button" data-dialog="comments">Support or comment</button>
-        <button class="navbtn primary" type="button" data-dialog="feedback">See feedback</button>
-        <a class="navbtn primary download" id="download" href="./Connecting_the_Dots_Proposal_-Final.pdf" download>Download PDF</a>
+        <button class="navbtn action-blue" type="button" data-dialog="comments">Have your say</button>
+        <button class="navbtn action-green" type="button" data-dialog="feedback">Your voices</button>
+        <button class="navbtn action-fuchsia" type="button" data-dialog="pilot">The pilot</button>
+      </nav>
+      <nav class="secondary-tools" aria-label="Proposal and references">
+        <a href="#top">Read the proposal</a>
+        <button type="button" data-dialog="letters">Referrals</button>
+        <a id="download" href="./Connecting_the_Dots_Proposal_-Final.pdf" download>Download PDF</a>
       </nav>
     </div>
   </header>
@@ -114,7 +139,7 @@
     </div>
   </dialog>
   <dialog id="comments" aria-labelledby="commentsTitle">
-    <div class="panel"><div class="panel-head"><h2 id="commentsTitle">Support or comment</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
+    <div class="panel"><div class="panel-head"><h2 id="commentsTitle">Have your say</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
       <p>Support the proposal, offer evidence, share experience, or suggest how it can be stronger.</p>
       <p class="fine">For now, comments can be suggested through the project’s GitHub issue tracker (a GitHub login is required). A public, moderated submission form can be connected as the next launch step.</p>
       <a class="link" href="https://github.com/AubO07/thecarecollective/issues/new?title=Connecting%20the%20Dots%20%E2%80%94%20comment%20or%20idea" target="_blank" rel="noopener noreferrer">Offer a comment via GitHub</a>
@@ -122,7 +147,7 @@
   </dialog>
 
   <dialog id="feedback" aria-labelledby="feedbackTitle">
-    <div class="panel"><div class="panel-head"><h2 id="feedbackTitle">Feedback from contributors</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
+    <div class="panel"><div class="panel-head"><h2 id="feedbackTitle">Your voices</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
       <p>Published contributions are moderated and shared with the contributor’s permission. Contact details are never displayed.</p>
       <article class="feedback-item">
         <div class="feedback-byline"><strong>Aubrey Ghose</strong><span>31 October 2026</span></div>
@@ -135,7 +160,21 @@
         <blockquote>My dad and I have experienced both the best and the worst of our health and care system.<br><br>We’ve seen what can happen when people work together, communicate properly and help someone move forward with their life.<br><br>Last year  when things were working well and thanks in large part to Richmond Housings efforts, I was independent, going out most days, seeing friends again, meeting people and making plans for the future.<br><br>I’d had two job interviews and was looking forward to returning to work. And to contributing further with NHS and University pilots for speach and Occupational Therapy’s<br><br>And my dad was doing the same.<br><br>He’d developed The Care Collective, a website and business idea he was preparing to launch, and we were both looking forward to getting on with our lives again.<br><br>We’d reached that point because, when the different services worked together, we were able to make real progress.<br><br>But we’ve also experienced what happens when that coordination breaks down.<br><br>Progress that has taken months or years to achieve can be lost surprisingly quickly. Things that were going well can suddenly become complicated, and people find themselves having to fight to recover opportunities they’d already worked hard to regain.<br><br>What I find difficult to understand is why the different organisations involved in someone’s life can’t simply communicate better with one another.<br><br>It seems such an obvious thing to do.<br><br>My hope is that Connecting the Dots can test whether a more joined-up approach actually delivers better outcomes for people.<br><br>Not by creating another complicated system, but by making the organisations we already have work together more effectively.<br><br>And by recognising that behind every case number, address or postcode are real people, with their own lives, ambitions, relationships and futures.<br><br>A carer and the person receiving care are two individuals. Both deserve to be heard, both deserve independence, and both deserve the opportunity to get on with their lives.<br><br>We’ve experienced what happens when the system works well. We know the difference it can make.<br><br>I hope Connecting the Dots can help make that experience something other people can rely on, rather than something that depends on everything happening to fall into place.<br><br>If what we’ve been through can help others avoid similar difficulties and achieve better outcomes, then something positive will have come from some very difficult times.</blockquote>
 
       </article>
-      <p class="fine">Have something to add? Close this panel and choose <strong>Support or comment</strong>.</p>
+      <p class="fine">Have something to add? Close this panel and choose <strong>Have your say</strong>.</p>
+    </div>
+  </dialog>
+
+  <dialog id="pilot" aria-labelledby="pilotTitle">
+    <div class="panel">
+      <div class="panel-head"><h2 id="pilotTitle">The pilot</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
+      <p>What happens when we connect the dots? We propose testing whether better coordination between existing services helps carers and the people they care for move forward with their lives.</p>
+      <div class="pilot-facts"><span>5 boroughs</span><span>100 family partnerships</span><span>6 months</span></div>
+      <p>The proposed pilot involves 20 family partnerships in each borough. It would track progress towards learning, training or work, the time taken to access support, cross-agency handovers, and costs compared with the current approach.</p>
+      <h3>Shaped with you</h3>
+      <p>Blue and green meet in the fuchsia overlap: people, services and ideas connecting. Your experiences, questions and suggestions will help us refine the working principles and the pilot.</p>
+      <h3>What we heard → What we changed</h3>
+      <p>As the proposal develops, we will record specific feedback and the changes it informs here, so contributors can see how their voices shape the work.</p>
+      <p class="fine">This is a proposed pilot. Read the full proposal below for the detail, and choose Have your say to help shape it.</p>
     </div>
   </dialog>
 
@@ -268,7 +307,7 @@
   form.style.cssText = 'display:grid;gap:14px';
 
   form.innerHTML = [
-    '<p>Your contribution is sent privately for review. If you give permission below, it may then appear under <strong>See feedback</strong>. No GitHub account is required.</p>',
+    '<p>Your contribution is sent privately for review. If you give permission below, it may then appear under <strong>Your voices</strong>. No GitHub account is required.</p>',
     '<input type="hidden" name="_subject" value="Connecting the Dots - New contribution">',
     '<input type="text" name="_honey" style="display:none">',
     '<label>Your name<input name="name" required style="display:block;width:100%;padding:12px"></label>',
