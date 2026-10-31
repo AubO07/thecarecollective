@@ -58,6 +58,9 @@
     .reference-item h3{font-size:18px;line-height:1.2;margin:8px 0 3px}
     .panel .reference-role{font-size:12px;color:#52627a;margin:0}
     .panel .reference-summary{font-size:13px;margin:13px 0 6px}
+    .feedback-item{padding:19px 18px;background:#f6f9fc;border:1px solid var(--line);border-radius:14px;margin:18px 0}
+    .feedback-item blockquote{margin:0;color:#33415a;font-size:14px;line-height:1.65}
+    .feedback-byline{display:flex;justify-content:space-between;gap:12px;margin-top:14px;color:#657388;font-size:11px}
     .fallback{max-width:920px;margin:16px auto;padding:14px 20px;border:1px solid var(--line);background:#fff;display:none}
     @media(max-width:740px){
       .topbar-inner{padding:9px 11px;min-height:58px;gap:4px}
@@ -65,7 +68,7 @@
       .identity-title{font-size:12px}.identity-sub{font-size:9px}
       .topbar-inner{flex-wrap:wrap;justify-content:center;row-gap:0}
       .identity{width:100%;justify-content:center;padding:2px 0 0}
-      .tools{width:100%;justify-content:center;gap:10px}.navbtn{padding:5px 6px;font-size:11px}
+      .tools{width:100%;justify-content:center;gap:5px;flex-wrap:wrap}.navbtn{padding:5px 6px;font-size:11px}
       .navbtn.download{display:none}
       .reader{padding:10px 7px 46px}
       .reader-meta{padding:0 6px;font-size:11px;margin-bottom:10px}
@@ -86,8 +89,9 @@
       </a>
       <nav class="tools" aria-label="Website navigation">
         <a class="navbtn" href="#top">Proposal</a>
-        <button class="navbtn" type="button" data-dialog="letters">Read Referrals</button>
-        <button class="navbtn" type="button" data-dialog="comments">Comments</button>
+        <button class="navbtn" type="button" data-dialog="letters">Referrals</button>
+        <button class="navbtn" type="button" data-dialog="comments">Support or comment</button>
+        <button class="navbtn primary" type="button" data-dialog="feedback">See feedback</button>
         <a class="navbtn primary download" id="download" href="./Connecting_the_Dots_Proposal_-Final.pdf" download>Download PDF</a>
       </nav>
     </div>
@@ -110,10 +114,21 @@
     </div>
   </dialog>
   <dialog id="comments" aria-labelledby="commentsTitle">
-    <div class="panel"><div class="panel-head"><h2 id="commentsTitle">Comments &amp; ideas</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
-      <p>Co-production means inviting informed criticism as well as support. We welcome evidence, challenges and proposals for making this pilot stronger.</p>
+    <div class="panel"><div class="panel-head"><h2 id="commentsTitle">Support or comment</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
+      <p>Support the proposal, offer evidence, share experience, or suggest how it can be stronger.</p>
       <p class="fine">For now, comments can be suggested through the project’s GitHub issue tracker (a GitHub login is required). A public, moderated submission form can be connected as the next launch step.</p>
       <a class="link" href="https://github.com/AubO07/thecarecollective/issues/new?title=Connecting%20the%20Dots%20%E2%80%94%20comment%20or%20idea" target="_blank" rel="noopener noreferrer">Offer a comment via GitHub</a>
+    </div>
+  </dialog>
+
+  <dialog id="feedback" aria-labelledby="feedbackTitle">
+    <div class="panel"><div class="panel-head"><h2 id="feedbackTitle">Feedback from contributors</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
+      <p>Published contributions are moderated and shared with the contributor’s permission. Contact details are never displayed.</p>
+      <article class="feedback-item">
+        <blockquote>“We must enable government and public agencies to share information safely and responsibly around an individual’s needs. Better coordination would improve outcomes, reduce the administrative burden on families, and help carers and the people they care for return to learning, training or work sooner.<br><br>That is not only humane; it is part of how we make an emerging National Care Service affordable and effective—working alongside an NHS that can share relevant information across its network, rather than leaving people and families to join the dots themselves.”</blockquote>
+        <div class="feedback-byline"><strong>Aubrey Ghose</strong><span>31 October 2026</span></div>
+      </article>
+      <p class="fine">Have something to add? Close this panel and choose <strong>Support or comment</strong>.</p>
     </div>
   </dialog>
 
@@ -246,15 +261,16 @@
   form.style.cssText = 'display:grid;gap:14px';
 
   form.innerHTML = [
-    '<p>Share your ideas, experiences or letters of support. No GitHub account required.</p>',
+    '<p>Your contribution is sent privately for review. If you give permission below, it may then appear under <strong>See feedback</strong>. No GitHub account is required.</p>',
     '<input type="hidden" name="_subject" value="Connecting the Dots - New contribution">',
     '<input type="text" name="_honey" style="display:none">',
     '<label>Your name<input name="name" required style="display:block;width:100%;padding:12px"></label>',
     '<label>Your email<input type="email" name="email" required style="display:block;width:100%;padding:12px"></label>',
+    '<label>How would you like to contribute?<select name="contribution_type" required style="display:block;width:100%;padding:12px"><option value="">Choose one</option><option>Support the proposal</option><option>Offer a comment or idea</option><option>Share evidence or experience</option><option>Offer a letter of support</option></select></label>',
     '<label>Your contribution<textarea name="message" rows="6" required style="display:block;width:100%;padding:12px"></textarea></label>',
-    '<label><input type="checkbox" name="permission_to_publish" value="Yes"> I give permission for my contribution to be published after review.</label>',
-    '<button type="submit" style="padding:14px;background:#1673b8;color:white;border:0;border-radius:6px">Send contribution</button>',
-    '<small>Sent privately for review. Nothing is published automatically.</small>'
+    '<label><input type="checkbox" name="permission_to_publish" value="Yes"> Yes, I’m happy for my name and contribution to be published on this website after review. My email address will not be published.</label>',
+    '<button type="submit" style="padding:14px;background:#1673b8;color:white;border:0;border-radius:6px">Send for review</button>',
+    '<small>Leave the checkbox unticked to keep your contribution private. Nothing is published automatically.</small>'
   ].join('');
 
   panel.appendChild(form);
