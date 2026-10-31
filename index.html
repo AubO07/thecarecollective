@@ -161,6 +161,27 @@
       .story p,.story .lead,.story-card p,.evidence-grid p,.story .steps,.story .change-entry p{font-size:16px}
       .story .source,.story .eyebrow{font-size:12px}
     }
+
+    /* Centred brand signature and explanatory opening diagram. */
+    .topbar .identity{flex-direction:column;gap:5px;text-align:center;padding:0}
+    .topbar .identity .mark{width:58px;height:38px}
+    .topbar .identity-title{font-size:30px;font-weight:700;line-height:1.15}
+    .topbar .identity-sub{font-size:12px;margin-top:4px}
+    .story .hero{padding-top:32px}
+    .service-dots{width:100%;max-width:780px;margin:0 0 32px}
+    .service-dots svg{display:block;width:100%;height:auto}
+    .service-dots figcaption{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;font-size:16px;line-height:1.4;color:var(--ink);margin-top:12px}
+    @media(max-width:740px){
+      .topbar-inner{gap:10px;padding-top:10px}
+      .topbar .identity .mark{width:50px;height:33px}
+      .topbar .identity-title{font-size:26px}
+      .topbar .identity-sub{font-size:11px}
+    }
+    @media(max-width:640px){
+      .story .hero{padding-top:28px}
+      .service-dots{margin-bottom:26px}
+      .service-dots figcaption{font-size:13px;gap:8px;margin-top:8px}
+    }
   </style>
 </head>
 <body>
@@ -186,7 +207,20 @@
 
   <div class="story" id="top">
     <section class="hero" aria-labelledby="storyTitle">
-      <p class="eyebrow">Connecting the Dots · A co-production tool</p>
+      <figure class="service-dots" aria-labelledby="serviceDotsCaption">
+        <svg viewBox="0 0 640 400" role="img" aria-labelledby="serviceDotsTitle">
+          <title id="serviceDotsTitle">Connecting the National Health Service and National Care Service</title>
+          <defs><clipPath id="serviceOverlap"><circle cx="220" cy="200" r="190"/></clipPath></defs>
+          <circle cx="220" cy="200" r="190" fill="#49a1f8"/>
+          <circle cx="420" cy="200" r="190" fill="#83e1c2"/>
+          <circle cx="420" cy="200" r="190" fill="#e437a4" clip-path="url(#serviceOverlap)"/>
+          <g fill="#fff" text-anchor="middle" font-size="58" font-weight="700">
+            <text x="175" y="220">NHS</text>
+            <text x="465" y="220">NCS</text>
+          </g>
+        </svg>
+        <figcaption id="serviceDotsCaption"><span>National Health Service</span><span>National Care Service</span></figcaption>
+      </figure>
       <h1 id="storyTitle">People’s lives are connected.<br>Their support should be too.</h1>
       <p class="lead">What if the services around a person and their carer worked together—so support arrived before progress broke down?</p>
       <p>We’re developing a practical pilot with the people who know the gaps: those receiving care, unpaid carers and the people delivering support.</p>
