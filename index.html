@@ -8,6 +8,9 @@
   <meta property="og:title" content="Connecting the Dots | The Care Collective">
   <meta property="og:description" content="Read the complete Connecting the Dots proposal directly on the website.">
   <title>Connecting the Dots — Read the Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {color-scheme:light;--ink:#14233b;--muted:#657388;--nhs:#005eb8;--ncs:#179f83;--line:#e2e7ed;--wash:#f1f4f7}
     *,*::before,*::after{box-sizing:border-box}
@@ -137,6 +140,26 @@
       .story-grid,.evidence-grid{grid-template-columns:1fr;gap:16px}
       .story-card{padding:23px}.connection-chart{padding:12px;margin:20px 0}
       .story p{font-size:16px}.story .lead{font-size:19px}
+    }
+  
+    /* Plus Jakarta Sans by Tokotype, SIL Open Font License; served by Google Fonts.
+       Three editorial roles: light headings, bold subheadings, regular body. */
+    body{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:400;font-size:16px}
+    svg text{font-family:'Plus Jakarta Sans',Arial,sans-serif}
+    .story h1,.story h2,.proposal-heading h2{font-size:48px;font-weight:300;line-height:1.14;letter-spacing:-.035em}
+    .story h3,.panel h2,.panel h3{font-size:22px;font-weight:700;line-height:1.3}
+    .story p,.story .lead,.story-card p,.evidence-grid p,.story .steps,.story .change-entry p,.panel p,.feedback-item blockquote{font-size:16px;font-weight:400;line-height:1.75}
+    .story-card blockquote{font-size:22px;font-weight:300;line-height:1.55}
+    .story .source,.story .eyebrow,.connection-chart figcaption,.feedback-byline{font-size:12px}
+    .identity-title,.tools .navbtn,.story .story-button,strong{font-weight:700}
+    .tools .action-green,.story .story-button.green{background:#83e1c2;color:#123e34}
+    .tools .action-fuchsia{background:#e437a4;color:#fff}
+    .pilot-facts span,.story .pilot-summary{background:#fff0f9}
+    @media(max-width:640px){
+      .story h1,.story h2,.proposal-heading h2{font-size:34px}
+      .story h3,.panel h2,.panel h3,.story-card blockquote{font-size:22px}
+      .story p,.story .lead,.story-card p,.evidence-grid p,.story .steps,.story .change-entry p{font-size:16px}
+      .story .source,.story .eyebrow{font-size:12px}
     }
   </style>
 </head>
