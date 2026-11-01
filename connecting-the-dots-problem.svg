@@ -16,12 +16,18 @@
     <text x="650" y="284" text-anchor="middle" fill="#2879bd" font-size="14" font-weight="700">safe handovers</text>
     <text x="900" y="284" text-anchor="middle" fill="#2879bd" font-size="14" font-weight="700">early intervention</text>
 
-    <path d="M105 470 C123 470 132 340 150 340 C168 340 177 520 195 520 C213 520 222 395 240 395 C258 395 267 320 285 320 C303 320 312 548 330 548 C348 548 357 430 375 430 C393 430 402 505 420 505" fill="none" stroke="#c9d7d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M105 470 C123 470 132 340 150 340 C168 340 177 520 195 520 C213 520 222 395 240 395 C258 395 267 320 285 320 C303 320 312 548 330 548 C348 548 357 430 375 430 C393 430 402 505 420 505 C438 505 447 350 465 350 C483 350 492 535 510 535 C528 535 537 400 555 400 C573 400 582 335 600 335 C618 335 627 525 645 525 C663 525 672 455 690 455 C708 455 717 545 735 545 C753 545 762 365 780 365 C798 365 807 490 825 490 C843 490 852 325 870 325 C888 325 897 520 915 520 C933 520 942 420 960 420" fill="none" stroke="#c9d7d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     <g>
       <circle cx="105" cy="470" r="12" fill="#9db5ad"/><circle cx="150" cy="340" r="12" fill="#b3c3bd"/>
       <circle cx="195" cy="520" r="12" fill="#8fa69e"/><circle cx="240" cy="395" r="12" fill="#c0ccc8"/>
       <circle cx="285" cy="320" r="12" fill="#93afa5"/><circle cx="330" cy="548" r="12" fill="#aabeb7"/>
       <circle cx="375" cy="430" r="12" fill="#879e96"/><circle cx="420" cy="505" r="12" fill="#b8c8c2"/>
+      <circle cx="465" cy="350" r="12" fill="#9db5ad"/><circle cx="510" cy="535" r="12" fill="#b3c3bd"/>
+      <circle cx="555" cy="400" r="12" fill="#8fa69e"/><circle cx="600" cy="335" r="12" fill="#c0ccc8"/>
+      <circle cx="645" cy="525" r="12" fill="#93afa5"/><circle cx="690" cy="455" r="12" fill="#aabeb7"/>
+      <circle cx="735" cy="545" r="12" fill="#879e96"/><circle cx="780" cy="365" r="12" fill="#b8c8c2"/>
+      <circle cx="825" cy="490" r="12" fill="#9db5ad"/><circle cx="870" cy="325" r="12" fill="#b3c3bd"/>
+      <circle cx="915" cy="520" r="12" fill="#8fa69e"/><circle cx="960" cy="420" r="12" fill="#c0ccc8"/>
     </g>
 
     <text x="540" y="585" text-anchor="middle" fill="#657388" font-size="18" font-weight="700">Fragmented care and support</text>
