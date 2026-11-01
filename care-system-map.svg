@@ -42,11 +42,11 @@
       <text x="468" y="358" fill="#ffffff" font-size="19" font-style="italic" font-weight="800">NHS</text>
       <text x="572" y="358" fill="#17304d" font-size="19" font-style="italic" font-weight="800">NCS</text>
     </g>
-    <a class="concept-link" href="ncs-app-concept.html" target="_top" aria-label="Open the NCS app concept">
-      <title>Click to see the NCS app concept</title>
+    <a class="concept-link" href="ncs-app-concept.html?v=62" target="_top" aria-label="Open the NCS app">
+      <title>Click to enter the NCS app</title>
       <rect x="320" y="419" width="400" height="82" rx="41" fill="#e437a4"/>
       <text x="520" y="453" fill="#ffffff" font-size="24" font-weight="800">Carer + caree at the centre</text>
-      <text x="520" y="479" fill="#ffffff" font-size="15" font-weight="700">Click to see the NCS app concept →</text>
+      <text x="520" y="479" fill="#ffffff" font-size="15" font-weight="700">Click to enter the NCS app →</text>
     </a>
     <text x="520" y="535" fill="#657388" font-size="19">One life · one shared picture · clear responsibility</text>
   </g>
