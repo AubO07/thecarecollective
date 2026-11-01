@@ -152,7 +152,8 @@
     .connection-chart.core-chart{padding:18px}
     .chart-key{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:22px 0 0}
     .chart-key div{padding:18px;border-radius:16px;background:#fff;border:1px solid var(--line)}
-    .chart-key strong{display:block;font-size:14px;color:var(--ink);margin-bottom:6px}
+    .chart-key strong{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink);margin-bottom:9px}
+    .chart-key .legend-symbol{display:block;width:42px;height:18px;flex:0 0 42px}
     .chart-key span{display:block;font-size:13px;line-height:1.55;color:#657388}
     .connection-chart figcaption{font-size:12px;color:#657388;margin-top:14px;line-height:1.6}
     .story .steps{padding-left:22px;color:#526177;font-size:16px;line-height:1.7}
@@ -216,7 +217,7 @@
       .service-dots figcaption{font-size:13px;gap:8px;margin-top:8px}
     }
   </style>
-  <script src="/listen.js?v=92" defer></script>
+  <script src="/listen.js?v=93" defer></script>
 </head>
 <body>
   <a class="skip" href="#pages">Skip to proposal pages</a>
@@ -304,17 +305,17 @@
         </article>
         <article class="trajectory-step">
           <figure class="connection-chart core-chart">
-            <a class="chart-expand" href="connecting-the-dots-state-benefits.svg?v=90" target="_blank" rel="noopener" aria-label="Open the chart showing how the state benefits full screen"><img src="connecting-the-dots-state-benefits.svg?v=90" alt="How the state benefits. An enlarged mint pathway crosses blue economic break-even, revealing a fuchsia area of potential public value. Earlier support could reduce crisis costs, shared records could reduce fraud and error, and employment could increase earnings and tax revenues."><span>Tap to view full screen ↗</span></a>
+            <a class="chart-expand" href="connecting-the-dots-state-benefits.svg?v=90" target="_blank" rel="noopener" aria-label="Open the chart showing how the state benefits full screen"><img src="connecting-the-dots-state-benefits.svg?v=90" alt="How the state benefits. An enlarged green pathway crosses blue economic break-even, revealing a pink area of potential public value. Earlier support could reduce crisis costs, shared records could reduce fraud and error, and employment could increase earnings and tax revenues."><span>Tap to view full screen ↗</span></a>
             <figcaption><strong>4. How the state benefits.</strong> Better outcomes for people, lower public costs over time, and higher tax revenues when people enter paid work.</figcaption>
           </figure>
           <div class="trajectory-note"><h3>Measure the gains above break-even.</h3><p>The fuchsia area represents potential public value. The pilot must test whether earlier support reduces avoidable crisis costs, whether shared records reduce fraud and error, and whether employment increases earnings and tax revenues. Any net benefit must account for the full cost of coordination.</p></div>
         </article>
       </div>
-      <div class="chart-key" aria-label="How to read the four-chart sequence">
-        <div><strong>The problem</strong><span>Separate services generate activity, repetition and preventable crisis without dependable progress.</span></div>
-        <div><strong>The hypothesis</strong><span>Connected support may create a clearer pathway towards employment, training or education.</span></div>
-        <div><strong>The opportunity</strong><span>Better outcomes, lower costs and higher revenues may create measurable public value.</span></div>
-        <div><strong>How the state benefits</strong><span>Test the gains above break-even against the full cost of coordination.</span></div>
+      <div class="chart-key" aria-label="What the chart colours mean">
+        <div><strong><svg class="legend-symbol" viewBox="0 0 42 18" aria-hidden="true"><circle cx="6" cy="13" r="4" fill="#9db5ad"/><circle cx="21" cy="5" r="4" fill="#b3c3bd"/><circle cx="36" cy="12" r="4" fill="#8fa69e"/></svg>Before services connect</strong><span>The separate green dots show support that varies from one contact to the next. Families can make progress, then lose ground as they try to join up services themselves.</span></div>
+        <div><strong><svg class="legend-symbol" viewBox="0 0 42 18" aria-hidden="true"><path d="M3 15 Q20 15 39 3" fill="none" stroke="#83e1c2" stroke-width="5" stroke-linecap="round"/></svg>After services connect</strong><span>At the pink vertical line, the dots join into a continuous green line. We want to test whether coordinated support helps people make steadier progress towards their own goals.</span></div>
+        <div><strong><svg class="legend-symbol" viewBox="0 0 42 18" aria-hidden="true"><path d="M3 9 H39" stroke="#49a1f8" stroke-width="5" stroke-linecap="round"/></svg>What the blue line means</strong><span>In chart 01, it shows a coordinated NHS pathway. In charts 02–04, it marks economic break-even: the point where public savings and additional revenue would cover the full cost of delivering the approach.</span></div>
+        <div><strong><svg class="legend-symbol" viewBox="0 0 42 18" aria-hidden="true"><rect x="2" y="2" width="38" height="14" rx="3" fill="#e437a4" fill-opacity=".16"/><path d="M2 16 H40" stroke="#e437a4" stroke-width="2"/></svg>What the pink area means</strong><span>Above break-even, the pink shaded area shows potential public value: lower public costs and additional tax revenue when people enter paid work. The pilot must test whether these gains actually occur.</span></div>
       </div>
       <p><strong>Self-funding is not an assumption. It is a testable hypothesis: potential net fiscal benefit for the public purse alongside greater independence and choice for families.</strong></p>
       <div class="story-grid">
