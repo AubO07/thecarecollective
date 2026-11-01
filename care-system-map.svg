@@ -5,32 +5,32 @@
   <rect width="1040" height="720" rx="28" fill="#ffffff"/>
   <g fill="none" stroke="#d2d8df" stroke-width="3">
     <path d="M520 342 L520 104"/><path d="M500 348 L265 155"/><path d="M485 375 L130 348"/>
-    <path d="M490 403 L250 575"/><path d="M520 412 L520 640"/><path d="M550 403 L790 575"/>
-    <path d="M555 375 L910 348"/><path d="M540 348 L775 155"/>
+    <path d="M490 403 L250 575"/><path d="M520 412 L520 608"/><path d="M550 403 L790 575"/>
+    <path d="M555 375 L900 348"/><path d="M540 348 L775 155"/>
   </g>
   <g font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" text-anchor="middle">
     <g fill="#a9b3bd">
       <circle cx="520" cy="88" r="18"/><circle cx="250" cy="142" r="18"/><circle cx="112" cy="348" r="18"/>
-      <circle cx="235" cy="588" r="18"/><circle cx="520" cy="652" r="18"/><circle cx="805" cy="588" r="18"/>
-      <circle cx="928" cy="348" r="18"/><circle cx="790" cy="142" r="18"/>
+      <circle cx="235" cy="588" r="18"/><circle cx="520" cy="620" r="18"/><circle cx="805" cy="588" r="18"/>
+      <circle cx="900" cy="348" r="18"/><circle cx="790" cy="142" r="18"/>
     </g>
     <g fill="#34435a" font-size="22" font-weight="700">
       <text x="520" y="44">NHS</text>
       <text x="250" y="91">Adult social care</text>
       <text x="112" y="294">Mental health</text>
       <text x="235" y="635">Legal &amp; advocacy</text>
-      <text x="520" y="704">Community &amp; voluntary</text>
+      <text x="520" y="674">Community &amp; voluntary</text>
       <text x="805" y="635">Employers</text>
-      <text x="928" y="294">Education</text>
+      <text x="900" y="294">Education</text>
       <text x="790" y="91">Housing &amp; benefits</text>
     </g>
     <g fill="#6b7789" font-size="16" font-weight="500">
       <text x="250" y="115">assessment · care · respite</text>
       <text x="112" y="318">wellbeing · recovery</text>
       <text x="235" y="658">rights · representation</text>
-      <text x="520" y="682">local support · peer networks</text>
+      <text x="520" y="702">local support · peer networks</text>
       <text x="805" y="658">flexibility · retention · return</text>
-      <text x="928" y="318">school · college · lifelong learning</text>
+      <text x="900" y="318">school · college · learning</text>
       <text x="790" y="115">home · income · employment support</text>
     </g>
     <g>

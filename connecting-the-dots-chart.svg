@@ -12,8 +12,8 @@
     <text x="190" y="215" text-anchor="middle" fill="#2879bd" font-size="16" font-weight="800">ECONOMIC BREAK-EVEN</text>
 
     <path d="M650 238 C686 214 714 180 746 155 C807 107 874 90 970 82 L970 238 Z" fill="#83e1c2" opacity=".18"/>
-    <text x="842" y="142" text-anchor="middle" fill="#247558" font-size="18" font-weight="800">NET PUBLIC VALUE</text>
-    <text x="842" y="169" text-anchor="middle" fill="#4f6f64" font-size="15">earnings · tax · lower crisis costs</text>
+    <text x="850" y="112" text-anchor="middle" fill="#247558" font-size="18" font-weight="800">NET PUBLIC VALUE</text>
+    <text x="850" y="139" text-anchor="middle" fill="#4f6f64" font-size="15">earnings · tax · lower crisis costs</text>
 
     <g fill="none" stroke="#d1d8de" stroke-width="2" stroke-dasharray="5 7">
       <path d="M105 377 L150 348 L195 391 L240 352 L285 403 L330 361 L375 386 L420 346"/>
