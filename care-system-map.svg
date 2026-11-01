@@ -3,7 +3,7 @@
   <title id="systemMapTitle">A connected system centred on carers and carees</title>
   <desc id="systemMapDesc">NHS England oversight is shown as the single blue outer dot. Seven larger mint National Care Service dots represent adult social care, mental health, legal and advocacy, community support, employers, education, housing and benefits. Fine grey lines connect every service to every other service. The NHS and NCS logo sits at the centre above the words Carer and caree at the centre.</desc>
   <defs><clipPath id="centralOverlap"><circle cx="486" cy="350" r="58"/></clipPath></defs>
-  <rect width="1040" height="720" rx="28" fill="#ffffff"/>
+  <style>.concept-link{cursor:pointer}.concept-link rect{transition:filter .2s ease}.concept-link:hover rect,.concept-link:focus rect{filter:brightness(.9)}</style>\n  <rect width="1040" height="720" rx="28" fill="#ffffff"/>
   <g stroke="#cfd6de" stroke-width="1.35" opacity=".62"><line x1="520" y1="96" x2="250" y2="150"/><line x1="520" y1="96" x2="110" y2="350"/><line x1="520" y1="96" x2="235" y2="585"/><line x1="520" y1="96" x2="520" y2="620"/><line x1="520" y1="96" x2="805" y2="585"/><line x1="520" y1="96" x2="930" y2="350"/><line x1="520" y1="96" x2="790" y2="150"/><line x1="250" y1="150" x2="110" y2="350"/><line x1="250" y1="150" x2="235" y2="585"/><line x1="250" y1="150" x2="520" y2="620"/><line x1="250" y1="150" x2="805" y2="585"/><line x1="250" y1="150" x2="930" y2="350"/><line x1="250" y1="150" x2="790" y2="150"/><line x1="110" y1="350" x2="235" y2="585"/><line x1="110" y1="350" x2="520" y2="620"/><line x1="110" y1="350" x2="805" y2="585"/><line x1="110" y1="350" x2="930" y2="350"/><line x1="110" y1="350" x2="790" y2="150"/><line x1="235" y1="585" x2="520" y2="620"/><line x1="235" y1="585" x2="805" y2="585"/><line x1="235" y1="585" x2="930" y2="350"/><line x1="235" y1="585" x2="790" y2="150"/><line x1="520" y1="620" x2="805" y2="585"/><line x1="520" y1="620" x2="930" y2="350"/><line x1="520" y1="620" x2="790" y2="150"/><line x1="805" y1="585" x2="930" y2="350"/><line x1="805" y1="585" x2="790" y2="150"/><line x1="930" y1="350" x2="790" y2="150"/></g>
   <g stroke="#bfc8d2" stroke-width="2" opacity=".78">
     <line x1="520" y1="350" x2="520" y2="96"/><line x1="520" y1="350" x2="250" y2="150"/><line x1="520" y1="350" x2="110" y2="350"/><line x1="520" y1="350" x2="235" y2="585"/><line x1="520" y1="350" x2="520" y2="620"/><line x1="520" y1="350" x2="805" y2="585"/><line x1="520" y1="350" x2="930" y2="350"/><line x1="520" y1="350" x2="790" y2="150"/>
@@ -42,8 +42,12 @@
       <text x="468" y="358" fill="#ffffff" font-size="19" font-style="italic" font-weight="800">NHS</text>
       <text x="572" y="358" fill="#17304d" font-size="19" font-style="italic" font-weight="800">NCS</text>
     </g>
-    <rect x="335" y="427" width="370" height="56" rx="28" fill="#ffffff" stroke="#d9dfe6" stroke-width="2"/>
-    <text x="520" y="463" fill="#172a45" font-size="25" font-weight="800">Carer + caree at the centre</text>
-    <text x="520" y="514" fill="#657388" font-size="19">One life · one shared picture · clear responsibility</text>
+    <a class="concept-link" href="ncs-app-concept.html" target="_top" aria-label="Open the NCS app concept">
+      <title>Click to see the NCS app concept</title>
+      <rect x="320" y="419" width="400" height="82" rx="41" fill="#e437a4"/>
+      <text x="520" y="453" fill="#ffffff" font-size="24" font-weight="800">Carer + caree at the centre</text>
+      <text x="520" y="479" fill="#ffffff" font-size="15" font-weight="700">Click to see the NCS app concept →</text>
+    </a>
+    <text x="520" y="535" fill="#657388" font-size="19">One life · one shared picture · clear responsibility</text>
   </g>
 </svg>
