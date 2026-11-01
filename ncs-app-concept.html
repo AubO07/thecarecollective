@@ -16,7 +16,7 @@
     .intro{font-size:21px;line-height:1.7;color:var(--muted);max-width:800px}.concept-grid{display:grid;grid-template-columns:minmax(300px,430px) 1fr;gap:64px;align-items:start;padding:32px 0 80px}
     .phone{background:#101a2a;border:8px solid #101a2a;border-radius:48px;padding:12px;box-shadow:0 32px 70px rgba(23,42,69,.2);position:sticky;top:20px}
     .screen{background:#f7fafc;border-radius:34px;overflow:hidden;min-height:760px}.app-head{background:linear-gradient(135deg,var(--mint),#b7eddc);padding:26px 22px 22px}
-    .app-brand{display:flex;justify-content:space-between;align-items:center}.app-logo{display:flex;align-items:center;gap:10px;font-weight:800}.app-logo .ncs-mark{width:64px;height:auto;display:block}.avatar{width:38px;height:38px;border-radius:50%;background:white;display:grid;place-items:center;font-weight:800}
+    .app-brand{display:flex;justify-content:space-between;align-items:center;gap:12px}.app-logo{display:flex;align-items:center;gap:9px;min-width:0}.app-logo .ncs-mark{width:82px;height:auto;display:block;flex:0 0 auto}.app-wordmark{font-size:15px;font-weight:800;line-height:.98;letter-spacing:-.025em}.app-actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}.avatar,.app-menu{width:38px;height:38px;border-radius:50%;background:white}.avatar{display:grid;place-items:center;font-weight:800}.app-menu{border:0;display:grid;place-content:center;gap:4px;padding:0;cursor:pointer}.app-menu span{display:block;width:17px;height:2px;border-radius:999px;background:var(--ink)}
     .app-head h2{font-size:28px;margin:30px 0 6px}.app-head p{margin:0;color:#355d53}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px;background:#fff;border-bottom:1px solid var(--line)}
     .tab{border:0;background:#edf2f6;border-radius:999px;padding:10px 5px;font-weight:750;color:#526177}.tab.active{background:var(--pink);color:#fff}
     .app-body{padding:18px}.status{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
@@ -52,7 +52,7 @@
           <div class="app-head">
             <div class="app-brand"><div class="app-logo">
               <img class="ncs-mark" src="ncs-mark.svg" alt="NCS">
-              <span>National Care Service</span></div><span class="avatar">AG</span></div>
+              <span class="app-wordmark">National Care<br>Service</span></div><div class="app-actions"><span class="avatar">AG</span><button class="app-menu" type="button" aria-label="Open app menu"><span></span><span></span><span></span></button></div></div>
             <h2>Good morning</h2><p>Here is the shared picture for today.</p>
           </div>
           <div class="tabs"><button class="tab active">Today</button><button class="tab">People</button><button class="tab">Decisions</button></div>
