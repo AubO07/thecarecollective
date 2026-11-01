@@ -9,10 +9,10 @@
     <path d="M555 375 L900 348"/><path d="M540 348 L775 155"/>
   </g>
   <g font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" text-anchor="middle">
-    <g fill="#a9b3bd">
-      <circle cx="520" cy="88" r="18"/><circle cx="250" cy="142" r="18"/><circle cx="112" cy="348" r="18"/>
-      <circle cx="235" cy="588" r="18"/><circle cx="520" cy="620" r="18"/><circle cx="805" cy="588" r="18"/>
-      <circle cx="900" cy="348" r="18"/><circle cx="790" cy="142" r="18"/>
+    <g fill="#83e1c2">
+      <circle cx="520" cy="88" r="24"/><circle cx="250" cy="142" r="24"/><circle cx="112" cy="348" r="24"/>
+      <circle cx="235" cy="588" r="24"/><circle cx="520" cy="620" r="24"/><circle cx="805" cy="588" r="24"/>
+      <circle cx="900" cy="348" r="24"/><circle cx="790" cy="142" r="24"/>
     </g>
     <g fill="#34435a" font-size="22" font-weight="700">
       <text x="520" y="44">NHS</text>
@@ -37,8 +37,8 @@
       <circle cx="486" cy="378" r="72" fill="#49a1f8"/>
       <circle cx="554" cy="378" r="72" fill="#83e1c2"/>
       <path d="M520 315 A72 72 0 0 0 520 441 A72 72 0 0 0 520 315" fill="#e437a4"/>
-      <text x="465" y="383" fill="#ffffff" font-size="20" font-weight="800">CARER</text>
-      <text x="575" y="383" fill="#17304d" font-size="20" font-weight="800">CAREE</text>
+      <text x="458" y="383" fill="#ffffff" font-size="20" font-weight="800">CARER</text>
+      <text x="520" y="383" fill="#ffffff" font-size="18" font-weight="800">CAREE</text>
     </g>
     <text x="520" y="494" fill="#172a45" font-size="24" font-weight="800">Connected support</text>
     <text x="520" y="523" fill="#6b7789" font-size="18">One life · one shared picture · clear responsibility</text>
