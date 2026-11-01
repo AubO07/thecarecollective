@@ -133,6 +133,21 @@
     .chart-actions a{font-size:12px;font-weight:750;color:#2879bd;text-decoration:none}
     .chart-actions a:last-child{color:#b91c7a}
     .mission-statement{margin:30px 0;padding:26px 28px;border-left:6px solid #e437a4;background:#fff;border-radius:0 18px 18px 0}.mission-statement p{margin:0!important;max-width:860px!important;color:#172a45!important;font-size:clamp(20px,2.8vw,28px)!important;line-height:1.5!important;font-weight:300!important}
+    .app-story-grid{display:grid;grid-template-columns:minmax(280px,390px) 1fr;gap:48px;align-items:center;margin-top:30px}
+    .app-story-phone{background:#101a2a;border-radius:40px;padding:10px;box-shadow:0 24px 55px rgba(23,42,69,.18)}
+    .app-story-screen{background:#f7fafc;border-radius:31px;overflow:hidden;min-height:590px}
+    .app-story-head{padding:25px 20px 22px;background:linear-gradient(135deg,#83e1c2,#b7eddc)}
+    .app-story-brand{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:800}.app-story-brand svg{width:42px;height:29px}
+    .app-story-head h3{font-size:25px!important;margin:25px 0 4px!important}.app-story-head p{font-size:13px!important;line-height:1.5!important;margin:0!important;color:#355d53!important}
+    .app-story-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px;background:#fff;border-bottom:1px solid var(--line)}
+    .app-story-tabs span{padding:8px 4px;border-radius:999px;background:#edf2f6;text-align:center;font-size:11px;font-weight:750}.app-story-tabs span:first-child{background:#e437a4;color:#fff}
+    .app-story-body{padding:15px}.app-story-label{font-size:10px!important;letter-spacing:.12em;text-transform:uppercase;font-weight:800!important;color:#7b6680!important;margin:5px 2px 9px!important}
+    .app-story-status{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;margin-bottom:9px}
+    .app-story-status i{width:12px;height:12px;border-radius:50%;background:#83e1c2}.app-story-status.action{border-color:#f2b6d9;background:#fff6fb}.app-story-status.action i{background:#e437a4}
+    .app-story-status strong{display:block;font-size:12px}.app-story-status small{display:block;color:#657388;font-size:10px;margin-top:3px}.app-story-owner{font-size:9px;background:#edf3f8;padding:5px 7px;border-radius:999px}
+    .app-story-copy h3{font-size:28px!important;font-weight:300!important}.app-story-copy ul{padding-left:20px;color:#526177;line-height:1.75}.app-story-copy li{margin:8px 0}
+    .app-story-cta{display:inline-block;margin-top:18px;background:#e437a4;color:#fff;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:800}
+    @media(max-width:700px){.app-story-grid{grid-template-columns:1fr;gap:30px}.app-story-phone{width:min(100%,410px);margin:auto}.app-story-copy{order:-1}}
     .connection-chart.core-chart{padding:18px}
     .chart-key{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 0}
     .chart-key div{padding:18px;border-radius:16px;background:#fff;border:1px solid var(--line)}
@@ -213,7 +228,7 @@
         <button class="navbtn action-green" type="button" data-dialog="feedback">Your voices</button>
       </nav>
       <nav class="secondary-tools" aria-label="Proposal and references">
-        <a href="#full-proposal">Read the proposal</a>
+        <a href="#full-proposal">Read the proposal</a>\n        <a href="#app-concept">App concept</a>
         <button type="button" data-dialog="letters">Referrals</button>
         <a id="download" href="./Connecting_the_Dots_Proposal_-Final.pdf" download>Download PDF</a>
       </nav>
@@ -280,8 +295,44 @@
       <p>Each person retains their own voice and choices. Participating services agree what information can lawfully be shared, for what purpose, and who is responsible for acting on it.</p>
     </section>
 
+        <section id="app-concept" aria-labelledby="appConceptHeading">
+      <p class="eyebrow">04 · The NCS app concept</p>
+      <h2 id="appConceptHeading">One shared picture. Clear responsibility.</h2>
+      <p>The connected system becomes useful when the carer and caree can see what is happening, what has been decided, what needs action and who is responsible—without having to manage the machinery behind it.</p>
+      <div class="app-story-grid">
+        <div class="app-story-phone" aria-label="Preview of the NCS app concept">
+          <div class="app-story-screen">
+            <div class="app-story-head">
+              <div class="app-story-brand"><svg viewBox="0 0 64 42" aria-hidden="true"><defs><clipPath id="storyAppOverlap"><circle cx="23" cy="21" r="18"/></clipPath></defs><circle cx="23" cy="21" r="18" fill="#49a1f8"/><circle cx="41" cy="21" r="18" fill="#83e1c2"/><circle cx="41" cy="21" r="18" fill="#e437a4" clip-path="url(#storyAppOverlap)"/></svg><span>My connected care</span></div>
+              <h3>Good morning</h3><p>Here is the shared picture for today.</p>
+            </div>
+            <div class="app-story-tabs"><span>Today</span><span>People</span><span>Decisions</span></div>
+            <div class="app-story-body">
+              <p class="app-story-label">Today’s priorities</p>
+              <div class="app-story-status action"><i></i><div><strong>Housing decision needs action</strong><small>Evidence received · response overdue</small></div><span class="app-story-owner">Housing</span></div>
+              <div class="app-story-status"><i></i><div><strong>Medication review confirmed</strong><small>Tuesday · 10:30 · video appointment</small></div><span class="app-story-owner">NHS</span></div>
+              <div class="app-story-status"><i></i><div><strong>College referral progressing</strong><small>Handover accepted</small></div><span class="app-story-owner">Education</span></div>
+              <p class="app-story-label">Successful handover</p>
+              <div class="app-story-status"><i></i><div><strong>Named responsibility accepted</strong><small>Social care → Employment support</small></div><span class="app-story-owner">Complete</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="app-story-copy">
+          <h3>The family sees one journey. Services see what they must do next.</h3>
+          <ul>
+            <li><strong>One shared picture</strong> instead of repeatedly reconstructing the same story.</li>
+            <li><strong>Named responsibility</strong> for every decision, action and handover.</li>
+            <li><strong>Permission from people</strong> controlling what is shared, with whom and why.</li>
+            <li><strong>Action before crisis</strong> when delays or contradictions begin to appear.</li>
+          </ul>
+          <p>This is a co-production concept, not finished software. Its purpose is to make the proposed service tangible enough to challenge, test and improve.</p>
+          <a class="app-story-cta" href="ncs-app-concept.html">Explore the full app concept →</a>
+        </div>
+      </div>
+    </section>
+
     <section aria-labelledby="progressHeading">
-      <p class="eyebrow">04 · What we want to test</p>
+      <p class="eyebrow">05 · What we want to test</p>
       <h2 id="progressHeading">Connect the dots. Change the trajectory.</h2>
       <p>Fragmented services can produce activity without dependable progress. The pilot asks whether coordinated support can create a clearer pathway towards stability, learning, independence and paid work where that is wanted and appropriate.</p>
       <figure class="connection-chart core-chart">
@@ -301,7 +352,7 @@
     </section>
 
     <section aria-labelledby="testHeading">
-      <p class="eyebrow">05 · A practical first test</p><h2 id="testHeading">Five boroughs. One hundred family partnerships. Six months.</h2>
+      <p class="eyebrow">06 · A practical first test</p><h2 id="testHeading">Five boroughs. One hundred family partnerships. Six months.</h2>
       <div class="story-grid">
         <div class="story-card pilot-summary"><h3>Start small. Learn together.</h3><p>The proposed pilot involves 20 family partnerships in each borough, using existing services and an agreed coordination process.</p><ol class="steps"><li>Agree each person’s goals and information-sharing choices.</li><li>Build a shared picture and name who coordinates support.</li><li>Act on delays and missed handovers before problems escalate.</li><li>Compare outcomes and costs with a suitable baseline or comparison group.</li></ol></div>
         <div><h3>What would count as progress?</h3><p>Less time chasing services. More successful handovers. Earlier support. Sustained independence. Progress towards learning, training or work where wanted and appropriate.</p><p>AI could eventually help identify emerging patterns. First, test the basics: useful information, clear responsibility and action. Predictive claims would require separate validation.</p><p>A positive result would support a larger test. Wider use would depend on evidence across different people and places.</p></div>
@@ -309,7 +360,7 @@
     </section>
 
     <section aria-labelledby="shapeHeading">
-      <p class="eyebrow">06 · Co-production in action</p><h2 id="shapeHeading">Help shape what happens next.</h2>
+      <p class="eyebrow">07 · Co-production in action</p><h2 id="shapeHeading">Help shape what happens next.</h2>
       <p>Where do connections break down? What would help services act together sooner? What would you change about this pilot?</p>
       <button class="story-button" type="button" data-dialog="comments">Have your say</button>
       <button class="story-button green" type="button" data-dialog="feedback">Read your voices</button>
