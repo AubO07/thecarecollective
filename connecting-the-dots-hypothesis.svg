@@ -4,8 +4,8 @@
   <desc id="hypothesisDesc">A pale continuous high-amplitude wave represents lived experience while separate muted dots represent fragmented service contacts. A minority of points cross economic break-even, but most do not. At the fuchsia Connecting the Dots intervention, a strong mint connected pathway rises towards employment, training or education.</desc>
   <rect width="1040" height="720" rx="28" fill="#ffffff"/>
   <g font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
-    <text x="70" y="58" fill="#e437a4" font-size="17" font-weight="800" letter-spacing="2">02 · THE HYPOTHESIS</text>
-    <text x="70" y="88" fill="#657388" font-size="17">Can coordinated support create a more dependable pathway?</text>
+  <text x="70" y="58" fill="#182d49" font-size="17" font-weight="800" letter-spacing="2">02 · THE HYPOTHESIS</text>
+  <text x="70" y="88" fill="#182d49" font-size="17">Can coordinated support create a more dependable pathway?</text>
 
     <path d="M70 300 H970" stroke="#49a1f8" stroke-width="9" fill="none" stroke-linecap="round"/>
     <rect x="73" y="250" width="235" height="34" rx="17" fill="#eef7ff"/>
