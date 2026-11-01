@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1040" height="720" viewBox="0 0 1040 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="stateTitle stateDesc">
+  <title id="stateTitle">The state benefits</title>
+  <desc id="stateDesc">An enlarged illustrative connected pathway crosses economic break-even. The fuchsia area highlights potential public value. Benefits and self-funding remain hypotheses for the pilot to test.</desc>
+  <rect width="1040" height="720" rx="28" fill="white"/>
+  <g font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
+    <text x="70" y="58" fill="#182d49" font-size="17" font-weight="800" letter-spacing="2">04 · THE STATE BENEFITS</text>
+    <text x="70" y="108" fill="#182d49" font-size="28" font-weight="800">Better lives could also mean lower public costs</text>
+    <text x="70" y="144" fill="#182d49" font-size="28" font-weight="800">and higher public revenues.</text>
+
+    <path d="M475 365 C535 282 610 240 705 216 C795 193 895 187 970 190 L970 365 Z" fill="#e437a4" opacity=".16"/>
+    <path d="M70 365 H970" fill="none" stroke="#49a1f8" stroke-width="9" stroke-linecap="round"/>
+    <text x="70" y="340" fill="#2879bd" font-size="17" font-weight="800">ECONOMIC BREAK-EVEN</text>
+    <path d="M135 600 C265 583 365 505 430 425 C485 350 535 285 610 248 C715 195 865 185 970 190" fill="none" stroke="#83e1c2" stroke-width="12" stroke-linecap="round"/>
+    <g fill="#83e1c2">
+      <circle cx="135" cy="600" r="13"/>
+      <circle cx="290" cy="544" r="13"/>
+      <circle cx="430" cy="425" r="13"/>
+      <circle cx="510" cy="324" r="13"/>
+      <circle cx="650" cy="231" r="13"/>
+      <circle cx="810" cy="194" r="13"/>
+      <circle cx="970" cy="190" r="13"/>
+    </g>
+    <path d="M135 410 V640" stroke="#e437a4" stroke-width="6"/>
+    <circle cx="135" cy="600" r="9" fill="#e437a4"/>
+
+    <text x="970" y="453" text-anchor="end" fill="#e437a4" font-size="19">Earlier support could prevent costly crises</text>
+    <text x="970" y="485" text-anchor="end" fill="#e437a4" font-size="19">Clearer shared records could reduce fraud and error</text>
+    <text x="970" y="517" text-anchor="end" fill="#e437a4" font-size="19">Employment could increase earnings and tax revenues</text>
+    <text x="970" y="600" text-anchor="end" fill="#e437a4" font-size="30" font-weight="800">POTENTIAL PUBLIC VALUE</text>
+    <text x="70" y="684" fill="#657388" font-size="14">Illustrative hypothesis. The pilot must test outcomes, full delivery costs and net public value.</text>
+  </g>
+</svg>
