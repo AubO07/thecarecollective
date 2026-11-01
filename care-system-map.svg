@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1040" height="720" viewBox="0 0 1040 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="systemMapTitle systemMapDesc">
-  <title id="systemMapTitle">The services and decisions surrounding a carer and caree</title>
-  <desc id="systemMapDesc">A carer and caree sit together at the centre. Grey lines connect them to the NHS, adult social care, mental health, legal and advocacy, community support, employers, education, benefits and housing.</desc>
+  <title id="systemMapTitle">A connected system centred on carers and carees</title>
+  <desc id="systemMapDesc">NHS England oversight is shown as the single blue outer dot. Seven larger mint National Care Service dots represent adult social care, mental health, legal and advocacy, community support, employers, education, housing and benefits. Fine grey lines connect every service to every other service. The NHS and NCS logo sits at the centre above the words Carer and caree at the centre.</desc>
+  <defs><clipPath id="centralOverlap"><circle cx="486" cy="350" r="58"/></clipPath></defs>
   <rect width="1040" height="720" rx="28" fill="#ffffff"/>
-  <g fill="none" stroke="#d2d8df" stroke-width="3">
-    <path d="M520 342 L520 104"/><path d="M500 348 L265 155"/><path d="M485 375 L130 348"/>
-    <path d="M490 403 L250 575"/><path d="M520 412 L520 608"/><path d="M550 403 L790 575"/>
-    <path d="M555 375 L900 348"/><path d="M540 348 L775 155"/>
+  <g stroke="#cfd6de" stroke-width="1.35" opacity=".62"><line x1="520" y1="96" x2="250" y2="150"/><line x1="520" y1="96" x2="110" y2="350"/><line x1="520" y1="96" x2="235" y2="585"/><line x1="520" y1="96" x2="520" y2="620"/><line x1="520" y1="96" x2="805" y2="585"/><line x1="520" y1="96" x2="930" y2="350"/><line x1="520" y1="96" x2="790" y2="150"/><line x1="250" y1="150" x2="110" y2="350"/><line x1="250" y1="150" x2="235" y2="585"/><line x1="250" y1="150" x2="520" y2="620"/><line x1="250" y1="150" x2="805" y2="585"/><line x1="250" y1="150" x2="930" y2="350"/><line x1="250" y1="150" x2="790" y2="150"/><line x1="110" y1="350" x2="235" y2="585"/><line x1="110" y1="350" x2="520" y2="620"/><line x1="110" y1="350" x2="805" y2="585"/><line x1="110" y1="350" x2="930" y2="350"/><line x1="110" y1="350" x2="790" y2="150"/><line x1="235" y1="585" x2="520" y2="620"/><line x1="235" y1="585" x2="805" y2="585"/><line x1="235" y1="585" x2="930" y2="350"/><line x1="235" y1="585" x2="790" y2="150"/><line x1="520" y1="620" x2="805" y2="585"/><line x1="520" y1="620" x2="930" y2="350"/><line x1="520" y1="620" x2="790" y2="150"/><line x1="805" y1="585" x2="930" y2="350"/><line x1="805" y1="585" x2="790" y2="150"/><line x1="930" y1="350" x2="790" y2="150"/></g>
+  <g stroke="#bfc8d2" stroke-width="2" opacity=".78">
+    <line x1="520" y1="350" x2="520" y2="96"/><line x1="520" y1="350" x2="250" y2="150"/><line x1="520" y1="350" x2="110" y2="350"/><line x1="520" y1="350" x2="235" y2="585"/><line x1="520" y1="350" x2="520" y2="620"/><line x1="520" y1="350" x2="805" y2="585"/><line x1="520" y1="350" x2="930" y2="350"/><line x1="520" y1="350" x2="790" y2="150"/>
   </g>
   <g font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" text-anchor="middle">
+    <circle cx="520" cy="96" r="30" fill="#49a1f8"/>
     <g fill="#83e1c2">
-      <circle cx="520" cy="88" r="24"/><circle cx="250" cy="142" r="24"/><circle cx="112" cy="348" r="24"/>
-      <circle cx="235" cy="588" r="24"/><circle cx="520" cy="620" r="24"/><circle cx="805" cy="588" r="24"/>
-      <circle cx="900" cy="348" r="24"/><circle cx="790" cy="142" r="24"/>
+      <circle cx="250" cy="150" r="30"/><circle cx="110" cy="350" r="30"/><circle cx="235" cy="585" r="30"/>
+      <circle cx="520" cy="620" r="30"/><circle cx="805" cy="585" r="30"/><circle cx="930" cy="350" r="30"/><circle cx="790" cy="150" r="30"/>
     </g>
-    <g fill="#34435a" font-size="22" font-weight="700">
-      <text x="520" y="44">NHS</text>
-      <text x="250" y="91">Adult social care</text>
-      <text x="112" y="294">Mental health</text>
-      <text x="235" y="635">Legal &amp; advocacy</text>
-      <text x="520" y="674">Community &amp; voluntary</text>
-      <text x="805" y="635">Employers</text>
-      <text x="900" y="294">Education</text>
-      <text x="790" y="91">Housing &amp; benefits</text>
+
+    <g fill="#263a57" font-size="25" font-weight="750">
+      <text x="520" y="37"><tspan x="520">NHS England</tspan><tspan x="520" dy="27">Oversight</tspan></text>
+      <text x="250" y="94">Adult social care</text>
+      <text x="110" y="292">Mental health</text>
+      <text x="235" y="640">Legal &amp; advocacy</text>
+      <text x="520" y="682">Community &amp; voluntary</text>
+      <text x="805" y="640">Employers</text>
+      <text x="930" y="292">Education</text>
+      <text x="790" y="94">Housing &amp; benefits</text>
     </g>
-    <g fill="#6b7789" font-size="16" font-weight="500">
-      <text x="250" y="115">assessment · care · respite</text>
-      <text x="112" y="318">wellbeing · recovery</text>
-      <text x="235" y="658">rights · representation</text>
-      <text x="520" y="702">local support · peer networks</text>
-      <text x="805" y="658">flexibility · retention · return</text>
-      <text x="900" y="318">school · college · learning</text>
-      <text x="790" y="115">home · income · employment support</text>
+    <g fill="#68758a" font-size="17" font-weight="500">
+      <text x="250" y="120">assessment · care · respite</text>
+      <text x="110" y="319">wellbeing · recovery</text>
+      <text x="235" y="666">rights · representation</text>
+      <text x="520" y="708">local support · peer networks</text>
+      <text x="805" y="666">flexibility · retention · return</text>
+      <text x="930" y="319">school · college · learning</text>
+      <text x="790" y="120">home · income · employment support</text>
     </g>
+
     <g>
-      <circle cx="486" cy="378" r="72" fill="#49a1f8"/>
-      <circle cx="554" cy="378" r="72" fill="#83e1c2"/>
-      <path d="M520 315 A72 72 0 0 0 520 441 A72 72 0 0 0 520 315" fill="#e437a4"/>
-      <text x="458" y="383" fill="#ffffff" font-size="20" font-weight="800">CARER</text>
-      <text x="520" y="383" fill="#ffffff" font-size="18" font-weight="800">CAREE</text>
+      <circle cx="486" cy="350" r="58" fill="#49a1f8"/>
+      <circle cx="554" cy="350" r="58" fill="#83e1c2"/>
+      <circle cx="554" cy="350" r="58" fill="#e437a4" clip-path="url(#centralOverlap)"/>
+      <text x="468" y="358" fill="#ffffff" font-size="19" font-style="italic" font-weight="800">NHS</text>
+      <text x="572" y="358" fill="#17304d" font-size="19" font-style="italic" font-weight="800">NCS</text>
     </g>
-    <text x="520" y="494" fill="#172a45" font-size="24" font-weight="800">Connected support</text>
-    <text x="520" y="523" fill="#6b7789" font-size="18">One life · one shared picture · clear responsibility</text>
+    <rect x="335" y="427" width="370" height="56" rx="28" fill="#ffffff" stroke="#d9dfe6" stroke-width="2"/>
+    <text x="520" y="463" fill="#172a45" font-size="25" font-weight="800">Carer + caree at the centre</text>
+    <text x="520" y="514" fill="#657388" font-size="19">One life · one shared picture · clear responsibility</text>
   </g>
 </svg>
