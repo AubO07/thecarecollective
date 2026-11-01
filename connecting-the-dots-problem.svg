@@ -4,8 +4,8 @@
   <desc id="problemDesc">A steady blue NHS pathway shows specialists working together through monitoring, handovers and early intervention. Below it, a pale continuous high-amplitude wave represents lived experience while separate muted dots represent fragmented service contacts.</desc>
   <rect width="1040" height="720" rx="28" fill="#ffffff"/>
   <g font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
-    <text x="70" y="58" fill="#e437a4" font-size="17" font-weight="800" letter-spacing="2">01 · THE PROBLEM</text>
-    <text x="70" y="88" fill="#657388" font-size="17">The NHS coordinates specialists around one patient. Care support is still fragmented.</text>
+  <text x="70" y="58" fill="#182d49" font-size="17" font-weight="800" letter-spacing="2">01 · THE PROBLEM</text>
+  <text x="70" y="88" fill="#182d49" font-size="17">The NHS coordinates specialists around one patient. Care support is still fragmented.</text>
 
     <path d="M70 245 H970" stroke="#49a1f8" stroke-width="9" fill="none" stroke-linecap="round"/>
     <rect x="73" y="170" width="274" height="34" rx="17" fill="#eef7ff"/>
