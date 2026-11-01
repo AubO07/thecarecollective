@@ -9,7 +9,6 @@
     #care-listen button:focus-visible{outline:3px solid #182d49;outline-offset:4px}
     #care-listen button[aria-pressed="true"]{background:#182d49}
     #care-listen .listen-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-    #care-listen .listen-error{position:absolute;right:0;bottom:60px;box-sizing:border-box;width:min(240px,calc(100vw - 32px));padding:8px 11px;border:1px solid #dce1e8;border-radius:12px;background:white;color:#182d49;font:12px/1.4 Arial,sans-serif;margin:0}
     @media print{#care-listen{display:none}}
   `;
   document.head.appendChild(style);
@@ -37,12 +36,9 @@
     };
     return synth.getVoices().filter(v=>isBritishVoice(v)).sort((a,b)=>score(b)-score(a))[0];
   }
-  let noticeTimer;
-  function announce(message, error = false) {
-    clearTimeout(noticeTimer);
+  function announce(message) {
     status.textContent = message;
-    status.className = error ? 'listen-error' : 'listen-status';
-    if (error) noticeTimer = setTimeout(() => { status.className = 'listen-status'; }, 7000);
+    status.className = 'listen-status';
   }
   function waitForBritishVoice(timeout = 1500) {
     const ready = englishVoice();
