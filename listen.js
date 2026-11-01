@@ -27,16 +27,16 @@
       // names when offered, then fall back to the best ordinary English voice.
       return (/^en[-_]GB$/i.test(v.lang) ? 500 : 0)
         + (/premium|enhanced|natural|neural|online/i.test(n) ? 800 : 0)
-        + (/Serena|Kate|Martha|Stephanie|Sonia|Libby|Hazel|Susan|Samantha|Karen|Moira|Tessa|Google UK English Female|\\bfemale\\b/i.test(n) ? 650 : 0)
+        + (/Serena|Kate|Martha|Stephanie|Sonia|Libby|Hazel|Susan|Google UK English Female|\bfemale\b/i.test(n) ? 650 : 0)
         - (/compact|eloquence|espeak|whisper|trinoids|zarvox|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|wobble/i.test(n) ? 1200 : 0);
     };
-    return synth.getVoices().filter(v=>/^en(?:[-_]|$)/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0];
+    return synth.getVoices().filter(v=>/^en[-_]GB$/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0];
   }
   function announce(message, error = false) {
     status.textContent = message;
     status.className = error ? 'listen-error' : 'listen-status';
   }
-  let state = 'idle', generation = 0, chunks = [], index = 0, offset = 0, active = null, utterance = null;
+  let state = 'idle', generation = 0, chunks = [], index = 0, offset = 0, active = null, utterance = null, readingVoice = null;
   const charts = {
     'connecting-the-dots-problem.svg': 'The problem. The blue NHS pathway is straight and continuous: specialists work together, monitor continuously, hand over safely and intervene early. Below it, green dots fluctuate across the full time period. They represent fragmented care and support, with separate agencies, repeated information, missed handovers and preventable crises. Without change, this fragmentation continues.',
     'connecting-the-dots-hypothesis.svg': 'The hypothesis. Before the central fuchsia intervention, separate sage green dots fluctuate without a dependable direction. Connecting the dots means co-produced, coordinated support. After the intervention, the dots become a continuous mint pathway, rising through the blue economic break-even line. The pilot will test progress towards employment, training or education, where wanted and appropriate. This is an illustrative hypothesis, not measured results.',
@@ -59,7 +59,9 @@
   function title(el) { return el.getAttribute('aria-label') || el.querySelector('h1,h2,h3,figcaption strong')?.textContent.trim() || 'This section'; }
   function getText(el) {
     if (el.matches('.sheet')) return el.dataset.listenText || '';
+    const opening = Boolean(el.querySelector('.service-dots'));
     const copy = el.cloneNode(true);
+    copy.querySelectorAll('.service-dots').forEach(n => n.remove());
     copy.querySelectorAll('script,style,button,nav,form,input,textarea,select,dialog,[hidden],[aria-hidden="true"],.chart-actions,.chart-expand span,.sheet-label,.placeholder,.reader-meta,.status,#counter,#care-listen').forEach(n => n.remove());
     copy.querySelectorAll('img,object,svg').forEach(n => {
       const src = n.getAttribute('src') || n.getAttribute('data') || '';
@@ -68,7 +70,7 @@
       n.replaceWith(document.createTextNode(' ' + words + ' '));
     });
     copy.querySelectorAll('p,h1,h2,h3,h4,li,figcaption,blockquote,br').forEach(n => n.appendChild(document.createTextNode('\n')));
-    return copy.textContent.replace(/[↗→]/g,' ').replace(/\s+/g,' ').trim();
+    return (opening ? 'Connecting the Dots. The Care Collective. ' : '') + copy.textContent.replace(/[↗→]/g,' ').replace(/\s+/g,' ').trim();
   }
   function stop(message = 'Stopped. Tap the speaker to read the section in view.') {
     generation++; if (synth) synth.cancel();
@@ -80,8 +82,9 @@
     utterance = new SpeechSynthesisUtterance(chunks[index].slice(offset));
     const baseOffset = offset;
     utterance.lang = 'en-GB'; utterance.rate = 0.93;
-    const voice = englishVoice();
-    if(voice) {utterance.voice = voice; utterance.lang = voice.lang;}
+    const voice = readingVoice;
+    if(!voice) {stop();announce('No British English voice is available in this browser. Please enable one on your device.',true);return;}
+    utterance.voice = voice; utterance.lang = 'en-GB';
     utterance.onboundary = e => { if(token === generation && typeof e.charIndex === 'number') offset = baseOffset + e.charIndex; };
     utterance.onend = () => { if(token !== generation || state !== 'reading') return; index++; offset=0; speak(); };
     utterance.onerror = e => { if(token === generation && !['interrupted','canceled'].includes(e.error)) { stop(); announce('Audio could not start. Tap the speaker again, or try Safari.', true); } };
@@ -114,6 +117,8 @@
         return groups;
       }, []);
     }
+    readingVoice = englishVoice();
+    if(!readingVoice) {stop();announce('No British English voice is available in this browser. Please enable one on your device.',true);return;}
     state='reading'; play.setAttribute('aria-pressed','true'); play.setAttribute('aria-label','Stop reading'); announce('Reading: ' + title(active)); speak();
   }
   play.addEventListener('click',start);
