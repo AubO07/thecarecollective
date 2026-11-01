@@ -4,7 +4,7 @@
   <desc id="trajectoryDesc">Different muted dots fluctuate under fragmented support. At the Connecting the Dots intervention they become mint green and form a rising connected pathway. The pathway crosses a blue economic break-even line and continues into an area labelled net public value. The diagram is an illustrative hypothesis to be tested by the pilot.</desc>
   <rect width="1040" height="560" rx="28" fill="#ffffff"/>
   <g font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
-    <text x="70" y="55" fill="#8f5d79" font-size="17" font-weight="800" letter-spacing="2">ILLUSTRATIVE — TO BE TESTED</text>
+    <text x="70" y="55" fill="#e437a4" font-size="17" font-weight="800" letter-spacing="2">ILLUSTRATIVE — TO BE TESTED</text>
     <text x="70" y="82" fill="#657388" font-size="17">Outcomes and economic contribution over time</text>
 
     <path d="M70 238 H970" stroke="#49a1f8" stroke-width="9" fill="none" stroke-linecap="round"/>
@@ -12,8 +12,8 @@
     <text x="190" y="215" text-anchor="middle" fill="#2879bd" font-size="16" font-weight="800">ECONOMIC BREAK-EVEN</text>
 
     <path d="M650 238 C686 214 714 180 746 155 C807 107 874 90 970 82 L970 238 Z" fill="#83e1c2" opacity=".18"/>
-    <text x="850" y="112" text-anchor="middle" fill="#247558" font-size="18" font-weight="800">NET PUBLIC VALUE</text>
-    <text x="850" y="139" text-anchor="middle" fill="#4f6f64" font-size="15">earnings · tax · lower crisis costs</text>
+    <text x="760" y="55" text-anchor="middle" fill="#247558" font-size="18" font-weight="800">NET PUBLIC VALUE</text>
+    <text x="760" y="82" text-anchor="middle" fill="#4f6f64" font-size="15">earnings · tax · lower crisis costs</text>
 
     <g fill="none" stroke="#d1d8de" stroke-width="2" stroke-dasharray="5 7">
       <path d="M105 377 L150 348 L195 391 L240 352 L285 403 L330 361 L375 386 L420 346"/>
