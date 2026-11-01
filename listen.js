@@ -23,10 +23,12 @@
   function englishVoice() {
     const score = v => {
       const n = v.name || '';
-      return (/^en[-_]GB$/i.test(v.lang) ? 1000 : 0)
-        + (/premium|enhanced|natural|neural|online/i.test(n) ? 400 : 0)
-        + (/Google UK English|Microsoft.*(Sonia|Ryan|Libby)|Daniel|Serena|Oliver|Kate/i.test(n) ? 100 : 0)
-        - (/compact|eloquence|espeak/i.test(n) ? 500 : 0);
+      // Voice metadata has no gender field. Prefer recognised female voice
+      // names when offered, then fall back to the best ordinary English voice.
+      return (/^en[-_]GB$/i.test(v.lang) ? 500 : 0)
+        + (/premium|enhanced|natural|neural|online/i.test(n) ? 800 : 0)
+        + (/Serena|Kate|Martha|Stephanie|Sonia|Libby|Hazel|Susan|Samantha|Karen|Moira|Tessa|Google UK English Female|\\bfemale\\b/i.test(n) ? 650 : 0)
+        - (/compact|eloquence|espeak|whisper|trinoids|zarvox|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|wobble/i.test(n) ? 1200 : 0);
     };
     return synth.getVoices().filter(v=>/^en(?:[-_]|$)/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0];
   }
@@ -77,7 +79,7 @@
     if(index >= chunks.length) { stop('Finished. Scroll to another section and tap the speaker.'); return; }
     utterance = new SpeechSynthesisUtterance(chunks[index].slice(offset));
     const baseOffset = offset;
-    utterance.lang = 'en-GB'; utterance.rate = 0.95;
+    utterance.lang = 'en-GB'; utterance.rate = 0.93;
     const voice = englishVoice();
     if(voice) {utterance.voice = voice; utterance.lang = voice.lang;}
     utterance.onboundary = e => { if(token === generation && typeof e.charIndex === 'number') offset = baseOffset + e.charIndex; };
@@ -103,6 +105,13 @@
       generation++; synth.cancel(); active=target; index=0; offset=0;
       chunks = text.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g) || [text];
       chunks = chunks.flatMap(s => s.length > 260 ? s.match(/.{1,220}(?:\s|$)|\S+/g) || [s] : [s]);
+      // Keep short sentences together so the voice retains natural phrasing.
+      chunks = chunks.reduce((groups, sentence) => {
+        const last = groups.length - 1;
+        if(last >= 0 && groups[last].length + sentence.length < 420) groups[last] += sentence;
+        else groups.push(sentence);
+        return groups;
+      }, []);
     }
     state='reading'; play.setAttribute('aria-pressed','true'); play.setAttribute('aria-label','Stop reading'); announce('Reading: ' + title(active)); speak();
   }
