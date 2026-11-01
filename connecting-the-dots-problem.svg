@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1040" height="720" viewBox="0 0 1040 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="problemTitle problemDesc">
+<svg width="1040" height="720" style="display:block;width:100%;height:auto" viewBox="0 0 1040 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="problemTitle problemDesc">
   <title id="problemTitle">The problem: coordinated NHS practice and fragmented care support</title>
   <desc id="problemDesc">A steady blue NHS pathway shows specialists working together through monitoring, handovers and early intervention. Below it, a pale continuous high-amplitude wave represents lived experience while separate muted dots represent fragmented service contacts.</desc>
   <rect width="1040" height="720" rx="28" fill="#ffffff"/>
