@@ -9,13 +9,13 @@
     :root{--ink:#172a45;--muted:#657388;--blue:#49a1f8;--mint:#83e1c2;--pink:#e437a4;--paper:#f3f6f9;--line:#dce3ea}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper)}
     a{color:inherit}.wrap{width:min(1080px,calc(100% - 36px));margin:auto}.mast{background:#fff;border-bottom:1px solid var(--line);padding:20px 0}
-    .brand{display:flex;align-items:center;gap:14px;text-decoration:none;font-weight:800}.brand svg{width:54px;height:38px}.brand small{display:block;color:var(--muted);font-weight:500;margin-top:3px}
+    .brand{display:flex;align-items:center;gap:14px;text-decoration:none;font-weight:800}.brand .ncs-mark{width:82px;height:auto;display:block}.brand small{display:block;color:var(--muted);font-weight:500;margin-top:3px}
     .hero{padding:70px 0 44px}.eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#8f5d79;font-weight:800}
     h1{font-size:clamp(42px,8vw,78px);line-height:1.02;letter-spacing:-.05em;margin:14px 0 24px;max-width:900px;font-weight:300}
     .intro{font-size:21px;line-height:1.7;color:var(--muted);max-width:800px}.concept-grid{display:grid;grid-template-columns:minmax(300px,430px) 1fr;gap:64px;align-items:start;padding:32px 0 80px}
     .phone{background:#101a2a;border:8px solid #101a2a;border-radius:48px;padding:12px;box-shadow:0 32px 70px rgba(23,42,69,.2);position:sticky;top:20px}
     .screen{background:#f7fafc;border-radius:34px;overflow:hidden;min-height:760px}.app-head{background:linear-gradient(135deg,var(--mint),#b7eddc);padding:26px 22px 22px}
-    .app-brand{display:flex;justify-content:space-between;align-items:center}.app-logo{display:flex;align-items:center;gap:10px;font-weight:800}.app-logo svg{width:45px;height:32px}.avatar{width:38px;height:38px;border-radius:50%;background:white;display:grid;place-items:center;font-weight:800}
+    .app-brand{display:flex;justify-content:space-between;align-items:center}.app-logo{display:flex;align-items:center;gap:10px;font-weight:800}.app-logo .ncs-mark{width:64px;height:auto;display:block}.avatar{width:38px;height:38px;border-radius:50%;background:white;display:grid;place-items:center;font-weight:800}
     .app-head h2{font-size:28px;margin:30px 0 6px}.app-head p{margin:0;color:#355d53}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px;background:#fff;border-bottom:1px solid var(--line)}
     .tab{border:0;background:#edf2f6;border-radius:999px;padding:10px 5px;font-weight:750;color:#526177}.tab.active{background:var(--pink);color:#fff}
     .app-body{padding:18px}.status{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
@@ -31,8 +31,8 @@
 </head>
 <body>
   <header class="mast"><div class="wrap"><a class="brand" href="./">
-    <svg viewBox="0 0 64 42" aria-hidden="true"><defs><clipPath id="brandOverlap"><circle cx="23" cy="21" r="18"/></clipPath></defs><circle cx="23" cy="21" r="18" fill="#49a1f8"/><circle cx="41" cy="21" r="18" fill="#83e1c2"/><circle cx="41" cy="21" r="18" fill="#e437a4" clip-path="url(#brandOverlap)"/></svg>
-    <span>Connecting The Dots<small>The Care Collective</small></span>
+    <img class="ncs-mark" src="ncs-mark.svg" alt="NCS">
+    <span>National Care Service<small>App concept</small></span>
   </a></div></header>
   <main>
     <section class="hero"><div class="wrap">
@@ -45,8 +45,8 @@
         <div class="screen">
           <div class="app-head">
             <div class="app-brand"><div class="app-logo">
-              <svg viewBox="0 0 64 42" aria-hidden="true"><defs><clipPath id="appOverlap"><circle cx="23" cy="21" r="18"/></clipPath></defs><circle cx="23" cy="21" r="18" fill="#49a1f8"/><circle cx="41" cy="21" r="18" fill="#83e1c2"/><circle cx="41" cy="21" r="18" fill="#e437a4" clip-path="url(#appOverlap)"/></svg>
-              <span>My connected care</span></div><span class="avatar">AG</span></div>
+              <img class="ncs-mark" src="ncs-mark.svg" alt="NCS">
+              <span>National Care Service</span></div><span class="avatar">AG</span></div>
             <h2>Good morning</h2><p>Here is the shared picture for today.</p>
           </div>
           <div class="tabs"><button class="tab active">Today</button><button class="tab">People</button><button class="tab">Decisions</button></div>
@@ -74,6 +74,6 @@
       </div>
     </section>
   </main>
-  <footer><div class="wrap">The Care Collective · Connecting The Dots · Concept for discussion</div></footer>
+  <footer><div class="wrap">National Care Service · App concept for discussion</div></footer>
 </body>
 </html>
