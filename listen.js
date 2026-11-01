@@ -48,19 +48,19 @@
     const candidates = [...document.querySelectorAll('.trajectory-step, .sheet, main section, .hero, #full-proposal > .proposal-heading')]
       .filter(el => el.id !== 'pages' && !el.querySelector('.trajectory-step') && !el.closest('[hidden]'));
     const header = document.querySelector('header');
-    const top = header ? Math.min(header.getBoundingClientRect().bottom, innerHeight * .48) : 0;
+    const top = header ? Math.max(0, Math.min(header.getBoundingClientRect().bottom, innerHeight * .65)) : 0;
     const aim = top + (innerHeight - top) * .32;
     return candidates.map(el => {
       const r = el.getBoundingClientRect();
       const overlap = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, top));
       return {el, score: overlap > 0 ? Math.abs(Math.max(r.top, Math.min(aim, r.bottom)) - aim) - overlap / innerHeight : Infinity};
-    }).filter(x => Number.isFinite(x.score)).sort((a,b) => a.score-b.score)[0]?.el || document.querySelector('main') || document.body;
+    }).filter(x => Number.isFinite(x.score)).sort((a,b) => a.score-b.score)[0]?.el || null;
   }
   function title(el) { return el.getAttribute('aria-label') || el.querySelector('h1,h2,h3,figcaption strong')?.textContent.trim() || 'This section'; }
   function getText(el) {
     if (el.matches('.sheet')) return el.dataset.listenText || '';
     const copy = el.cloneNode(true);
-    copy.querySelectorAll('script,style,button,nav,form,input,textarea,select,dialog,[hidden],[aria-hidden="true"],.chart-actions,.chart-expand span,#care-listen').forEach(n => n.remove());
+    copy.querySelectorAll('script,style,button,nav,form,input,textarea,select,dialog,[hidden],[aria-hidden="true"],.chart-actions,.chart-expand span,.sheet-label,.placeholder,.reader-meta,.status,#counter,#care-listen').forEach(n => n.remove());
     copy.querySelectorAll('img,object,svg').forEach(n => {
       const src = n.getAttribute('src') || n.getAttribute('data') || '';
       const known = Object.keys(charts).find(key => src.split('?')[0].endsWith(key));
@@ -91,9 +91,10 @@
     if(!synth || !window.SpeechSynthesisUtterance) { announce('Spoken audio is unavailable in this browser. Try Safari or Chrome.', true); return; }
     if(state === 'reading' || state === 'loading') { stop(); return; }
     const target = visibleTarget();
+    if(!target) {stop('Scroll to the content you want to hear, then tap the speaker.');return;}
     {
-      const text = getText(target);
-      if(!text && target.matches('.sheet')) {
+      const text = getText(target).replace(/\bPage\s+\d+\s+of\s+\d+\b/gi, '').trim();
+      if(text.length < 40 && target.matches('.sheet')) {
         stop('Preparing this proposal page. Tap the speaker again when ready.');
         if(window.careReadPdfPage) window.careReadPdfPage(Number(target.dataset.page)).then(text => {
           if(text) {target.dataset.listenText=text; status.textContent='Page ready. Tap the speaker to listen.';}
@@ -117,5 +118,12 @@
   }
   play.addEventListener('click',start);
   document.addEventListener('keydown', e => {if(e.key === 'Escape') stop();});
+  let scrollTimer;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      if(state === 'reading' && active && visibleTarget() !== active) stop('Section changed. Tap the speaker to read what is now in view.');
+    }, 250);
+  }, {passive:true});
   window.addEventListener('pagehide',() => stop());
 })();
