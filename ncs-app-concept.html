@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>NCS App Concept — Connecting The Dots</title>
-  <meta name="description" content="A concept for a National Care Service app centred on the carer and caree.">
+  <title>National Care Service — Your connected care</title>
+  <meta name="description" content="Your National Care Service: one connected view of care, decisions and responsibility.">
   <style>
     :root{--ink:#172a45;--muted:#657388;--blue:#49a1f8;--mint:#83e1c2;--pink:#e437a4;--paper:#f3f6f9;--line:#dce3ea}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper)}
-    a{color:inherit}.wrap{width:min(1080px,calc(100% - 36px));margin:auto}.mast{background:#fff;border-bottom:1px solid var(--line);padding:18px 0}.mast-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:14px;text-decoration:none;font-weight:800}.brand .ncs-mark{width:82px;height:auto;display:block}.brand small{display:block;color:var(--muted);font-weight:500;margin-top:3px}.service-nav{display:flex;align-items:center;gap:8px}.service-nav a{text-decoration:none;font-size:13px;font-weight:750;color:#526177;padding:10px 14px;border-radius:999px}.service-nav a:hover{background:#edf3f6}.service-nav a:last-child{background:#e437a4;color:#fff}
+    a{color:inherit}.wrap{width:min(1080px,calc(100% - 36px));margin:auto}.mast{background:#fff;border-bottom:1px solid var(--line);padding:20px 0}.mast-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:20px;text-decoration:none}.brand .ncs-mark{width:110px;height:auto;display:block;flex:0 0 auto}.brand-copy{display:flex;flex-direction:column;justify-content:center;line-height:1.05}.brand-title{font-size:23px;font-weight:800;letter-spacing:-.025em}.brand small{display:block;color:var(--muted);font-size:15px;line-height:1.2;font-weight:500;margin-top:7px}
+    .menu-button{width:52px;height:52px;border:1px solid var(--line);border-radius:50%;background:#fff;display:grid;place-content:center;gap:5px;cursor:pointer}.menu-button span{display:block;width:22px;height:2px;background:var(--ink);border-radius:999px}.menu-button:hover{background:#edf3f6}
     .hero{padding:70px 0 44px}.eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#8f5d79;font-weight:800}
     h1{font-size:clamp(42px,8vw,78px);line-height:1.02;letter-spacing:-.05em;margin:14px 0 24px;max-width:900px;font-weight:300}
     .intro{font-size:21px;line-height:1.7;color:var(--muted);max-width:800px}.concept-grid{display:grid;grid-template-columns:minmax(300px,430px) 1fr;gap:64px;align-items:start;padding:32px 0 80px}
@@ -25,25 +26,23 @@
     .copy h2{font-size:clamp(30px,4vw,48px);font-weight:300;line-height:1.12;margin:0 0 24px}.copy>p{font-size:18px;line-height:1.75;color:var(--muted)}
     .principles{display:grid;gap:14px;margin-top:34px}.principle{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}.principle strong{display:block;font-size:19px;margin-bottom:7px}.principle p{margin:0;color:var(--muted);line-height:1.6}
     .note{margin-top:30px;border-left:5px solid var(--pink);padding:20px 22px;background:#fff;border-radius:0 16px 16px 0}.back{display:inline-block;margin-top:32px;background:var(--pink);color:#fff;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:800}
+    .service-visual{padding:0 0 90px}.visual-card{overflow:hidden;border-radius:30px;background:#fff;border:1px solid var(--line);box-shadow:0 28px 70px rgba(23,42,69,.12)}.visual-card img{display:block;width:100%;height:auto}.visual-copy{padding:34px 38px 38px}.visual-copy h2{font-size:clamp(30px,5vw,52px);line-height:1.08;letter-spacing:-.04em;font-weight:300;margin:0 0 14px}.visual-copy p{font-size:18px;line-height:1.65;color:var(--muted);max-width:760px;margin:0}
     footer{background:#fff;border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
-    @media(max-width:780px){.mast-inner{align-items:flex-start}.service-nav{gap:4px;flex-wrap:wrap;justify-content:flex-end}.service-nav a{font-size:11px;padding:8px 9px}.service-nav a:first-child{display:none}.brand .ncs-mark{width:70px}.hero{padding-top:46px}.concept-grid{grid-template-columns:1fr;gap:42px}.phone{position:static;width:min(100%,430px);margin:auto}.screen{min-height:700px}.copy{order:-1}}
+    @media(max-width:780px){.mast{padding:16px 0}.mast-inner{align-items:center}.brand{gap:13px}.brand .ncs-mark{width:92px}.brand-title{font-size:18px}.brand small{font-size:13px;margin-top:5px}.menu-button{width:46px;height:46px;flex:0 0 auto}.hero{padding-top:46px}.concept-grid{grid-template-columns:1fr;gap:42px}.phone{position:static;width:min(100%,430px);margin:auto}.screen{min-height:700px}.copy{order:-1}.visual-copy{padding:26px 24px 30px}.service-visual{padding-bottom:64px}}
+    @media(max-width:430px){.wrap{width:min(100% - 24px,1080px)}.brand .ncs-mark{width:78px}.brand-title{font-size:16px}.brand small{font-size:12px}.menu-button{width:42px;height:42px}.menu-button span{width:19px}}
   </style>
 </head>
 <body>
   <header class="mast"><div class="wrap mast-inner">
     <a class="brand" href="ncs-app-concept.html">
       <img class="ncs-mark" src="ncs-mark.svg" alt="NCS">
-      <span>National Care Service<small>Your connected care</small></span>
+      <span class="brand-copy"><span class="brand-title">National Care Service</span><small>Your connected care</small></span>
     </a>
-    <nav class="service-nav" aria-label="NCS app concept navigation">
-      <a href="#dashboard">Dashboard</a>
-      <a href="#principles">How it works</a>
-      <a href="./?from=ncs-app#app-concept">Proposal</a>
-    </nav>
+    <button class="menu-button" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div></header>
   <main>
     <section class="hero"><div class="wrap">
-      <p class="eyebrow">NCS app concept · first iteration</p>
+      <p class="eyebrow">Your National Care Service</p>
       <h1>One shared picture.<br>Clear responsibility.</h1>
       <p class="intro">A simple front door for the carer and caree: what is happening, what has been decided, what needs action and who is responsible. The app connects the work around a life; it does not ask the family to manage the system.</p>
     </div></section>
@@ -69,18 +68,27 @@
       </div>
       <div class="copy" id="principles">
         <h2>The family sees one journey. Services see what they must do next.</h2>
-        <p>This is a concept, not finished software. Its job is to make the operating principle tangible enough for carers, carees and professionals to challenge and improve together.</p>
+        <p>The service makes the operating principle visible to carers, carees and professionals: a shared picture, clear ownership and action before a missed handover becomes a crisis.</p>
         <div class="principles">
           <article class="principle"><strong>One shared picture</strong><p>The person and carer can see the same current position as the services around them—without repeating their story at every door.</p></article>
           <article class="principle"><strong>Named responsibility</strong><p>Every next action has an accountable service and a visible status. A missed handover cannot quietly disappear.</p></article>
           <article class="principle"><strong>Permission from people</strong><p>The carer and caree control what can be shared, with whom and for what purpose. Consent is specific and visible.</p></article>
           <article class="principle"><strong>Action before crisis</strong><p>Delays and contradictions are surfaced early, when coordinated action can still protect recovery, independence, learning and work.</p></article>
         </div>
-        <div class="note"><strong>Co-production starts here.</strong><br>This screen should be tested with carers, carees and frontline professionals before a technical specification is written.</div>
-        <a class="back" href="./?app-concept=1#ideaHeading">← Return to the proposal</a>
+        <div class="note"><strong>Built through co-production.</strong><br>The service keeps evolving with carers, carees and frontline professionals—around the life being lived, not the boundaries between organisations.</div>
+      </div>
+    </section>
+    <section class="wrap service-visual" aria-labelledby="serviceVisualTitle">
+      <div class="visual-card">
+        <img src="ncs-connected-service-visual.svg" alt="The National Care Service app connecting home, people, health, records, education and work around one person">
+        <div class="visual-copy">
+          <p class="eyebrow">One connected front door</p>
+          <h2 id="serviceVisualTitle">Health, care, home and work—in one everyday place.</h2>
+          <p>The person and carer no longer have to connect the system themselves. The National Care Service brings the right information, handovers and support into one connected view.</p>
+        </div>
       </div>
     </section>
   </main>
-  <footer><div class="wrap">NCS app concept · Developed through Connecting The Dots by The Care Collective</div></footer>
+  <footer><div class="wrap">National Care Service · Your connected care</div></footer>
 </body>
 </html>
