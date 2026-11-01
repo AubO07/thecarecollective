@@ -214,7 +214,7 @@
       .service-dots figcaption{font-size:13px;gap:8px;margin-top:8px}
     }
   </style>
-  <script src="/listen.js?v=76" defer></script>
+  <script src="/listen.js?v=78" defer></script>
 </head>
 <body>
   <a class="skip" href="#pages">Skip to proposal pages</a>
@@ -559,11 +559,28 @@
       },{passive:true});
       lastWidth=pages.clientWidth;
     }
+    let narrationData;
+    async function pageNarrationData(){
+      if(!narrationData) narrationData=(async()=>{
+        const response=await fetch('/proposal-narration.json?v=78');
+        if(!response.ok) return null;
+        const data=await response.json();
+        const bytes=await pdf.getData();
+        const digest=await crypto.subtle.digest('SHA-256',bytes);
+        const hash=Array.from(new Uint8Array(digest),x=>x.toString(16).padStart(2,'0')).join('');
+        return hash===data.pdfSha256 && pdf.numPages===data.pageCount ? data : null;
+      })().catch(()=>null);
+      return narrationData;
+    }
     window.careReadPdfPage = async function(n){
       if(!pdf) return '';
       const page=await pdf.getPage(n);
       const content=await page.getTextContent();
-      return content.items.map(item=>item.str + (item.hasEOL?'\n':' ')).join('').replace(/\s+/g,' ').trim();
+      const native=content.items.map(item=>item.str + (item.hasEOL?'\n':' ')).join('').replace(/\s+/g,' ').trim();
+      // Many proposal pages are artwork with only a footer in the text layer.
+      // Match the transcription to the exact PDF before using it.
+      const data=await pageNarrationData();
+      return data?.pages[String(n)] || (native.replace(/[^a-z]/gi,'').length>80 ? native : '');
     };
     async function renderPage(n,sheet){
       if(!pdf||loaded.has(n)||queue.has(n))return;
