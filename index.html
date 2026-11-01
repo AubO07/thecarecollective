@@ -214,6 +214,7 @@
       .service-dots figcaption{font-size:13px;gap:8px;margin-top:8px}
     }
   </style>
+  <script src="/listen.js?v=75" defer></script>
 </head>
 <body>
   <a class="skip" href="#pages">Skip to proposal pages</a>
@@ -558,12 +559,19 @@
       },{passive:true});
       lastWidth=pages.clientWidth;
     }
+    window.careReadPdfPage = async function(n){
+      if(!pdf) return '';
+      const page=await pdf.getPage(n);
+      const content=await page.getTextContent();
+      return content.items.map(item=>item.str + (item.hasEOL?'\n':' ')).join('').replace(/\s+/g,' ').trim();
+    };
     async function renderPage(n,sheet){
       if(!pdf||loaded.has(n)||queue.has(n))return;
       queue.add(n);
       let canvas;
       try{
         const page=await pdf.getPage(n);
+        if(!sheet.dataset.listenText){window.careReadPdfPage(n).then(text=>{sheet.dataset.listenText=text;}).catch(()=>{});}
         // CSS dimensions follow the actual page ratio, with pixels capped for mobile memory.
         const width=Math.min(sheet.clientWidth,900);
         const base=page.getViewport({scale:1});
@@ -625,4 +633,5 @@
 })();
 </script>
 </html>
+
 
