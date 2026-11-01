@@ -9,7 +9,7 @@
     #care-listen button:focus-visible{outline:3px solid #182d49;outline-offset:4px}
     #care-listen button[aria-pressed="true"]{background:#182d49}
     #care-listen .listen-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-    #care-listen .listen-error{position:absolute;right:0;bottom:60px;box-sizing:border-box;width:260px;padding:10px 14px;border:1px solid #dce1e8;border-radius:12px;background:white;color:#182d49;font:14px/1.4 Arial,sans-serif;margin:0}
+    #care-listen .listen-error{position:absolute;right:0;bottom:60px;box-sizing:border-box;width:min(240px,calc(100vw - 32px));padding:8px 11px;border:1px solid #dce1e8;border-radius:12px;background:white;color:#182d49;font:12px/1.4 Arial,sans-serif;margin:0}
     @media print{#care-listen{display:none}}
   `;
   document.head.appendChild(style);
@@ -20,21 +20,49 @@
   const play = root.querySelector('#care-listen-play');
   const status = root.querySelector('#care-listen-status');
   const synth = window.speechSynthesis;
+  // Start loading the device's voice list before the first tap.
+  if (synth) synth.getVoices();
+  function isBritishVoice(v) {
+    return /^en[-_]GB(?:[-_]|$)/i.test(v.lang || '');
+  }
   function englishVoice() {
     const score = v => {
       const n = v.name || '';
       // Voice metadata has no gender field. Prefer recognised female voice
       // names when offered, then fall back to the best ordinary English voice.
-      return (/^en[-_]GB$/i.test(v.lang) ? 500 : 0)
+      return (isBritishVoice(v) ? 500 : 0)
         + (/premium|enhanced|natural|neural|online/i.test(n) ? 800 : 0)
         + (/Serena|Kate|Martha|Stephanie|Sonia|Libby|Hazel|Susan|Google UK English Female|\bfemale\b/i.test(n) ? 650 : 0)
         - (/compact|eloquence|espeak|whisper|trinoids|zarvox|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|wobble/i.test(n) ? 1200 : 0);
     };
-    return synth.getVoices().filter(v=>/^en[-_]GB$/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0];
+    return synth.getVoices().filter(v=>isBritishVoice(v)).sort((a,b)=>score(b)-score(a))[0];
   }
+  let noticeTimer;
   function announce(message, error = false) {
+    clearTimeout(noticeTimer);
     status.textContent = message;
     status.className = error ? 'listen-error' : 'listen-status';
+    if (error) noticeTimer = setTimeout(() => { status.className = 'listen-status'; }, 7000);
+  }
+  function waitForBritishVoice(timeout = 1500) {
+    const ready = englishVoice();
+    if (ready) return Promise.resolve(ready);
+    return new Promise(resolve => {
+      let timer;
+      const finish = voice => {
+        clearTimeout(timer);
+        synth.removeEventListener('voiceschanged', changed);
+        resolve(voice);
+      };
+      const changed = () => { const voice = englishVoice(); if (voice) finish(voice); };
+      synth.addEventListener('voiceschanged', changed);
+      timer = setTimeout(() => finish(englishVoice()), timeout);
+      changed();
+    });
+  }
+  function unavailableVoice() {
+    stop();
+    announce('British audio isn’t available here. Try opening this page in Safari.', true);
   }
   let state = 'idle', generation = 0, chunks = [], index = 0, offset = 0, active = null, utterance = null, readingVoice = null;
   const charts = {
@@ -83,14 +111,14 @@
     const baseOffset = offset;
     utterance.lang = 'en-GB'; utterance.rate = 0.93;
     const voice = readingVoice;
-    if(!voice) {stop();announce('No British English voice is available in this browser. Please enable one on your device.',true);return;}
+    if(!voice) {unavailableVoice();return;}
     utterance.voice = voice; utterance.lang = 'en-GB';
     utterance.onboundary = e => { if(token === generation && typeof e.charIndex === 'number') offset = baseOffset + e.charIndex; };
     utterance.onend = () => { if(token !== generation || state !== 'reading') return; index++; offset=0; speak(); };
     utterance.onerror = e => { if(token === generation && !['interrupted','canceled'].includes(e.error)) { stop(); announce('Audio could not start. Tap the speaker again, or try Safari.', true); } };
     synth.speak(utterance);
   }
-  function start() {
+  async function start() {
     if(!synth || !window.SpeechSynthesisUtterance) { announce('Spoken audio is unavailable in this browser. Try Safari or Chrome.', true); return; }
     if(state === 'reading' || state === 'loading') { stop(); return; }
     const target = visibleTarget();
@@ -118,7 +146,20 @@
       }, []);
     }
     readingVoice = englishVoice();
-    if(!readingVoice) {stop();announce('No British English voice is available in this browser. Please enable one on your device.',true);return;}
+    if(!readingVoice) {
+      const token = generation;
+      state = 'loading';
+      play.setAttribute('aria-pressed', 'true');
+      play.setAttribute('aria-label', 'Cancel audio preparation');
+      announce('Checking British voices…');
+      const voice = await waitForBritishVoice();
+      if (token !== generation || state !== 'loading') return;
+      if (!voice) { unavailableVoice(); return; }
+      // A fresh tap preserves iPhone's requirement for user-initiated audio.
+      stop();
+      announce('British voice ready. Tap the speaker to listen.', true);
+      return;
+    }
     state='reading'; play.setAttribute('aria-pressed','true'); play.setAttribute('aria-label','Stop reading'); announce('Reading: ' + title(active)); speak();
   }
   play.addEventListener('click',start);
