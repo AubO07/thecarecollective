@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1040" height="720" viewBox="0 0 1040 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hypothesisTitle hypothesisDesc">
   <title id="hypothesisTitle">The hypothesis: connected support creates a more dependable pathway</title>
-  <desc id="hypothesisDesc">A high-amplitude fragmented pathway shows widely varying experiences. A minority of points cross economic break-even, but most do not. At the fuchsia Connecting the Dots intervention, a mint connected pathway rises towards employment, training or education.</desc>
+  <desc id="hypothesisDesc">A pale continuous high-amplitude wave represents lived experience while separate muted dots represent fragmented service contacts. A minority of points cross economic break-even, but most do not. At the fuchsia Connecting the Dots intervention, a strong mint connected pathway rises towards employment, training or education.</desc>
   <rect width="1040" height="720" rx="28" fill="#ffffff"/>
   <g font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
     <text x="70" y="58" fill="#e437a4" font-size="17" font-weight="800" letter-spacing="2">02 · THE HYPOTHESIS</text>
@@ -11,7 +11,7 @@
     <rect x="73" y="250" width="235" height="34" rx="17" fill="#eef7ff"/>
     <text x="190" y="273" text-anchor="middle" fill="#2879bd" font-size="16" font-weight="800">ECONOMIC BREAK-EVEN</text>
 
-    <path d="M105 470 L150 365 L195 515 L240 390 L285 545 L330 420 L375 220 L420 260" fill="none" stroke="#d1d8de" stroke-width="2" stroke-dasharray="5 7"/>
+    <path d="M105 470 C123 470 132 365 150 365 C168 365 177 515 195 515 C213 515 222 390 240 390 C258 390 267 545 285 545 C303 545 312 420 330 420 C348 420 357 220 375 220 C393 220 402 260 420 260" fill="none" stroke="#c9d7d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     <g opacity=".76">
       <circle cx="105" cy="470" r="12" fill="#9db5ad"/><circle cx="150" cy="365" r="12" fill="#b3c3bd"/>
       <circle cx="195" cy="515" r="12" fill="#8fa69e"/><circle cx="240" cy="390" r="12" fill="#c0ccc8"/>
