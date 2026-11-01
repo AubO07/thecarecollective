@@ -124,7 +124,12 @@
     .evidence-grid .stat{display:block;font-size:34px;color:#005eb8;line-height:1.15;margin-bottom:14px;font-weight:750}
     .evidence-grid p{font-size:15px}
     .connection-chart{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:24px 0}
-    .connection-chart svg{display:block;width:100%;height:auto}
+    .connection-chart svg,.connection-chart img{display:block;width:100%;height:auto}
+    .connection-chart.core-chart{padding:18px}
+    .chart-key{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 0}
+    .chart-key div{padding:18px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+    .chart-key strong{display:block;font-size:14px;color:var(--ink);margin-bottom:6px}
+    .chart-key span{display:block;font-size:13px;line-height:1.55;color:#657388}
     .connection-chart figcaption{font-size:12px;color:#657388;margin-top:14px;line-height:1.6}
     .story .steps{padding-left:22px;color:#526177;font-size:16px;line-height:1.7}
     .story .steps li{padding:6px 0}
@@ -140,7 +145,7 @@
     @media(max-width:640px){
       .story{padding:0 20px}.story section{padding:42px 0}.story .hero{padding-top:44px}
       .story-grid,.evidence-grid{grid-template-columns:1fr;gap:16px}
-      .story-card{padding:23px}.connection-chart{padding:12px;margin:20px 0}
+      .story-card{padding:23px}.connection-chart{padding:12px;margin:20px 0}.chart-key{grid-template-columns:1fr;gap:10px}.chart-key div{padding:15px}
       .story p{font-size:16px}.story .lead{font-size:19px}
     }
   
@@ -255,41 +260,34 @@
     </section>
 
     <section aria-labelledby="ideaHeading">
-      <p class="eyebrow">03 · The idea</p><h2 id="ideaHeading">Build on the NHS. Connect the support around it.</h2>
-      <p>The blue NHS line is our baseline. The question is how the wider care ecosystem can connect around it, with a shared understanding of what matters to the person and their carer.</p>
-      <div class="story-grid">
-        <figure class="connection-chart"><h3>When the dots are disconnected</h3><svg viewBox="0 0 700 330" role="img" aria-label="Separate services, with the person and carer left to bridge the gaps">
-<path d="M90 97 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/><path d="M330 87 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/><path d="M570 97 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/><path d="M90 217 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/><path d="M570 217 l15 10" stroke="#bac5cf" stroke-width="2" stroke-dasharray="3 5"/>
-<circle cx="110" cy="65" r="12" fill="#a9bab4"/><text x="110" y="97" text-anchor="middle" fill="#33415a" font-size="17">Housing</text><circle cx="350" cy="55" r="12" fill="#a9bab4"/><text x="350" y="87" text-anchor="middle" fill="#33415a" font-size="17">Benefits</text><circle cx="590" cy="65" r="12" fill="#a9bab4"/><text x="590" y="97" text-anchor="middle" fill="#33415a" font-size="17">Social care</text><circle cx="110" cy="185" r="12" fill="#a9bab4"/><text x="110" y="217" text-anchor="middle" fill="#33415a" font-size="17">Learning</text><circle cx="590" cy="185" r="12" fill="#a9bab4"/><text x="590" y="217" text-anchor="middle" fill="#33415a" font-size="17">Employment</text>
-<rect x="234" y="121" width="232" height="57" rx="28" fill="#f1f4f7" stroke="#cbd5df"/><text x="350" y="156" text-anchor="middle" fill="#14233b" font-size="18" font-weight="650">Person + carer</text>
-<line x1="40" y1="275" x2="660" y2="275" stroke="#005eb8" stroke-width="7"/><text x="350" y="312" text-anchor="middle" fill="#005eb8" font-size="18" font-weight="700">NHS — the blue baseline</text></svg><figcaption>Separate decisions and missing handovers leave families carrying the coordination.</figcaption></figure>
-        <figure class="connection-chart"><h3>When we connect the dots</h3><svg viewBox="0 0 700 330" role="img" aria-label="Services connected around the person and carer, alongside the NHS">
-<line x1="350" y1="150" x2="110" y2="65" stroke="#c02683" stroke-width="3"/><line x1="350" y1="150" x2="350" y2="55" stroke="#c02683" stroke-width="3"/><line x1="350" y1="150" x2="590" y2="65" stroke="#c02683" stroke-width="3"/><line x1="350" y1="150" x2="110" y2="185" stroke="#c02683" stroke-width="3"/><line x1="350" y1="150" x2="590" y2="185" stroke="#c02683" stroke-width="3"/><line x1="350" y1="175" x2="350" y2="275" stroke="#c02683" stroke-width="3"/>
-<circle cx="110" cy="65" r="12" fill="#13865a"/><text x="110" y="97" text-anchor="middle" fill="#33415a" font-size="17">Housing</text><circle cx="350" cy="55" r="12" fill="#13865a"/><text x="350" y="87" text-anchor="middle" fill="#33415a" font-size="17">Benefits</text><circle cx="590" cy="65" r="12" fill="#13865a"/><text x="590" y="97" text-anchor="middle" fill="#33415a" font-size="17">Social care</text><circle cx="110" cy="185" r="12" fill="#13865a"/><text x="110" y="217" text-anchor="middle" fill="#33415a" font-size="17">Learning</text><circle cx="590" cy="185" r="12" fill="#13865a"/><text x="590" y="217" text-anchor="middle" fill="#33415a" font-size="17">Employment</text>
-<rect x="234" y="121" width="232" height="57" rx="28" fill="#fcebf5" stroke="#c02683"/><text x="350" y="156" text-anchor="middle" fill="#14233b" font-size="18" font-weight="650">Person + carer</text>
-<line x1="40" y1="275" x2="660" y2="275" stroke="#005eb8" stroke-width="7"/><text x="350" y="312" text-anchor="middle" fill="#005eb8" font-size="18" font-weight="700">NHS — the blue baseline</text></svg><figcaption>Agreed information sharing, named responsibilities and timely action bring support together.</figcaption></figure>
-      </div>
-      <p>Each person retains their own voice and choices. Participating services would agree what information can lawfully be shared, for what purpose, and who is responsible for acting on it.</p>
-      <p><strong>Permission from people. Responsibility from services.</strong></p>
+      <p class="eyebrow">03 · These are the dots</p>
+      <h2 id="ideaHeading">The carer and caree sit at the centre.</h2>
+      <p>Health, social care, housing, benefits, education, employment and community support all affect the same life. Yet their decisions and handovers are often made separately—and the family is left to carry the connections.</p>
+      <figure class="connection-chart core-chart">
+        <img src="care-system-map.svg" alt="A grey system map places the carer and caree together at the centre, connected to the NHS, adult social care, mental health, legal advocacy, community support, employers, education, housing and benefits.">
+        <figcaption>The system surrounds the family. The family should not have to manage the system.</figcaption>
+      </figure>
+      <p><strong>The dots are people, services and decisions. The connections are handovers, information and accountability.</strong></p>
+      <p>Each person retains their own voice and choices. Participating services agree what information can lawfully be shared, for what purpose, and who is responsible for acting on it.</p>
     </section>
 
     <section aria-labelledby="progressHeading">
-      <p class="eyebrow">04 · What we want to test</p><h2 id="progressHeading">Could better connections change the trajectory?</h2>
-      <p>Less time repairing the system could mean more time for recovery, relationships, learning and work. The fuchsia curve illustrates that possibility; it is not a forecast or a measured result.</p>
-      <figure class="connection-chart">
-        <svg viewBox="0 0 800 340" role="img" aria-label="Illustrative hypothesis: opportunities and independence may improve over time as support becomes coordinated. No numerical forecast.">
-          <text x="34" y="28" fill="#861457" font-size="16" font-weight="700">ILLUSTRATIVE — TO BE TESTED</text>
-          <line x1="55" y1="275" x2="755" y2="275" stroke="#005eb8" stroke-width="6"/>
-          <text x="58" y="305" fill="#005eb8" font-size="16">NHS baseline</text><text x="755" y="328" text-anchor="end" fill="#657388" font-size="15">Time →</text>
-          <path d="M65 253 C180 253 240 225 330 197 S510 140 580 100 S680 65 735 49" fill="none" stroke="#b91c7a" stroke-width="6" stroke-dasharray="10 7"/>
-          <g fill="#b91c7a"><circle cx="140" cy="246" r="7"/><circle cx="330" cy="197" r="7"/><circle cx="530" cy="127" r="7"/><circle cx="714" cy="55" r="7"/></g>
-          <g fill="#33415a" font-size="16"><text x="95" y="218">Support arrives</text><text x="250" y="169">Handovers succeed</text><text x="445" y="98">Learning or training</text><text x="610" y="33">Work, if appropriate</text></g>
-        </svg>
-        <figcaption>Possible pathways, not a required sequence. Success also includes stability, choice and independence for people for whom paid work is not appropriate.</figcaption>
+      <p class="eyebrow">04 · What we want to test</p>
+      <h2 id="progressHeading">Connect the dots. Change the trajectory.</h2>
+      <p>Fragmented services can produce activity without dependable progress. The pilot asks whether coordinated support can create a clearer pathway towards stability, learning, independence and paid work where that is wanted and appropriate.</p>
+      <figure class="connection-chart core-chart">
+        <img src="connecting-the-dots-chart.svg" alt="An illustrative chart. Differently coloured fragmented dots fluctuate. After the Connecting the Dots intervention, mint-green dots join into a rising pathway, cross the blue economic break-even line and continue into net public value.">
+        <figcaption>An illustrative hypothesis, not a forecast. The pilot would test whether better coordination improves outcomes and creates measurable public value.</figcaption>
       </figure>
+      <div class="chart-key" aria-label="How to read the trajectory chart">
+        <div><strong>Before connection</strong><span>Different muted dots represent separate services and inconsistent outcomes.</span></div>
+        <div><strong>After connection</strong><span>The mint pathway represents coordinated support and a more dependable direction.</span></div>
+        <div><strong>Above the blue line</strong><span>Earnings and public revenue can rise while benefit reliance, duplicated administration and crisis costs can fall.</span></div>
+      </div>
+      <p><strong>That area is not private profit. It is potential net fiscal benefit: a return to the public purse and greater economic independence for families.</strong></p>
       <div class="story-grid">
-        <div><h3>Two people. Distinct ambitions.</h3><p>A carer might retain four days of paid work while the person they support enters education. Both might return to part-time work. Or the gain might be safer, more independent daily life.</p></div>
-        <div><h3>Measure the costs separately</h3><p>Compare the cost of coordination and support with changes in avoidable service use and public revenue. Track household earnings and wellbeing separately. National savings remain a question for evidence, not a promise.</p></div>
+        <div><h3>Measure human progress</h3><p>Track stability, choice, successful handovers, learning, work where appropriate, and the time families no longer spend repairing the system.</p></div>
+        <div><h3>Measure the economics separately</h3><p>Compare the cost of coordination with changes in avoidable service use, benefits, household earnings, tax and National Insurance. The financial case must be demonstrated by evidence—not assumed.</p></div>
       </div>
     </section>
 
