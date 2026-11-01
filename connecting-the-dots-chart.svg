@@ -15,7 +15,7 @@
     <text x="847" y="251" text-anchor="middle" fill="#3f695b" font-size="14">better outcomes · lower crisis costs</text>
     <text x="847" y="275" text-anchor="middle" fill="#3f695b" font-size="14">less fraud &amp; error · higher earnings &amp; tax</text>
 
-    <path d="M70 500 C90 365 118 205 155 225 C193 246 176 522 230 548 C282 573 284 285 335 205 C368 153 404 177 410 255 C421 396 438 487 478 536 C494 555 510 544 520 520" fill="none" stroke="#8fae9f" stroke-width="6" stroke-dasharray="0.1 13" stroke-linecap="round"/>
+    <path d="M70 500 C92 350 110 220 150 220 C190 220 185 550 240 550 C295 550 285 200 350 200 C415 200 405 545 475 545 C495 545 505 522 520 520" fill="none" stroke="#8fae9f" stroke-width="11" stroke-dasharray="0.1 26" stroke-linecap="round"/>
 
     <path d="M70 300 H970" stroke="#49a1f8" stroke-width="9" fill="none" stroke-linecap="round"/>
     <rect x="73" y="250" width="235" height="34" rx="17" fill="#eef7ff"/>
