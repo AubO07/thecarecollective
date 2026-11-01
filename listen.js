@@ -4,39 +4,36 @@
   if (document.getElementById('care-listen')) return;
   const style = document.createElement('style');
   style.textContent = `
-    #care-listen{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;font-family:inherit;color:#182d49}
-    #care-listen button,#care-listen select{font:inherit;font-size:15px;min-height:44px;cursor:pointer}
-    #care-listen button:focus-visible,#care-listen select:focus-visible{outline:3px solid #182d49;outline-offset:3px}
-    #care-listen .listen-toggle{display:flex;align-items:center;gap:8px;border:0;border-radius:50px;padding:13px 17px;background:#e437a4;color:white;font-weight:800;box-shadow:0 3px 16px #182d4926;margin-left:auto}
-    #care-listen .listen-panel{box-sizing:border-box;width:min(340px,calc(100vw - 32px));padding:18px;background:white;border:1px solid #dce1e8;border-radius:18px;box-shadow:0 6px 30px #182d4926;margin-bottom:12px}
-    #care-listen [hidden]{display:none!important}
-    #care-listen p{font-size:14px;line-height:1.45;margin:8px 0 12px;color:#182d49}
-    #care-listen .listen-controls{display:flex;gap:10px;flex-wrap:wrap}
-    #care-listen .listen-controls button{border:1px solid #dce1e8;background:#fff;border-radius:24px;padding:8px 17px;color:#182d49;font-weight:700}
-    #care-listen .listen-controls button:first-child{background:#182d49;color:white}
-    #care-listen label{display:flex;align-items:center;gap:10px;font-size:14px;margin-top:12px}
-    #care-listen select{border:1px solid #dce1e8;border-radius:8px;background:white;color:#182d49;padding:6px}
+    #care-listen{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40}
+    #care-listen button{display:grid;place-items:center;width:52px;height:52px;border:0;border-radius:50%;background:#e437a4;color:white;box-shadow:0 3px 16px #182d4926;cursor:pointer}
+    #care-listen button:focus-visible{outline:3px solid #182d49;outline-offset:4px}
+    #care-listen button[aria-pressed="true"]{background:#182d49}
+    #care-listen .listen-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+    #care-listen .listen-error{position:absolute;right:0;bottom:60px;box-sizing:border-box;width:260px;padding:10px 14px;border:1px solid #dce1e8;border-radius:12px;background:white;color:#182d49;font:14px/1.4 Arial,sans-serif;margin:0}
     @media print{#care-listen{display:none}}
   `;
   document.head.appendChild(style);
   const root = document.createElement('aside');
   root.id = 'care-listen'; root.setAttribute('aria-label', 'Listen to this page');
-  root.innerHTML = `<div class="listen-panel" id="care-listen-panel" hidden>
-    <strong>Listen in English</strong>
-    <p id="care-listen-status" role="status" aria-live="polite">Read the section currently in view.</p>
-    <div class="listen-controls"><button type="button" id="care-listen-play">Play</button><button type="button" id="care-listen-stop">Stop</button></div>
-    <label>Reading speed <select id="care-listen-rate"><option value="0.85">Slower</option><option value="1" selected>Normal</option><option value="1.15">Faster</option></select></label>
-    <p style="margin-bottom:0;font-size:12px">Uses your device’s available English voice. Scroll, then press Play to read another section.</p>
-    </div><button class="listen-toggle" type="button" aria-controls="care-listen-panel" aria-expanded="false" aria-label="Listen to the section in view">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg><span>Listen</span></button>`;
+  root.innerHTML = `<p class="listen-status" id="care-listen-status" role="status" aria-live="polite"></p><button id="care-listen-play" type="button" aria-label="Listen to the section in view" aria-pressed="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg></button>`;
   document.body.appendChild(root);
-  const panel = root.querySelector('.listen-panel');
-  const toggle = root.querySelector('.listen-toggle');
   const play = root.querySelector('#care-listen-play');
-  const stopButton = root.querySelector('#care-listen-stop');
   const status = root.querySelector('#care-listen-status');
-  const rate = root.querySelector('select');
   const synth = window.speechSynthesis;
+  function englishVoice() {
+    const score = v => {
+      const n = v.name || '';
+      return (/^en[-_]GB$/i.test(v.lang) ? 1000 : 0)
+        + (/premium|enhanced|natural|neural|online/i.test(n) ? 400 : 0)
+        + (/Google UK English|Microsoft.*(Sonia|Ryan|Libby)|Daniel|Serena|Oliver|Kate/i.test(n) ? 100 : 0)
+        - (/compact|eloquence|espeak/i.test(n) ? 500 : 0);
+    };
+    return synth.getVoices().filter(v=>/^en(?:[-_]|$)/i.test(v.lang)).sort((a,b)=>score(b)-score(a))[0];
+  }
+  function announce(message, error = false) {
+    status.textContent = message;
+    status.className = error ? 'listen-error' : 'listen-status';
+  }
   let state = 'idle', generation = 0, chunks = [], index = 0, offset = 0, active = null, utterance = null;
   const charts = {
     'connecting-the-dots-problem.svg': 'The problem. The blue NHS pathway is straight and continuous: specialists work together, monitor continuously, hand over safely and intervene early. Below it, green dots fluctuate across the full time period. They represent fragmented care and support, with separate agencies, repeated information, missed handovers and preventable crises. Without change, this fragmentation continues.',
@@ -71,36 +68,33 @@
     copy.querySelectorAll('p,h1,h2,h3,h4,li,figcaption,blockquote,br').forEach(n => n.appendChild(document.createTextNode('\n')));
     return copy.textContent.replace(/[↗→]/g,' ').replace(/\s+/g,' ').trim();
   }
-  function stop(message = 'Stopped. Press Play to read the section in view.') {
+  function stop(message = 'Stopped. Tap the speaker to read the section in view.') {
     generation++; if (synth) synth.cancel();
-    state = 'idle'; utterance = null; play.textContent = 'Play'; status.textContent = message;
+    state = 'idle'; utterance = null; play.setAttribute('aria-pressed','false'); play.setAttribute('aria-label','Listen to the section in view'); announce(message);
   }
   function speak() {
     const token = generation;
-    if(index >= chunks.length) { stop('Finished. Scroll to another section and press Play.'); return; }
+    if(index >= chunks.length) { stop('Finished. Scroll to another section and tap the speaker.'); return; }
     utterance = new SpeechSynthesisUtterance(chunks[index].slice(offset));
     const baseOffset = offset;
-    utterance.lang = 'en-GB'; utterance.rate = Number(rate.value);
-    const voices = synth.getVoices();
-    const voice = voices.find(v => v.lang.replace('_','-') === 'en-GB') || voices.find(v => /^en[-_]/i.test(v.lang));
-    if(voice) utterance.voice = voice;
+    utterance.lang = 'en-GB'; utterance.rate = 0.95;
+    const voice = englishVoice();
+    if(voice) {utterance.voice = voice; utterance.lang = voice.lang;}
     utterance.onboundary = e => { if(token === generation && typeof e.charIndex === 'number') offset = baseOffset + e.charIndex; };
     utterance.onend = () => { if(token !== generation || state !== 'reading') return; index++; offset=0; speak(); };
-    utterance.onerror = e => { if(token === generation && !['interrupted','canceled'].includes(e.error)) stop('Audio could not start. Try Play again, or open this page in Safari.'); };
+    utterance.onerror = e => { if(token === generation && !['interrupted','canceled'].includes(e.error)) { stop(); announce('Audio could not start. Tap the speaker again, or try Safari.', true); } };
     synth.speak(utterance);
   }
   function start() {
-    if(!synth || !window.SpeechSynthesisUtterance) { status.textContent = 'Spoken audio is unavailable in this browser. Try opening this page in Safari or Chrome.'; play.disabled = true; return; }
-    if(state === 'reading') {
-      generation++; synth.cancel(); state='paused'; utterance=null; play.textContent='Resume'; status.textContent='Paused: ' + title(active); return;
-    }
+    if(!synth || !window.SpeechSynthesisUtterance) { announce('Spoken audio is unavailable in this browser. Try Safari or Chrome.', true); return; }
+    if(state === 'reading' || state === 'loading') { stop(); return; }
     const target = visibleTarget();
-    if(state !== 'paused' || target !== active) {
+    {
       const text = getText(target);
       if(!text && target.matches('.sheet')) {
-        stop('Preparing this proposal page. Press Play again when ready.');
+        stop('Preparing this proposal page. Tap the speaker again when ready.');
         if(window.careReadPdfPage) window.careReadPdfPage(Number(target.dataset.page)).then(text => {
-          if(text) {target.dataset.listenText=text; status.textContent='Page ready. Press Play to listen.';}
+          if(text) {target.dataset.listenText=text; status.textContent='Page ready. Tap the speaker to listen.';}
           else status.textContent='This page contains artwork without readable text.';
         }).catch(() => {status.textContent='This page could not be read. Try another section.';});
         return;
@@ -110,17 +104,9 @@
       chunks = text.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g) || [text];
       chunks = chunks.flatMap(s => s.length > 260 ? s.match(/.{1,220}(?:\s|$)|\S+/g) || [s] : [s]);
     }
-    state='reading'; play.textContent='Pause'; status.textContent='Reading: ' + title(active); speak();
+    state='reading'; play.setAttribute('aria-pressed','true'); play.setAttribute('aria-label','Stop reading'); announce('Reading: ' + title(active)); speak();
   }
-  toggle.addEventListener('click', () => {
-    panel.hidden = !panel.hidden; toggle.setAttribute('aria-expanded', String(!panel.hidden));
-    if(panel.hidden) stop(); else start();
-  });
   play.addEventListener('click',start);
-  stopButton.addEventListener('click',() => stop());
-  rate.addEventListener('change',() => {
-    if(state === 'reading') {generation++; synth.cancel(); speak();}
-  });
-  document.addEventListener('keydown',e => {if(e.key==='Escape'&&!panel.hidden){stop();panel.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.focus();}});
+  document.addEventListener('keydown', e => {if(e.key === 'Escape') stop();});
   window.addEventListener('pagehide',() => stop());
 })();
