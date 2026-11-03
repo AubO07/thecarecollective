@@ -424,6 +424,13 @@
     <div class="panel"><div class="panel-head"><h2 id="feedbackTitle">Your voices</h2><button class="close" type="button" data-close aria-label="Close">×</button></div>
       <p>Published contributions are moderated and shared with the contributor’s permission. Contact details remain private unless a contributor expressly asks for them to be displayed.</p>
       <article class="feedback-item">
+        <div class="feedback-byline"><strong>Aubrey Ghose</strong><span>3 November 2026</span></div>
+        <p class="reference-role">Founder, The Care Collective · Contribution to the proposed pilot</p>
+        <p class="reference-role">Contact Aubrey: <a href="mailto:Aub.O1.007@icloud.com">Aub.O1.007@icloud.com</a></p>
+        <h3>A practical first step towards a National Care Service</h3>
+        <blockquote>Connecting the Dots offers a practical, affordable first step towards the National Care Service envisaged by Andy Burnham — working alongside the NHS to connect the services that support carers and the people they care for.</blockquote>
+      </article>
+      <article class="feedback-item">
         <div class="feedback-byline"><strong>Conor Ghose</strong><span>31 October 2026</span></div>
         <p class="reference-role">Aubrey’s son · Lived experience of care and recovery following a serious climbing accident</p>
         <h3>Connecting the Dots and my lived experiance.</h3>
@@ -436,13 +443,7 @@
         <blockquote>“We must enable government and public agencies to share information safely and responsibly around an individual’s needs. Better coordination would improve outcomes, reduce the administrative burden on families, and help carers and the people they care for return to learning, training or work sooner.<br><br>That is not only humane; it is part of how we make an emerging National Care Service affordable and effective—working alongside an NHS that can share relevant information across its network, rather than leaving people and families to join the dots themselves.”</blockquote>
 
       </article>
-      <article class="feedback-item">
-        <div class="feedback-byline"><strong>Aubrey Ghose</strong><span>3 November 2026</span></div>
-        <p class="reference-role">Founder, The Care Collective · Contribution to the proposed pilot</p>
-        <p class="reference-role">Contact Aubrey: <a href="mailto:Aub.O1.007@icloud.com">Aub.O1.007@icloud.com</a></p>
-        <h3>A practical first step towards a National Care Service</h3>
-        <blockquote>Connecting the Dots offers a practical, affordable first step towards the National Care Service envisaged by Andy Burnham — working alongside the NHS to connect the services that support carers and the people they care for.</blockquote>
-      </article>
+
       <h3 class="letters-heading">Letters of support</h3>
       <article class="feedback-item support-letter">
         <div class="feedback-byline"><strong>Claire Day</strong><span>7 October 2026</span></div>
@@ -489,6 +490,11 @@
     let lastWidth=0;
 
     document.querySelectorAll('[data-dialog]').forEach(button=>button.addEventListener('click',()=>document.getElementById(button.dataset.dialog).showModal()));
+    // A shareable link to the latest published contribution; existing menu behaviour is unchanged.
+    if (new URLSearchParams(window.location.search).get('voices') === 'latest') {
+      const voicesDialog = document.getElementById('feedback');
+      if (voicesDialog && !voicesDialog.open) voicesDialog.showModal();
+    }
     document.querySelectorAll('[data-close]').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
     document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close();}));
 
