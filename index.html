@@ -204,7 +204,7 @@
     .story .hero{padding-top:32px}
     .service-dots{width:100%;max-width:780px;margin:0 auto 32px}
     .story .hero > h1,.story .hero > p{margin-left:auto;margin-right:auto}
-    .service-dots svg{display:block;width:100%;height:auto}
+    .service-dots svg,.service-dots img{display:block;width:100%;height:auto}
     .service-dots figcaption{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;font-size:16px;line-height:1.4;color:var(--ink);margin-top:12px}
     @media(max-width:740px){
       .topbar-inner{gap:10px;padding-top:10px}
@@ -244,17 +244,8 @@
   <div class="story" id="top">
     <section class="hero" aria-labelledby="storyTitle">
       <!-- NHS and NCS labels enlarged to 66 for mobile legibility. -->
-      <figure class="service-dots" aria-labelledby="serviceDotsCaption">
-        <svg viewBox="0 0 1125 546" role="img" aria-labelledby="serviceDotsTitle">
-          <title id="serviceDotsTitle">Connecting the National Health Service and National Care Service</title>
-          <defs><clipPath id="serviceOverlap"><circle cx="346" cy="274" r="268"/></clipPath></defs>
-          <circle cx="346" cy="274" r="268" fill="#4f98f1"/>
-          <circle cx="778" cy="274" r="268" fill="#69d3aa"/>
-          <circle cx="778" cy="274" r="268" fill="#dc328a" clip-path="url(#serviceOverlap)"/>
-          <!-- Letterforms traced from the approved artwork, without font substitution. -->
-          <path fill="#fff" d="M168,199 163,204 131,334 158,336 162,333 176,268 183,247 190,259 213,333 216,336 246,334 277,199 249,199 228,284 224,281 198,200Z M295,199 263,335 291,336 293,334 304,284 308,276 348,276 351,284 338,334 366,336 372,324 399,200 370,199 368,201 360,240 354,251 316,251 313,245 323,200Z M494,203 480,198 450,196 425,204 412,216 404,235 406,254 422,272 437,279 449,289 450,300 445,308 437,312 411,310 395,301 388,324 389,330 412,338 435,339 457,334 474,322 484,302 483,278 471,263 444,248 438,242 437,232 449,222 466,222 488,230 495,212Z M782,200 779,198 753,200 736,279 731,285 702,200 668,199 634,334 637,336 662,336 664,334 685,248 688,247 720,335 750,335Z M888,202 871,197 832,199 808,212 793,229 784,246 779,264 778,293 787,317 806,334 837,339 856,336 866,330 871,304 851,311 828,309 816,300 812,291 810,268 819,243 832,229 846,223 864,223 882,231 891,208Z M986,203 968,197 943,196 920,202 904,215 896,232 896,246 900,258 908,267 934,282 942,290 943,298 937,308 926,313 908,312 887,301 881,321 882,331 906,338 934,338 954,332 966,322 975,308 977,295 975,278 965,264 935,246 928,234 935,224 945,220 955,220 979,229 988,210Z"/>
-        </svg>
-        <figcaption id="serviceDotsCaption"><span>National Health Service</span><span>National Care Service</span></figcaption>
+      <figure class="service-dots">
+        <img src="approved-nhs-ncs-logo.svg?v=3" width="1125" height="546" decoding="async" fetchpriority="high" alt="NHS and NCS in overlapping blue and mint circles with a fuchsia connection: the approved Connecting the Dots artwork.">
       </figure>
       <p class="hero-funding">How connected care could help fund an emerging National Care Service.</p>
       <h1 id="storyTitle">People’s lives are connected.<br>Their support should be too.</h1>
