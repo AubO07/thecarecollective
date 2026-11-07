@@ -625,12 +625,12 @@
   panel.querySelector('a.link')?.remove();
 
   const form = document.createElement('form');
-  form.action = 'https://formsubmit.co/Aub.O1.007@icloud.com';
-  form.method = 'POST';
-  form.style.cssText = 'display:grid;gap:14px';
+  // Temporary independent route while FormSubmit is unavailable.
+  // This opens the visitor's email app; no receipt is claimed until they send it.
+  form.style.cssText = 'display:grid;gap:14px;min-width:0';
 
   form.innerHTML = [
-    '<p>Your contribution is sent privately for review. If you give permission below, it may then appear under <strong>Your voices</strong>. No GitHub account is required.</p>',
+    '<p>To avoid the current submission-service outage, this form prepares an email in your own email app. <strong>You must press Send in that app</strong> to deliver it. Nothing is published automatically.</p>',
     '<input type="hidden" name="_subject" value="Connecting the Dots - New contribution">',
     '<input type="text" name="_honey" style="display:none">',
     '<label>Your name<input name="name" required style="display:block;width:100%;padding:12px"></label>',
@@ -638,10 +638,24 @@
     '<label>How would you like to contribute?<select name="contribution_type" required style="display:block;width:100%;padding:12px"><option value="">Choose one</option><option>Support the proposal</option><option>Offer a comment or idea</option><option>Share evidence or experience</option><option>Offer a letter of support</option></select></label>',
     '<label>Your contribution<textarea name="message" rows="6" required style="display:block;width:100%;padding:12px"></textarea></label>',
     '<label><input type="checkbox" name="permission_to_publish" value="Yes"> Yes, I’m happy for my name and contribution to be published on this website after review. My email address will not be published.</label>',
-    '<button type="submit" style="padding:14px;background:#1673b8;color:white;border:0;border-radius:6px">Send for review</button>',
-    '<small>Leave the checkbox unticked to keep your contribution private. Nothing is published automatically.</small>'
+    '<button type="submit" style="padding:14px;background:#1673b8;color:white;border:0;border-radius:6px">Prepare email to send</button>',
+    '<small>Leave the checkbox unticked to keep your contribution private. If the email app does not open, write directly to Aub.O1.007@icloud.com. Please do not include sensitive medical information.</small>'
   ].join('');
 
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const message = [
+      'Name: ' + data.get('name'),
+      'Email: ' + data.get('email'),
+      'Contribution type: ' + data.get('contribution_type'),
+      'Permission to publish: ' + (data.get('permission_to_publish') === 'Yes' ? 'Yes' : 'No'),
+      '', 'Contribution:', String(data.get('message') || '')
+    ].join('\n');
+    const subject = 'Connecting the Dots - New contribution';
+    window.location.href = 'mailto:Aub.O1.007@icloud.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+  });
   panel.appendChild(form);
 })();
 </script>
