@@ -652,7 +652,7 @@
       'Contribution type: ' + data.get('contribution_type'),
       'Permission to publish: ' + (data.get('permission_to_publish') === 'Yes' ? 'Yes' : 'No'),
       '', 'Contribution:', String(data.get('message') || '')
-    ].join('\\n');
+    ].join('\n');
     const subject = 'Connecting the Dots - New contribution';
     window.location.href = 'mailto:Aub.O1.007@icloud.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
   });
