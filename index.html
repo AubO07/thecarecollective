@@ -643,6 +643,96 @@
   ].join('');
 
   panel.appendChild(form);
+
+  // Keep contributions on this page and bound the wait for the email service.
+  const sendButton = form.querySelector('button[type="submit"]');
+  const status = document.createElement('p');
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  status.setAttribute('tabindex', '-1');
+  status.style.cssText = 'margin:0;overflow-wrap:anywhere';
+  const emailFallback = document.createElement('a');
+  emailFallback.textContent = 'Send by email instead';
+  emailFallback.hidden = true;
+  emailFallback.style.cssText = 'color:#005eb8;text-decoration:underline';
+  form.append(status, emailFallback);
+  let sending = false;
+  let accepted = false;
+  form.addEventListener('input', () => {
+    if (!sending && accepted) {
+      accepted = false;
+      sendButton.disabled = false;
+      sendButton.textContent = 'Send for review';
+      status.textContent = '';
+    }
+  });
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (sending || accepted || !form.reportValidity()) return;
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.permission_to_publish = data.permission_to_publish === 'Yes' ? 'Yes' : 'No';
+    data._url = window.location.origin + window.location.pathname;
+    const mailBody = [
+      'Name: ' + data.name, 'Email: ' + data.email,
+      'Contribution type: ' + data.contribution_type,
+      'Permission to publish: ' + data.permission_to_publish, '', data.message
+    ].join('\n');
+    emailFallback.href = 'mailto:aubrey.ghose@icloud.com?subject=' +
+      encodeURIComponent(data._subject) + '&body=' + encodeURIComponent(mailBody);
+    emailFallback.hidden = true;
+    if (!navigator.onLine) {
+      status.textContent = 'You appear to be offline. Your message is still here. Reconnect before trying again.';
+      status.focus();
+      return;
+    }
+    sending = true;
+    const fields = Array.from(form.querySelectorAll('input, select, textarea'));
+    fields.forEach(field => { field.disabled = true; });
+    sendButton.disabled = true;
+    sendButton.textContent = 'Sending…';
+    form.setAttribute('aria-busy', 'true');
+    status.textContent = 'Sending your contribution. This will take no more than 12 seconds to confirm.';
+    const controller = new AbortController();
+    let timer;
+    try {
+      const request = (async () => {
+        const response = await fetch('https://formsubmit.co/ajax/aubrey.ghose@icloud.com', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+          body: JSON.stringify(data),
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error('Service error');
+        const result = await response.json();
+        if (!(result.success === true || result.success === 'true') ||
+            /activat|confirm your email/i.test(result.message || '')) {
+          throw new Error('Submission not confirmed');
+        }
+      })();
+      const deadline = new Promise((_, reject) => {
+        timer = setTimeout(() => {
+          controller.abort();
+          reject(new Error('Confirmation timed out'));
+        }, 12000);
+      });
+      await Promise.race([request, deadline]);
+      accepted = true;
+      sendButton.textContent = 'Submitted';
+      status.textContent = 'Thank you. The email service has accepted your contribution for forwarding and review. Nothing has been published automatically.';
+    } catch (error) {
+      status.textContent = 'We could not confirm your submission. Your message is still here. It may have reached us; retrying or emailing could send a duplicate. You can try again or send by email instead.';
+      emailFallback.hidden = false;
+      sendButton.textContent = 'Try again';
+    } finally {
+      clearTimeout(timer);
+      sending = false;
+      fields.forEach(field => { field.disabled = false; });
+      sendButton.disabled = accepted;
+      form.removeAttribute('aria-busy');
+      status.focus();
+    }
+  });
+
 })();
 </script>
 </html>
