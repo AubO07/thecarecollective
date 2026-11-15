@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Care Collective</title>
+  <style>
+    :root{--mint:#54B689}
+    body{font-family:Helvetica,Arial,sans-serif;line-height:1.6;color:#222;margin:0;padding:3rem 1rem;text-align:center}
+    h1{color:var(--mint);font-size:2.4rem;font-weight:800;margin-top:0}
+    .pulse{animation:pulse 3.2s ease-in-out infinite;height:38px}
+    @keyframes pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+    a.tilde-link:hover .pulse,
+    a.tilde-link:focus .pulse{animation-play-state:paused;transform:scale(1.18);}
+    a.tilde-link .pulse{transition:transform .25s ease}
+    footer{margin-top:4rem;font-size:.9rem;color:#666}
+  </style>
+</head>
+<body>
+  <a href="/brand/" class="tilde-link" aria-label="Open manifesto">
+    <img src="/assets/icons/tilde.svg" alt="~" class="pulse">
+  </a>
+
+  <h1>Activate Every Carer</h1>
+  <p>12&nbsp;million unpaid carers deliver <strong>£162 billion</strong> of hidden care each year.
+     Carer&nbsp;ID turns that effort into recognised, exportable value.</p>
+
+  <p><a href="/letters/kyle.html">Read our open letter →</a></p>
+
+  <footer>
+    <p>©️ 2025 The Care Collective</p>
+    <a href="/brand/" class="tilde-link" aria-label="Manifesto">
+      <img src="/assets/icons/tilde.svg" alt="~" class="pulse">
+    </a>
+  </footer>
+</body>
+</html>
