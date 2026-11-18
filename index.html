@@ -217,6 +217,30 @@
       .service-dots{margin-bottom:26px}
       .service-dots figcaption{font-size:13px;gap:8px;margin-top:8px}
     }
+
+    /* Care Collective operating model: additive, scoped to this section. */
+    .collective-model{border-top:1px solid var(--line);padding-top:54px}
+    .collective-model .model-intro{max-width:760px}
+    .collective-model .model-lanes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0 14px}
+    .collective-model .model-box{border:1px solid var(--line);background:#fff;border-radius:15px;padding:22px}
+    .collective-model .model-box h3{margin:0 0 8px;font-size:1.15rem}
+    .collective-model .model-box p{margin:0}
+    .collective-model .model-tag{display:inline-block;color:#a31e75;font-weight:750;font-size:.77rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:9px}
+    .collective-model .model-arrow{text-align:center;color:#b02284;font-size:25px;line-height:1;margin:10px 0}
+    .collective-model .model-hub{background:#fdf2f9;border:2px solid #d36aa9;text-align:center}
+    .collective-model .model-hub h3{font-size:1.35rem}
+    .collective-model .model-after{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .collective-model .model-guard{background:#f0f8f6;border-left:4px solid #179f83;padding:20px 23px;border-radius:9px;margin:20px 0 32px}
+    .collective-model .model-economy{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px;margin:20px 0}
+    .collective-model .model-stage{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px 13px}
+    .collective-model .model-stage strong{display:block;margin-bottom:7px}
+    .collective-model .model-stage .model-number{color:#aa257e;font-weight:800;font-size:1.1rem;display:block;margin-bottom:6px}
+    .collective-model .model-stage p{font-size:.9rem;margin:0}
+    .collective-model .model-finance{border:1px solid var(--line);border-radius:12px;padding:22px;background:#f6f9fb}
+    .collective-model .model-finance strong{color:#14233b}
+    .collective-model .model-note{font-size:.88rem;color:var(--muted)}
+    @media(max-width:780px){.collective-model .model-economy{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.collective-model .model-lanes,.collective-model .model-after,.collective-model .model-economy{grid-template-columns:1fr}.collective-model .model-box{padding:18px}}
   </style>
   <script src="/listen.js?v=93" defer></script>
 </head>
@@ -380,6 +404,64 @@
           <a class="app-story-cta" href="ncs-app-concept.html?v=62">Open the NCS app experience →</a>
         </div>
       </div>
+    </section>
+
+
+    <section class="collective-model" id="care-collective-model" aria-labelledby="collectiveModelHeading">
+      <p class="eyebrow">05B · The Care Collective operating model</p>
+      <h2 id="collectiveModelHeading">From human connection to measurable public value.</h2>
+      <p class="model-intro">The Care Collective is a proposed NHS-overseen community platform to connect people who need help with people who can provide it. It is designed to fill immediate gaps while Connecting the Dots tests whether public services themselves can coordinate more effectively.</p>
+      <h3>How a single connection would work</h3>
+      <div class="model-lanes" aria-label="Two routes into the Care Collective">
+        <article class="model-box">
+          <span class="model-tag">A person seeking support</span>
+          <h3>1. Tell us what you need</h3>
+          <p>Register, describe the support required, set preferences and consent to appropriate information sharing. Requests are screened for urgency, suitability and safeguarding concerns.</p>
+        </article>
+        <article class="model-box">
+          <span class="model-tag">A person offering support</span>
+          <h3>1. Apply to contribute</h3>
+          <p>Register, verify identity, submit relevant credentials, choose availability and complete checks and induction proportionate to the role.</p>
+        </article>
+      </div>
+      <div class="model-arrow" aria-hidden="true">↓</div>
+      <div class="model-box model-hub">
+        <span class="model-tag">The community square</span>
+        <h3>2. A safe, suitable match</h3>
+        <p>Match need with verified capability and availability—not simply postcode. People connect for practical help, peer support, professional advice or appropriate referral, within clearly defined service boundaries.</p>
+      </div>
+      <div class="model-arrow" aria-hidden="true">↓</div>
+      <div class="model-box" style="text-align:center">
+        <h3>3. A support session takes place</h3>
+        <p>Participants agree what help will be provided. An interaction is logged without collecting more personal information than necessary.</p>
+      </div>
+      <div class="model-arrow" aria-hidden="true">↓</div>
+      <div class="model-after">
+        <article class="model-box">
+          <h3>4. Both people give feedback</h3>
+          <p>Was the session useful, respectful and safe? Concerns are reviewed by people, with prompt safeguarding action where required. Feedback improves matching and service quality.</p>
+        </article>
+        <article class="model-box">
+          <h3>5. Outcomes and rewards are recorded</h3>
+          <p>Eligible approved sessions can be paid under an agreed commissioning model. Aggregated outcomes help evaluate whether early support improves wellbeing and avoids escalation.</p>
+        </article>
+      </div>
+      <aside class="model-guard">
+        <strong>Proposed NHS-linked governance throughout.</strong> NHS oversight and funding would need to be agreed, not assumed. Clinical work requires appropriate professional authorisation; privacy, safeguarding, human accountability and fair review are designed in. AI may assist matching and learning, but does not independently exclude people from essential support.
+      </aside>
+      <h3>How the contributor economy could develop</h3>
+      <div class="model-economy" aria-label="Five stages of the proposed contributor and financing model">
+        <article class="model-stage"><span class="model-number">01</span><strong>Apply</strong><p>Identity, capability, credentials and induction reviewed.</p></article>
+        <article class="model-stage"><span class="model-number">02</span><strong>Try three sessions</strong><p>Three supported introductory sessions, voluntarily agreed and subject to fair-work safeguards.</p></article>
+        <article class="model-stage"><span class="model-number">03</span><strong>Earn</strong><p>Approved contributors receive payment for eligible sessions at agreed rates.</p></article>
+        <article class="model-stage"><span class="model-number">04</span><strong>Prove value</strong><p>Measure safety, outcomes, costs and potential avoided demand against a credible comparison.</p></article>
+        <article class="model-stage"><span class="model-number">05</span><strong>Reinvest</strong><p>If net public value is demonstrated, commissioners could expand provision and improve contributor pay.</p></article>
+      </div>
+      <div class="model-finance">
+        <p><strong>The financial hypothesis:</strong> verified avoided costs and additional public value, less the full cost of delivery, could justify reinvestment in earlier support and better contributor remuneration.</p>
+        <p class="model-note">Not every positive interaction prevents a hospital admission. Savings are not assumed, and any transfer of funds between NHS and other public budgets would require commissioning agreements. This is what the pilot should test.</p>
+      </div>
+      <p class="model-note">This is a proposed operating model, not a live NHS service or an approved payment scheme.</p>
     </section>
 
     <section aria-labelledby="testHeading">
